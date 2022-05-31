@@ -37,3 +37,20 @@
 
 };
 //Workingg on Valid Parentheses Leet Code Problem Above
+
+//Leet Code Reverse List Solution
+var reverseList = function(head) {
+    let reversed = null; //no reversed
+    let current = head; //setting head to current
+    while (current?.val) { //current.val = 1,2,3,4,5,null
+        let nex = current.next
+        console.log(nex,current.next,current.val)
+        current.next = reversed
+        reversed = current
+        current = nex
+        console.log(current, 'here',reversed);
+        console.log(nex,current?.next,'heretwop',current?.val);
+    }
+    console.log(current, 'here',reversed)
+    return reversed
+};
