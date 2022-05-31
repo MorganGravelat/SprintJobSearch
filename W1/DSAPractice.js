@@ -76,3 +76,72 @@ function findNemo4(array) {
 }
 
 findNemo4(nemo4);
+
+
+function compressBoxesTwice(boxes, boxes2) {
+    boxes.forEach(function(boxes) {
+        console.log(boxes);
+    })
+
+    boxes2.forEach(function(boxes) {
+        console.log(boxes);
+    })
+}
+//THIS IS O(a+b) the two boxes determine the complexity. I believe it would boil down to O(n)
+
+
+const Bboxes = ['a','b','c','d','e'];
+function logAllPairsOfArray(array) {
+    for (let i = 0; i < array.length; i++) {
+        for (let j = i+1; j < array.length; j++) {
+            console.log(array[i], array[j]);
+        }
+    }
+}
+logAllPairsOfArray(Bboxes);
+//THIS IS O(n^2)
+
+
+//SPACE COMPLEXITY BELOW
+function boooo(n) {
+    for (let i = 0; i < n.length; i++) {
+        console.log("BOOOOOOOO")
+    }
+}
+
+boooo([1,2,3,4,5]); //TIME COMPLEXITY O(n) SPACE COMPLEXITY O(1)
+
+function arrayOfHiNTimes(n) {
+    let hiArray=[];
+    for (let i = 0; i < n.length; i++) {
+        hiArray[i] = 'hi';
+    }
+    return hiArray;
+}
+
+console.log(arrayOfHiNTimes(6));
+
+'helwoshejhekhiuhudsh'.length; //O(1)
+
+const larger = new Array(100000).fill('nemo');
+
+function findNemo4(array) {
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === 'nemo') {
+            console.log('Found NEMO!');
+        }
+    }
+}
+
+findNemo(everyone);
+
+const findNemo5 = array => {
+    array.forEach(i =>  {
+        if(i === 'nemo') {
+            console.log('Found NEMO!');
+        }
+    })
+}
+
+
+
