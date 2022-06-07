@@ -6,6 +6,7 @@ function isPalindrome(string) {
     }
     return string === revChar.join('');
 }
+
 //Nth number of fib sequence
 function getNthFib(n, memo = {1: 0, 2: 1}) {
     if (n in memo) {
