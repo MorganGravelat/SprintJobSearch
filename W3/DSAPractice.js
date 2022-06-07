@@ -82,3 +82,22 @@ var reverseList = function(head) {
 //         if len(self.heap) > self.k:
 //             heapq.heappop(self.heap)
 //         return self.heap[0] //Much better Memory and Time usage than my version
+
+
+//Two-Number-Sum problem
+
+function twoNumberSum(array, targetSum) {
+    for (let i = 0; i < array.length - 1; i++) {
+      const firstNum = array[i];
+      for (let j = i + 1; j < array.length; j++) {
+        const secondNum = array[j];
+        if (firstNum + secondNum === targetSum) {
+          return [firstNum, secondNum];
+        }
+      }
+    }
+    return [];
+  }
+
+  // Do not edit the line below.
+  exports.twoNumberSum = twoNumberSum;
