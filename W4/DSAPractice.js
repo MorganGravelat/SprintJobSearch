@@ -16,3 +16,40 @@ function getNthFib(n, memo = {1: 0, 2: 1}) {
         return memo[n];
     }
 }
+//My immediate solution for tournamentWinner
+function tournamentWinner(competitions, results) {
+    let winners = {}
+    let score = 0;
+    let winner = ''
+
+    for (let i = 0; i < results.length; i++) {
+      if (results[i] > 0) {
+        if (winners[competitions[i][0]]) {
+          winners[competitions[i][0]]++
+          if (winners[competitions[i][0]] > score) {
+            score = winners[competitions[i][0]]
+            winner = competitions[i][0]
+          }
+        }
+        else {
+          winners[competitions[i][0]] = 1
+          if (winners[competitions[i][0]] > score) {
+            score = winners[competitions[i][0]]
+            winner = competitions[i][0]
+          }
+        }
+      } else {
+        if (winners[competitions[i][1]]) {
+          winners[competitions[i][1]]++
+        } else {
+                winners[competitions[i][1]] = 1
+                if (winners[competitions[i][1]] > score) {
+                score = winners[competitions[i][1]]
+                winner = competitions[i][1]
+                }
+          }
+      }
+    }
+
+    return winner;
+  }
