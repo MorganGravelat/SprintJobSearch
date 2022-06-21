@@ -144,3 +144,28 @@ function isPrime(num){
   var result = primeFactors(input);
   console.log(result);
   let myNum = 10898
+
+
+  class Solution:
+    def convert(self, s: str, n: int) -> str:
+        wordList = ['' for i in range(n)]
+
+        curr = 0
+        up = True
+        for i in s:
+            wordList[curr] += i
+
+            if up:
+                if curr + 1 < n:
+                    curr += 1
+                else:
+                    curr -= 1
+                    up = False
+            else:
+                if curr - 1 >= 0:
+                    curr -= 1
+                else:
+                    curr += 1
+                    up = True
+
+        return ''.join(wordList)
