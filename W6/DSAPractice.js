@@ -169,3 +169,32 @@ function isPrime(num){
                     up = True
 
         return ''.join(wordList)
+
+//Two Sum Solution
+    //     class Solution:
+    // def twoSum(self, lst: List[int], num: int) -> List[int]:
+    //     for i in lst:
+    //         count = lst.count(num - i)
+    //         if count:
+    //             if i != num:
+    //                 return [lst.index(i), lst.index(num - i)]
+    //             else:
+    //                 return [lst.index(lst.pop(i)), lst.index(i)]
+
+
+// Sorting non constructible change / minimum change you cannot create with the coins given
+// {
+//     "coins": [5, 7, 1, 1, 2, 3, 22]
+// } = 20
+
+function nonConstructibleChange(coins) {
+    coins.sort((a, b) => a - b);
+
+    let currentChangeCreated = 0;
+    for (const coin of coins) {
+      if (coin > currentChangeCreated + 1) return currentChangeCreated + 1;
+
+      currentChangeCreated += coin;
+    }
+    return currentChangeCreated + 1;
+  }
