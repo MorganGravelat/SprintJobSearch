@@ -19,7 +19,7 @@ print(type(num_char)) # <class 'int'>
 
 
 #Convert num_char to string
-new_num_char = str(num_char)
+new_num_char = str(num_char) #Conver to string
 
 #Can be used now in a concat print statement
 print('HEY FOOL' + new_num_char) #type(new_num_char) <class 'str'>
@@ -72,6 +72,33 @@ print(bodyindex(height, weight))
 
 ##Number Manipulation
 print (8/3) # 2.66666666
-print (int(8/3)) # 2
-print (round(8/3)) # 3 #2.6666666 UP
+print (int(8/3)) # 2 #Convert into Integer int integer
+print (round(8/3)) # 3 #2.6666666 UP Round number
 print (round(8/3, 4)) # the 4 chooses the amount of decimal places you get NONE is 0
+
+# You can take
+result = 4 / 2 # 2
+result /= 2 # this divides the result by 2 and makes it equal to the answer
+
+# You can set a score
+score = 0
+
+score += 1 # 1 These can all manipulate the number.
+score -= 1 # 0
+score *= 1 # 0
+
+## String Formatting
+score = 0
+height = 1.8
+isWinning = True
+# f-String
+print(f"{score} that is score, then here is height {height} and here goes isWinning {isWinning}")
+# Simple use of the f-String to calculate your days months and weeks until 90 years old
+def weeksUntilNinety(age):
+      years = 90 - int(age)
+  months = round(years * 12)
+  weeks = round(years * 52)
+  days = round(years * 365)
+
+  print(f"You have {days} days, {weeks} weeks, and {months} months left.")
+  return f"You have {days} days, {weeks} weeks, and {months} months left."
