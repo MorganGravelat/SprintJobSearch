@@ -102,3 +102,69 @@ def weeksUntilNinety(age):
 
   print(f"You have {days} days, {weeks} weeks, and {months} months left.")
   return f"You have {days} days, {weeks} weeks, and {months} months left."
+
+###QUESTION TIME
+a = int("5") / int(2.7)
+#What data type will this become
+#ANSWER: FLOAT
+
+age = 12
+print("You are " + age + " years old")
+# This will give you a Type Error. Age is an integer. You are trying to concatenate a String to an Integer.
+
+
+# f-string use, Decimal Formatting
+
+## Calculating the per person price with tip included when splitting a meal or alone.add()
+def tipCalculator():
+      print("Welcome to the tip calculator!")
+  bill = input("What was the total bill? $")
+  tipPercent = input("How much tip would you like to give? ")
+  people = input("How many people to split the bill? ")
+
+  perPerson = (float(bill) / int(people)) * (1 + (.01 * float(tipPercent)))
+  perPerson = "{:.2f}".format(perPerson) #Format the number of decimal places in the float
+  print (f"Each person should pay: ${perPerson}")
+  return f"Each person should pay: ${perPerson}"
+
+tipCalculator()
+## Below is Udemy SOlution with neat trick for affecting input right away.add()
+# INPUT TRICKS
+#If the bill was $150.00, split between 5 people, with 12% tip.
+#Each person should pay (150.00 / 5) * 1.12 = 33.6
+#Round the result to 2 decimal places.
+print("Welcome to the tip calculator!")
+bill = float(input("What was the total bill? $")) #Didn't know before to use these affectors on the input itself VERY USEFUL
+tip = int(input("How much tip would you like to give? 10, 12, or 15? "))
+people = int(input("How many people to split the bill?"))
+
+tip_as_percent = tip / 100
+total_tip_amount = bill * tip_as_percent
+total_bill = bill + total_tip_amount
+bill_per_person = total_bill / people
+final_amount = round(bill_per_person, 2)
+
+
+# FAQ: How to round to 2 decimal places?
+
+# Find the answer in the Q&A here: https://www.udemy.com/course/100-days-of-code/learn/lecture/17965132#questions/13315048
+
+
+print(f"Each person should pay: ${final_amount}")
+## End tip calculator Below is other formatter codes
+'''
+Number	Format	Output	Description
+3.1415926	{:.2f}	3.14	Format float 2 decimal places
+3.1415926	{:+.2f}	+3.14	Format float 2 decimal places with sign
+-1	{:+.2f}	-1.00	Format float 2 decimal places with sign
+2.71828	{:.0f}	3	Format float with no decimal places
+5	{:0>2d}	05	Pad number with zeros (left padding, width 2)
+5	{:x<4d}	5xxx	Pad number with x’s (right padding, width 4)
+10	{:x<4d}	10xx	Pad number with x’s (right padding, width 4)
+1000000	{:,}	1,000,000	Number format with comma separator
+0.25	{:.2%}	25.00%	Format percentage
+1000000000	{:.2e}	1.00e+09	Exponent notation
+13	{:10d}	        13	Right aligned (default, width 10)
+13	{:<10d}	13	Left aligned (width 10)
+13	{:^10d}	    13	Center aligned (width 10)
+'''
