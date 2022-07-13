@@ -326,3 +326,67 @@ if extra_cheese == "Y":
   bill += 1
 
 print(f"Your final bill is: {bill}")
+
+##Multi conditional statments
+
+a = 12
+# is a > 15 ? False
+# is a > 10 and a < 13 the and operator is javascript &&
+a > 10 and a < 13
+a > 10 or a < 13 # or is javascripts || operator
+
+## New conditionals for mid life crisis men
+print("Welcome to the rollercoaster!")
+height = int(input("What is your height in cm? "))
+bill = 0
+
+if height >= 120:
+  print("You can ride the rollercoaster!")
+  age = int(input("What is your age? "))
+  if age < 12:
+    bill = 5
+    print("Child tickets are $5.")
+  elif age <= 18:
+    bill = 7
+    print("Youth tickets are $7.")
+  elif age >= 45 and age <= 55: ##Using and we are checking to see if they are in the age bracket for a mid life crisis
+    print("Everything is going to be ok. Have a free ride on us!")
+  else:
+    bill = 12
+    print("Adult tickets are $12.")
+
+  wants_photo = input("Do you want a photo taken? Y or N. ")
+  if wants_photo == "Y":
+    bill += 3
+
+  print(f"Your final bill is ${bill}")
+
+else:
+  print("Sorry, you have to grow taller before you can ride.")
+
+### Next is conditionals with for loop through string |  lowercase a string | Count a letter in a string
+
+
+#Love Calculator
+
+print("Welcome to the Love Calculator!")
+name1 = input("What is your name? \n")
+name2 = input("What is their name? \n")
+score1 = 0
+score2 = 0
+
+for ltr in 'true':
+  score1 += name1.lower().count(ltr)
+  score1 += name2.lower().count(ltr)
+for ltr in 'love':
+  score2 += name1.lower().count(ltr)
+  score2 += name2.lower().count(ltr)
+
+score = int(f"{score1}{score2}")
+
+if score > 90 or score < 10:
+  print(f"Your score is {score}, you go together like coke and mentos.")
+elif score > 40 and score < 50:
+  print(f"Your score is {score}, you are alright together.")
+else:
+  print(f"Your score is {score}")
