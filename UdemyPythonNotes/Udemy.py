@@ -486,6 +486,14 @@ dirty_dozen = ["Strawberries", "Spinach", "Kale",
                "Nectarines", "Apples", "Grapes",
                "Peaches", "Cherries", "Pears",
                "Tomatoes", "Celery", "Potatoes"]
+
+#You can seperate and add to lists in any way you want
+fruits = ["Strawberries","Nectarines","Apples",
+          "Grapes", "Peaches", "Cherries", "Pears",]
+vegetables = ["Spinach", "Kale","Tomatoes", "Celery", "Potatoes"]
+#You can add them back together like this
+dirty_dozens = [fruits, vegetables]
+print(dirty_dozens)
 ## INDEX INFORMATION
 # the 0 is the count of the offset of the item, the Strawberries item is offset by 0 because it begins the list.add()
 
@@ -517,3 +525,214 @@ random_choice = random.randint(0, num_items - 1)
 person_who_will_pay = names[random_choice]
 
 print(person_who_will_pay + " is going to buy the meal today!")
+
+#person_who_will_pay = random.choice(names) #This does the same thing as above but doesn't show you understand it.
+
+####### Next Coding Section
+
+#Given the following list:
+
+fruits = ["Strawberries", "Nectarines", "Apples", "Grapes", "Peaches", "Cherries", "Pears"]
+#Which line of code will give you "Apples"?
+print(fruits[-5]) #This can give you apples just like fruits[2]
+
+##Given the code below:
+
+fruits = ["Strawberries", "Nectarines", "Apples", "Grapes", "Peaches", "Cherries", "Pears"]
+fruits[-1] = "Melons" #Grabs the last element of the list
+fruits.append("Lemons") #Adds Lemons to the back of the list
+print(fruits)
+##What do you think will be printed?
+["Strawberries", "Nectarines", "Apples", "Grapes", "Peaches", "Cherries", "Melons", "Lemons"]
+
+### Q3
+fruits = ["Strawberries", "Nectarines", "Apples", "Grapes", "Peaches", "Cherries", "Pears"]
+vegetables = ["Spinach", "Kale", "Tomatoes", "Celery", "Potatoes"]
+
+dirty_dozen = [fruits, vegetables]
+
+print(dirty_dozen[1][1]) #[['Strawberries', 'Nectarines', 'Apples', 'Grapes', 'Peaches', 'Cherries', 'Pears'],
+                         #['Spinach', 'Kale', 'Tomatoes', 'Celery', 'Potatoes']]
+#Prints Kale since there is two lists within that list
+
+#Lists treasure map exercise
+
+row1 = ["⬜️","⬜️","⬜️"]
+row2 = ["⬜️","⬜️","⬜️"]
+row3 = ["⬜️","⬜️","⬜️"]
+map = [row1, row2, row3]
+print(f"{row1}\n{row2}\n{row3}")
+position = input("Where do you want to put the treasure? ")
+
+row = position[1]
+column = int(position[0]) - 1
+if row == '1':
+  row1[column] = "X"
+elif row == '2':
+  row2[column] = "X"
+else:
+  row3[column] = "X"
+
+
+print(f"{row1}\n{row2}\n{row3}")
+
+##Their version below GREAT VERSION
+# Lists List Copy Affecting data from multiple list in a nested list.
+row1 = ["⬜️","️⬜️","️⬜️"]
+row2 = ["⬜️","⬜️","️⬜️"]
+row3 = ["⬜️️","⬜️️","⬜️️"]
+map = [row1, row2, row3]
+#print(f"{row1}\n{row2}\n{row3}") ADD NEW LINE TO TEXT
+
+#position = input("Where do you want to put the treasure? ")
+position = '23'
+horizontal = int(position[0])
+vertical = int(position[1])
+
+map[vertical - 1][horizontal - 1] = "X" #The map contains direct copies of the rows and thus can be edited
+
+print(f"{row1}\n{row2}\n{row3}") #new line example
+
+
+## Rock Paper Scissors PYTHON
+
+rock = '''
+Rock!
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+'''
+
+paper = '''
+Paper!
+    _______
+---'   ____)____
+          ______)
+          _______)
+         _______)
+---.__________)
+'''
+
+scissors = '''
+Scissors!
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+'''
+
+#Write your code below this line 👇
+import random
+choices = [rock, paper, scissors]
+
+def rockPaperScissors():
+  Choice = int(input("What do you choose?\nType 0 for Rock, 1 for Paper or 2 for Scissors: "))
+
+  aiChoice = random.randint(0, 2)
+  #print(f"You chose {choices[Choice]}")
+  #print(f"AI chose {choices[aiChoice]}")
+  if Choice == aiChoice:
+    print(f"You chose {choices[Choice]}\nAI chose {choices[aiChoice]}\n IT IS A TIE. Next Round!\n")
+    rockPaperScissors()
+  elif Choice > 2 or Choice < 0:
+    print("You must choose \n0 for Rock, \n1 for Paper, \nand 2 for Scissors.")
+    rockPaperScissors()
+  elif (Choice == 0 and aiChoice == 2) or (Choice == 1 and aiChoice == 0) or (Choice == 2 and aiChoice == 1):
+    print(f"You chose {choices[Choice]}\nAI chose                {choices[aiChoice]}\n Next round!\n")
+    print("You win!")
+  else:
+    print(f"You chose {choices[Choice]}\nAI chose                {choices[aiChoice]}\n Next round!\n")
+    print("You lose!")
+
+  playAgain = input("Would you like to play again?\nType Y or N to answer: ").lower()
+
+  if playAgain == 'y':
+    rockPaperScissors()
+  elif playAgain == 'n':
+    print("Thanks for playing!")
+    return
+  else:
+    print("You didn't answer a valid response! Thanks for playing")
+
+
+
+
+rockPaperScissors()
+
+## Their RPS code
+import random
+
+rock = '''
+    _______
+---'   ____)
+      (_____)
+      (_____)
+      (____)
+---.__(___)
+'''
+
+paper = '''
+    _______
+---'   ____)____
+          ______)
+          _______)
+         _______)
+---.__________)
+'''
+
+scissors = '''
+    _______
+---'   ____)____
+          ______)
+       __________)
+      (____)
+---.__(___)
+'''
+
+game_images = [rock, paper, scissors]
+
+user_choice = int(input("What do you choose? Type 0 for Rock, 1 for Paper or 2 for Scissors.\n"))
+print(game_images[user_choice])
+
+computer_choice = random.randint(0, 2)
+print("Computer chose:")
+print(game_images[computer_choice])
+
+if user_choice >= 3 or user_choice < 0:
+  print("You typed an invalid number, you lose!")
+elif user_choice == 0 and computer_choice == 2:
+  print("You win!")
+elif computer_choice == 0 and user_choice == 2:
+  print("You lose")
+elif computer_choice > user_choice:
+  print("You lose")
+elif user_choice > computer_choice:
+  print("You win!")
+elif computer_choice == user_choice:
+  print("It's a draw")
+
+## Day 4 end
+
+#Loops for loop
+fruits = ["Apple", "Peach", "Pear"]
+for fruit in fruits:
+  print(fruit) #This is a simple python for loop
+  print(fruit + " Pie") # You Can append all elements
+  print(fruits) #This prints the whole list
+#Loops exercise 1 below
+
+student_heights = input("Input a list of student heights ").split()
+for n in range(0, len(student_heights)):
+  student_heights[n] = int(student_heights[n])
+
+total = 0
+
+for x in student_heights:
+  total += x
+
+print(int(total / len(student_heights)))
