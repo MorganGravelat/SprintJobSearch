@@ -736,3 +736,45 @@ for x in student_heights:
   total += x
 
 print(int(total / len(student_heights)))
+
+
+
+student_heights = input("Input a list of student heights ").split() #Split takes away spaces by default to create a list of each number
+for n in range(0, len(student_heights)):
+  student_heights[n] = int(student_heights[n])
+# print(student_heights)
+
+
+total_height = 0
+for height in student_heights:
+  total_height += height
+print(f"total height = {total_height}")
+
+number_of_students = 0
+for student in student_heights:
+  number_of_students += 1
+print(f"number of students = {number_of_students}")
+
+average_height = round(total_height / number_of_students)
+print(average_height)
+
+
+
+#### Finding the highest score
+### Using loop if formatted string f-string
+
+student_scores = input("Input a list of student scores ").split()
+for n in range(0, len(student_scores)):
+  student_scores[n] = int(student_scores[n])
+print(student_scores)
+
+highest = 0
+
+for n in student_scores:
+    if highest < n:
+        highest = n
+
+
+print(f"The highest score in the class is: {highest}")
+
+## for loops range function HOW TO USE RANGE
