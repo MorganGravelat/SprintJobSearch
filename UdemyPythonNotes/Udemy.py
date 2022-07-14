@@ -1,5 +1,6 @@
 from secrets import randbelow
 import this
+from tkinter import N
 
 
 print( len( input("What is your name? ") ) ) #This is a way you can prompt What is your name? Morgan and when I answer my name it spits out 6
@@ -778,3 +779,42 @@ for n in student_scores:
 print(f"The highest score in the class is: {highest}")
 
 ## for loops range function HOW TO USE RANGE
+# A for loop using range
+for number in range(1, 13, 3): #Prints all the numbers starting at 1 and ending once the number hits >=13 The extra number determines the step to be 3 I.E. 1 4 7 10
+    print(number)
+
+total = 0
+for number in range(1, 101): #You can count to 100 and add each number together by flipping the two 50 in half. 100 + 1 is 101, 99 + 2 is 101 and so on. 50 pairs of 101 OR 50 X 101? 10 X 101 = 1010 X 5 = 5050
+    total += number
+
+#print(total)
+
+
+for number in range(1, 101): #You can count to 100 and add each number together by flipping the two 50 in half. 100 + 1 is 101, 99 + 2 is 101 and so on. 50 pairs of 101 OR 50 X 101? 10 X 101 = 1010 X 5 = 5050
+    total += number
+
+#print(total)
+
+##Even numbers only using steps
+
+total = 0
+for number in range(2, 101, 2): #Two ways to count in even numbers, this is the best one since it skips unwanted numbers
+    total += number
+
+total2 = 0
+for number in range(1, 101):
+    if number % 2 == 0:
+        total2+=number
+
+print(total2)
+
+
+for n in range(1, 100): #Simple fizz buzz for loop
+    if n % 5 == 0 and n % 3 == 0:
+        print("FizzBuzz")
+    elif n % 3 == 0:
+        print("Fizz")
+    elif n % 5 == 0:
+        print("Buzz")
+    else:
+        print(n)
