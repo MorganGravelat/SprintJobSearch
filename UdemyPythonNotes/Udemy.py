@@ -905,3 +905,44 @@ for char in password_list:
   password += char
 
 print(f"Your password is: {password}")
+
+
+## Python Functions
+
+def mingin(): # The colon says new line.
+    print('hey')
+    print('bye')
+
+mingin()
+
+
+### While loops LOOPS
+# While something=true
+number = 6 #While loop python
+while number > 0:
+    print('hey')
+    number -= 1
+
+# You can use while loops to run until something happens while not at_goal(): #This one only stops once the goal is reached, while 5>3orTrue: #This will never stop
+#Reeborg Jump Hurdles Function
+def turn_right():
+    turn_left()
+    turn_left()
+    turn_left()
+def jump():
+    turn_left()
+    while not right_is_clear():
+        move()
+    turn_right()
+    move()
+    turn_right()
+    while front_is_clear():
+        move()
+    turn_left()
+
+
+while not at_goal():
+    if front_is_clear():
+        move()
+    else:
+        jump()
