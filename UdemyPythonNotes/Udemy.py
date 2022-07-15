@@ -958,3 +958,276 @@ while not at_goal():
 
 
 ###DAY 7 Hangman
+#Process
+#START -> GENERATE A WORD RANDOMLY -> Generate as many blanks as letters in word -> Ask for letter guess from user --
+# --> Is the letter correct? -> NO? Lose a life -> Have they run out of lives? -> YES? You Lose
+#                                                                                  NO? Go BACK to ask for letter guess from user
+#                             -> YES? Replace blanks with letter -> Are blanks all filled? -> NO? GO BACK TO Ask for letter guess from user
+#                                                                                             YES? You Win
+
+''' Hangman prototype
+while score > 0:
+      guess = input("Pick a letter: ").lower()
+  if len(guess) == 1:
+    if guess in word:
+      print("This letter is in")
+    else:
+      score -= 1
+      if score != 0:
+        print(f"This letter is not in, you new score is {score}")
+      else:
+        print(f"Your score is {score} SO YOU LOSE!")
+  else:
+    print('You input an invalid guess, please provide just one letter!')
+'''
+'''
+#Step 1
+
+word_list = ["aardvark", "baboon", "camel"]
+
+#TODO-1 - Randomly choose a word from the word_list and assign it to a variable called chosen_word.
+
+#TODO-2 - Ask the user to guess a letter and assign their answer to a variable called guess. Make guess lowercase.
+
+#TODO-3 - Check if the letter the user guessed (guess) is one of the letters in the chosen_word.
+import random
+word = word_list[random.randint(0, len(word_list) - 1)]
+print(word)
+score = 6
+fakeWord = []
+while len(word) > len(fakeWord):
+  fakeWord.append('_')
+
+
+while score > 0:
+  guess = input("Pick a letter: ").lower()
+  if len(guess) == 1:
+    if guess in word:
+      for x in range(len(word)):
+        if guess == word[x]:
+          fakeWord[x] = guess
+          print('Goodguess!', fakeWord)
+      if '_' not in fakeWord:
+        print('You WIN!')
+        break
+    else:
+      score -= 1
+      print(f"This letter is not in, you new score is {score}")
+  else:
+    print('You input an invalid guess, please provide just one letter!')
+
+print('YOU LOSE!')
+'''
+#for _ in word: #You can add underscore to FOR loops
+# display.append('_')
+'''
+#Step 4
+
+import random
+
+stages = [
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========
+,
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========
+,
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========
+,
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========,
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========
+,
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========
+,
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+
+
+end_of_game = False
+word_list = ["ardvark", "baboon", "camel"]
+chosen_word = random.choice(word_list)
+word_length = len(chosen_word)
+
+#TODO-1: - Create a variable called 'lives' to keep track of the number of lives left.
+#Set 'lives' to equal 6.
+lives = 6
+
+#Testing code
+print(f'Pssst, the solution is {chosen_word}.')
+
+#Create blanks
+display = []
+for _ in range(word_length):
+    display += "_"
+
+while not end_of_game:
+    guess = input("Guess a letter: ").lower()
+
+    #Check guessed letter
+    for position in range(word_length):
+        letter = chosen_word[position]
+       # print(f"Current position: {position}\n Current letter: {letter}\n Guessed letter: {guess}")
+        if letter == guess:
+            display[position] = letter
+
+    #TODO-2: - If guess is not a letter in the chosen_word,
+    #Then reduce 'lives' by 1.
+    #If lives goes down to 0 then the game should stop and it should print "You lose."
+    if guess not in chosen_word:
+        lives -= 1
+        if lives == 0:
+            end_of_game = True
+            print("You lose.")
+
+    #Join all the elements in the list and turn it into a String.
+    print(f"{' '.join(display)}")
+
+    #Check if user has got all letters.
+    if "_" not in display:
+        end_of_game = True
+        print("You win.")
+
+    #TODO-3: - print the ASCII art from 'stages' that corresponds to the current number of 'lives' the user has remaining.
+    print(stages[lives])
+'''
+
+
+#My Code so far!
+#Step 1
+
+word_list = ["aardvark", "baboon", "camel"]
+stages = ['''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ / \  |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+ /    |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|\  |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+ /|   |
+      |
+      |
+=========''', '''
+  +---+
+  |   |
+  O   |
+  |   |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+  O   |
+      |
+      |
+      |
+=========
+''', '''
+  +---+
+  |   |
+      |
+      |
+      |
+      |
+=========
+''']
+#TODO-1 - Randomly choose a word from the word_list and assign it to a variable called chosen_word.
+
+#TODO-2 - Ask the user to guess a letter and assign their answer to a variable called guess. Make guess lowercase.
+
+#TODO-3 - Check if the letter the user guessed (guess) is one of the letters in the chosen_word.
+import random
+word = word_list[random.randint(0, len(word_list) - 1)]
+print(word)
+score = 6
+display = []
+guesses = ''
+
+while len(word) > len(display):
+  display.append('_')
+print(f"{display}\n{stages[score]}")
+
+
+while score > 0:
+  guess = input("Pick a letter: ").lower()
+  if guess in guesses and len(guess) == 1:
+    print("You already made that guess?!")
+  elif len(guess) == 1:
+    guesses+=guess
+    if guess in word:
+      for x in range(len(word)):
+        if guess == word[x]:
+          display[x] = guess
+      print(f"You got it right! {guess} is in there! \n{display}\n{stages[score]}")
+      if '_' not in display:
+        print('You WIN!')
+        break
+    else:
+      score -= 1
+      print(f"There are no {guess}'s, your new score is {score}")
+      print(f"{display}\n{stages[score]}")
+  else:
+    print('You input an invalid guess, please provide just one letter!')
+
+if score == 0:
+  print(f"Your score is {score} SO YOU LOSE!\n {stages[score]}", display)
