@@ -946,3 +946,15 @@ while not at_goal():
         move()
     else:
         jump()
+
+
+##Additional from reeborg
+    else:
+        if wall_on_right() and wall_in_front():
+            turn_left()
+        else:
+            turn_right()
+
+
+
+###DAY 7 Hangman
