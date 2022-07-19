@@ -980,7 +980,8 @@ while score > 0:
   else:
     print('You input an invalid guess, please provide just one letter!')
 '''
-'''
+
+#My Code so far!
 #Step 1
 
 word_list = ["aardvark", "baboon", "camel"]
@@ -994,147 +995,40 @@ import random
 word = word_list[random.randint(0, len(word_list) - 1)]
 print(word)
 score = 6
-fakeWord = []
-while len(word) > len(fakeWord):
-  fakeWord.append('_')
+display = []
+guesses = ''
+
+while len(word) > len(display):
+  display.append('_')
+print(f"{display}\n{stages[score]}")
 
 
 while score > 0:
   guess = input("Pick a letter: ").lower()
-  if len(guess) == 1:
+  if guess in guesses and len(guess) == 1:
+    print("You already made that guess?!")
+  elif len(guess) == 1:
+    guesses+=guess
     if guess in word:
       for x in range(len(word)):
         if guess == word[x]:
-          fakeWord[x] = guess
-          print('Goodguess!', fakeWord)
-      if '_' not in fakeWord:
+          display[x] = guess
+      print(f"You got it right! {guess} is in there! \n{display}\n{stages[score]}")
+      if '_' not in display:
         print('You WIN!')
         break
     else:
       score -= 1
-      print(f"This letter is not in, you new score is {score}")
+      print(f"There are no {guess}'s, your new score is {score}")
+      print(f"{display}\n{stages[score]}")
   else:
     print('You input an invalid guess, please provide just one letter!')
 
-print('YOU LOSE!')
-'''
-#for _ in word: #You can add underscore to FOR loops
-# display.append('_')
-'''
-#Step 4
+if score == 0:
+  print(f"Your score is {score} SO YOU LOSE!\n {stages[score]}", display)
 
-import random
+############################################################################
 
-stages = [
-  +---+
-  |   |
-  O   |
- /|\  |
- / \  |
-      |
-=========
-,
-  +---+
-  |   |
-  O   |
- /|\  |
- /    |
-      |
-=========
-,
-  +---+
-  |   |
-  O   |
- /|\  |
-      |
-      |
-=========
-,
-  +---+
-  |   |
-  O   |
- /|   |
-      |
-      |
-=========,
-  +---+
-  |   |
-  O   |
-  |   |
-      |
-      |
-=========
-,
-  +---+
-  |   |
-  O   |
-      |
-      |
-      |
-=========
-,
-  +---+
-  |   |
-      |
-      |
-      |
-      |
-=========
-
-
-end_of_game = False
-word_list = ["ardvark", "baboon", "camel"]
-chosen_word = random.choice(word_list)
-word_length = len(chosen_word)
-
-#TODO-1: - Create a variable called 'lives' to keep track of the number of lives left.
-#Set 'lives' to equal 6.
-lives = 6
-
-#Testing code
-print(f'Pssst, the solution is {chosen_word}.')
-
-#Create blanks
-display = []
-for _ in range(word_length):
-    display += "_"
-
-while not end_of_game:
-    guess = input("Guess a letter: ").lower()
-
-    #Check guessed letter
-    for position in range(word_length):
-        letter = chosen_word[position]
-       # print(f"Current position: {position}\n Current letter: {letter}\n Guessed letter: {guess}")
-        if letter == guess:
-            display[position] = letter
-
-    #TODO-2: - If guess is not a letter in the chosen_word,
-    #Then reduce 'lives' by 1.
-    #If lives goes down to 0 then the game should stop and it should print "You lose."
-    if guess not in chosen_word:
-        lives -= 1
-        if lives == 0:
-            end_of_game = True
-            print("You lose.")
-
-    #Join all the elements in the list and turn it into a String.
-    print(f"{' '.join(display)}")
-
-    #Check if user has got all letters.
-    if "_" not in display:
-        end_of_game = True
-        print("You win.")
-
-    #TODO-3: - print the ASCII art from 'stages' that corresponds to the current number of 'lives' the user has remaining.
-    print(stages[lives])
-'''
-
-
-#My Code so far!
-#Step 1
-
-word_list = ["aardvark", "baboon", "camel"]
 stages = ['''
   +---+
   |   |
@@ -1191,43 +1085,145 @@ stages = ['''
       |
 =========
 ''']
-#TODO-1 - Randomly choose a word from the word_list and assign it to a variable called chosen_word.
 
-#TODO-2 - Ask the user to guess a letter and assign their answer to a variable called guess. Make guess lowercase.
+logo = '''
+ _
+| |
+| |__   __ _ _ __   __ _ _ __ ___   __ _ _ __
+| '_ \ / _` | '_ \ / _` | '_ ` _ \ / _` | '_ \
+| | | | (_| | | | | (_| | | | | | | (_| | | | |
+|_| |_|\__,_|_| |_|\__, |_| |_| |_|\__,_|_| |_|
+                    __/ |
+                   |___/    '''
 
-#TODO-3 - Check if the letter the user guessed (guess) is one of the letters in the chosen_word.
+word_list = [
+'abruptly',
+'absurd',
+'abyss',
+]
+
+
+'''
+Using the files above in another Python file structure.
+Completed next step of hangman for user experience
+#Step 5
+
 import random
-word = word_list[random.randint(0, len(word_list) - 1)]
-print(word)
-score = 6
-display = []
+from hangman_words import word_list
+from hangman_art import stages, logo
+
+#TODO-1: - Update the word list to use the 'word_list' from hangman_words.py
+#Delete this line: word_list = ["ardvark", "baboon", "camel"]
+chosen_word = random.choice(word_list)
+word_length = len(chosen_word)
 guesses = ''
 
-while len(word) > len(display):
-  display.append('_')
-print(f"{display}\n{stages[score]}")
+end_of_game = False
+lives = 6
 
+#TODO-3: - Import the logo from hangman_art.py and print it at the start of the game.
+print(logo)
+#Testing code
+print(f'Pssst, the solution is {chosen_word}.')
 
-while score > 0:
-  guess = input("Pick a letter: ").lower()
-  if guess in guesses and len(guess) == 1:
-    print("You already made that guess?!")
-  elif len(guess) == 1:
-    guesses+=guess
-    if guess in word:
-      for x in range(len(word)):
-        if guess == word[x]:
-          display[x] = guess
-      print(f"You got it right! {guess} is in there! \n{display}\n{stages[score]}")
-      if '_' not in display:
-        print('You WIN!')
-        break
+#Create blanks
+display = []
+for _ in range(word_length):
+    display += "_"
+
+while not end_of_game:
+    guess = input("Guess a letter: ").lower()
+
+    #TODO-4: - If the user has entered a letter they've already guessed, print the letter and let them know.
+    if len(guess) == 1 and guess in guesses:
+      print(f'You already guessed {guess.upper()}')
+      continue
     else:
-      score -= 1
-      print(f"There are no {guess}'s, your new score is {score}")
-      print(f"{display}\n{stages[score]}")
-  else:
-    print('You input an invalid guess, please provide just one letter!')
+      guesses += guess
+    #Check guessed letter
+    for position in range(word_length):
+        letter = chosen_word[position]
+        #print(f"Current position: {position}\n Current letter: {letter}\n Guessed letter: {guess}")
+        if letter == guess:
+            display[position] = letter
 
-if score == 0:
-  print(f"Your score is {score} SO YOU LOSE!\n {stages[score]}", display)
+    #Check if user is wrong.
+    if guess not in chosen_word:
+        #TODO-5: - If the letter is not in the chosen_word, print out the letter and let them know it's not in the word.
+        lives -= 1
+        print(f"{guess.upper()} is a bad guess! You have {lives} lives left!")
+        if lives == 0:
+            end_of_game = True
+            print("You lose.")
+
+    #Join all the elements in the list and turn it into a String.
+    print(f"{' '.join(display)}")
+
+    #Check if user has got all letters.
+    if "_" not in display:
+        end_of_game = True
+        print("You win.")
+
+    #TODO-2: - Import the stages from hangman_art.py and make this error go away.
+    print(stages[lives])
+'''
+
+#Simple variables inside function def block
+##Input print functions
+def greet():
+    name = input("What is your name? ")
+    print(f"Hello {name}!")
+    print(f"How do you do {name}?")
+    print(f"Well see yuh later {name}!")
+
+greet()
+
+## Function that allows for input
+name = input("What is your name? ")
+def greet_with_name(name):
+    print(f"Hello {name}!")
+    print(f"How do you do {name}?")
+    print(f"Well see yuh later {name}!")
+
+greet_with_name(name)
+
+name = input("What is your name? ")
+location = input("Where do you live? ")
+def greet_with(name, location):
+    print(f"Hello {name}!")
+    print(f"How is {location}?")
+    print(f"Well see yuh later {name}!")
+
+greet_with(name, location) #position matters here name must be in name location and location in its proper spot
+
+#You can use Keyword Arguments
+# DEFINING ARGUMENTS SPECIFICALLY
+greet_with(location = location, name = name)
+
+#Using Keyword Arguments
+#Testing how much paint you need for a job
+test_h = int(input("Height of wall: "))
+test_w = int(input("Width of wall: "))
+coverage = 5
+def paint_calc(height, width, cover):
+  cans_needed = (height * width) / cover
+  print(f"You'll need {int(cans_needed)} cans of paint.")
+
+paint_calc(height=test_h, width=test_w, cover=coverage)
+##Prime number identification
+import math #Math import
+
+def prime_checker(number):
+  if number == 2:
+    return "It's a prime number"
+  elif number % 2 == 0 or number < 2:
+    return "It's not a prime number"
+
+  for i in range(3, math.floor(math.sqrt(number)) + 1, 2): #floor sqrt square root math operators
+    if number % i == 0:
+      return "It's not a prime number"
+  return "It's a prime number"
+
+
+n = int(input("Check this number: "))
+print(prime_checker(number=n))
