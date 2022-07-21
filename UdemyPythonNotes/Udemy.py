@@ -1312,4 +1312,97 @@ if direction == 'encode':
   encrypt(plain_text=text, shift_amount=shift)
 elif direction == 'decode':
   decrypt(text=text, shift=shift)
+
+#######THEIRS
+def decrypt(cipher_text, shift_amount):
+  plain_text = ""
+  for letter in cipher_text:
+    position = alphabet.index(letter)
+    new_position = position - shift_amount
+    plain_text += alphabet[new_position]
+  print(f"The decoded text is {plain_text}")
+
+
+
 ###Part 2 End
+
+
+###Part 3 Start COMBINED function called casear()
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+text = input("Type your message:\n").lower()
+shift = int(input("Type the shift number:\n"))
+
+#TODO-1: Combine the encrypt() and decrypt() functions into a single function called caesar().
+def caesar(text, shift, direction):
+  if direction != 'decode' and direction != 'encode':
+    print('Please fill the direction with encode or decode.')
+    return
+  if shift > 26:
+    print('Shift can not be greater than 26')
+    return
+  cipher_text = ""
+  if direction == 'decode':
+    shift = -shift
+  for letter in text:
+    position = alphabet.index(letter)
+    new_position = position + shift
+    cipher_text += alphabet[new_position]
+  print(f"The {direction}d text is {cipher_text}")
+
+#TODO-2: Call the caesar() function, passing over the 'text', 'shift' and 'direction' values.
+
+caesar(text, shift, direction)
+###COURSES WORK
+def caesar(start_text, shift_amount, cipher_direction):
+      end_text = ""
+  if cipher_direction == "decode":
+      shift_amount *= -1
+  for letter in start_text:
+    position = alphabet.index(letter)
+    new_position = position + shift_amount
+    end_text += alphabet[new_position]
+  print(f"Here's the {direction}d result: {end_text}")
+
+###Part 3 End
+
+###Part 4 QOL
+from art import logo
+
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
+
+game_going = True
+
+def caesar(start_text, shift_amount, cipher_direction):
+  end_text = ""
+  if cipher_direction != 'decode' and cipher_direction != 'encode':
+    print('Please fill the direction with encode or decode.')
+    return
+  if shift_amount > 26:
+    shift_amount %= 26
+  if cipher_direction == "decode":
+    shift_amount *= -1
+  for char in start_text:
+
+    if char in alphabet:
+      position = alphabet.index(char)
+      new_position = position + shift_amount
+      end_text += alphabet[new_position]
+    else:
+      end_text += char
+
+  print(f"Here's the {cipher_direction}d result: {end_text}")
+
+while game_going == True:
+  print(logo)
+  direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
+  text = input("Type your message:\n").lower()
+  shift = int(input("Type the shift number:\n"))
+
+  caesar(start_text=text, shift_amount=shift, cipher_direction=direction)
+
+  go_again = input("Do you want to go again? Type Y if you wish to go again and anything else at all if not").lower()
+  if (go_again != 'y'):
+    print("Thanks for playing!")
+    game_going = False
