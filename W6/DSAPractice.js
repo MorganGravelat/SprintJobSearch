@@ -188,7 +188,7 @@ function isPrime(num){
 // } = 20
 
 function nonConstructibleChange(coins) {
-    coins.sort((a, b) => a - b);
+   coins.sort((a, b) => a - b);
 
     let currentChangeCreated = 0;
     for (const coin of coins) {
