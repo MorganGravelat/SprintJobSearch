@@ -1367,7 +1367,7 @@ def caesar(start_text, shift_amount, cipher_direction):
 
 ###Part 3 End
 
-###Part 4 QOL
+###Part 4 QOL IF FUNCTIONS WHILE LOOP INPUT MODULO
 from art import logo
 
 alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
@@ -1406,3 +1406,154 @@ while game_going == True:
   if (go_again != 'y'):
     print("Thanks for playing!")
     game_going = False
+
+
+### Dictionary in python DICT
+
+'''
+{Key: Value} Pairs / The key is what you lookup and the value is what it stores.
+{Bug: An error in a program that prevents the program from running as expected}
+For multiple items in dict always cap off the items with a comma ,
+{'A': 'HEY THERE', 'B': 'Oh well!',}
+'''
+##You can run simple loops on dicts like this
+student_scores = {
+  "Harry": 81,
+  "Ron": 78,
+  "Hermione": 99,
+  "Draco": 74,
+  "Neville": 62,
+}
+
+student_grades = {}
+
+for key in student_scores:
+  if student_scores[key] <= 70:
+    student_grades[key] = 'Fail'
+  elif student_scores[key] <= 80:
+    student_grades[key] = 'Acceptable'
+  elif student_scores[key] <= 90:
+    student_grades[key] = 'Exceeds Expectations'
+  else:
+    student_grades[key] = 'Outstanding'
+
+print(student_grades)
+
+
+##You can nest lists in dictionarys and vice versa
+
+hello = [{1:2, 3:4, 5:6,},{7:8, 9:10, 11:12,}]
+
+travel_log = [
+{
+  "country": "France",
+  "visits": 12,
+  "cities": ["Paris", "Lille", "Dijon"]
+},
+{
+  "country": "Germany",
+  "visits": 5,
+  "cities": ["Berlin", "Hamburg", "Stuttgart"]
+},
+]
+
+
+def add_new_country(country, visits, cities): #Adds a new country to the list of dicts
+  new_country = {}
+  new_country["country"] = country
+  new_country["visits"] = visits
+  new_country["cities"] = cities
+  travel_log.append(new_country)
+
+
+add_new_country("Russia", 2, ["Moscow", "Saint Petersburg"])
+print(travel_log)
+
+#If you try
+#With this nested Dict
+order = {
+    "starter": {1: "Salad", 2: "Soup"},
+    "main": {1: ["Burger", "Fries"], 2: ["Steak"]},
+    "dessert": {1: ["Ice Cream"], 2: []},
+}
+# To access steak you would have to print(order["main"][2][0]) the "main" key is first
+# followed by the 2 key and then the 0 index of the array
+##Bidding with a dictionary
+from replit import clear
+#HINT: You can call clear() to clear the output in the console.
+
+def highest(dict):
+  highest_bid = 0
+  highest_bidder = ''
+  for key in dict:
+    if dict[key] > highest_bid:
+      highest_bid = dict[key]
+      highest_bidder = key
+  print(f"The item goes to {highest_bidder} with a bid of {highest_bid}!")
+bidding = True
+bids = {}
+
+while bidding == True: #While loop to keep the bids going as long as there are people to bid.
+  name = input("What is your name? ")
+  bid = int(input("How much are you bidding? "))
+
+  bids[name] = bid
+
+  more = input("Are there any more bids? Type Y for yes and N for no: ").lower()
+  if more != "y":
+    highest(bids)
+    bidding = False
+  else:
+      clear() #Clear clears the console
+##Below is testing and multiple return statements
+def is_leap(year):
+      if year % 4 == 0:
+    if year % 100 == 0:
+      if year % 400 == 0:
+        return True
+      else:
+        return False
+    else:
+        return True
+  else:
+    return False
+##DOCS STRING
+def days_in_month(year, month):
+  '''This function takes the year and month you input and checks to see #This is a doc string and will pop up when hovering over your function!
+  if it is a leap year and then returns the number of days in that month.'''
+  month_days = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+  if month > 12 or month < 1:
+    return "Invalid month entered."
+  if month == 2 and is_leap(year):
+    return 29
+  return month_days[month - 1]
+
+
+
+#Do NOT change any of the code below 👇
+year = int(input("Enter a year: "))
+month = int(input("Enter a month: "))
+days = days_in_month(year, month)
+print(days)
+
+# Tests
+import unittest
+
+class MyTest(unittest.TestCase):
+
+    def test_1(self):
+        self.assertEqual(days_in_month(2018, 2), 28)
+
+    def test_2(self):
+        self.assertEqual(days_in_month(2020, 2), 29)
+
+    def test_3(self):
+        self.assertEqual(days_in_month(2019, 4), 30)
+
+    def test_4(self):
+        self.assertEqual(days_in_month(1045, 5), 31)
+
+print("\n")
+print('Running some tests on your code:')
+print(".\n.\n.\n.")
+unittest.main(verbosity=1, exit=False)
