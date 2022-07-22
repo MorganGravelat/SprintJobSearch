@@ -1,3 +1,8 @@
+#Try CTRL+F to see the keywords I scattered around. Search imports for examples of good import statements
+
+
+
+
 from secrets import randbelow
 import this
 from tkinter import N
@@ -1528,7 +1533,9 @@ def days_in_month(year, month):
     return 29
   return month_days[month - 1]
 
-
+# IEH
+# DIOAJOJa
+# AOIFJ Ctrl+/ Will comment out lines of code that are selected
 
 #Do NOT change any of the code below 👇
 year = int(input("Enter a year: "))
@@ -1557,3 +1564,237 @@ print("\n")
 print('Running some tests on your code:')
 print(".\n.\n.\n.")
 unittest.main(verbosity=1, exit=False)
+
+def add(n1, n2):
+      return n1 + n2
+
+def subtract(n1, n2):
+  return n1 - n2
+
+def multiply(n1, n2):
+  return n1 * n2
+
+def divide(n1, n2):
+  return n1 / n2
+
+print(add(2, multiply(5, divide(8, 4)))) #Returns 12.0 FLOAT because it is a math equation
+
+##You can return a function call from within your function
+def outer_function(a, b):
+    def inner_function(c, d):
+        return c + d
+    return inner_function(a, b)
+
+result = outer_function(5, 10)
+print(result)
+
+##CALCULATOR
+from replit import clear
+
+def adder(num1,num2):
+  return num1 + num2
+def subtracter(num1,num2):
+  return num1 - num2
+def multiplier(num1,num2):
+  return num1 * num2
+def divider(num1,num2):
+  return num1 / num2
+operations = {'/': divider,'*': multiplier, '+': adder, '-': subtracter}
+
+calculating = True
+
+
+while calculating == True:
+
+  num1 = int(input("What is the first number? "))
+  operation = input("What operation will you use? * / + - : ")
+  num2 = int(input("What is the second number? "))
+
+  print(f"{num1} {operation} {num2} = {operations[operation](num1,num2)}")
+
+  again = input("Would you like to keep calculating? Type Y for yes and N for no: ").lower()
+  if again != 'y':
+    print("Thanks for using the calculator stupid fucking piece of shit!")
+    calculating = False
+  else:
+    clear()
+###Final calculator below
+
+from replit import clear
+from art import logo
+
+def add(n1, n2):
+  return n1 + n2
+
+def subtract(n1, n2):
+  return n1 - n2
+
+def multiply(n1, n2):
+  return n1 * n2
+
+def divide(n1, n2):
+  return n1 / n2
+
+operations = {
+  "+": add,
+  "-": subtract,
+  "*": multiply,
+  "/": divide
+}
+
+def calculator():
+  print(logo)
+
+  num1 = float(input("What's the first number?: "))
+  for symbol in operations:
+    print(symbol)
+  should_continue = True
+
+  while should_continue:
+    operation_symbol = input("Pick an operation: ")
+    num2 = float(input("What's the next number?: "))
+    calculation_function = operations[operation_symbol]
+    answer = calculation_function(num1, num2)
+    print(f"{num1} {operation_symbol} {num2} = {answer}")
+
+    if input(f"Type 'y' to continue calculating with {answer}, or type 'n' to start a new calculation: ") == 'y':
+      num1 = answer
+    else:
+      should_continue = False
+      clear()
+      calculator()
+
+calculator()
+####Next module
+#Blackjack rules
+#Ace is 1 or 11
+#Tie score = draw
+# Over 21 means you lose
+#
+#ExperimentalBlackjack
+game_going = True
+card_suits = ['of Diamonds','of Clubs','of Hearts','of Spades']
+cards = [[2,'Two',3],[3,'Three',3],[4,'Four',3],
+         [5,'Five',3],[6,'Six',3],[7,'Seven',3],
+         [8,'Eight',3],[9, 'Nine',3],[10, 'Ten',3],
+         [10, 'Jack',3],[10, 'Queen',3],[10, 'King',3],
+         [11, 'Ace',3]]
+
+while game_going == True:
+  deck = cards.shuffle()
+  i = 0
+  user_hand = [deck[i],deck[i+1]]
+  dealer_hand = [deck[i+2],deck]
+  for card in cards:
+
+
+#Blackjack
+
+##Completed Project
+
+############### Our Blackjack House Rules #####################
+
+## The deck is unlimited in size.
+## There are no jokers.
+## The Jack/Queen/King all count as 10.
+## The the Ace can count as 11 or 1.
+## Use the following list as the deck of cards:
+## cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+## The cards in the list have equal probability of being drawn.
+## Cards are not removed from the deck as they are drawn.
+
+
+import random
+from replit import clear
+logo = """
+.------.            _     _            _    _            _
+|A_  _ |.          | |   | |          | |  (_)          | |
+|( \/ ).-----.     | |__ | | __ _  ___| | ___  __ _  ___| | __
+| \  /|K /\  |     | '_ \| |/ _` |/ __| |/ / |/ _` |/ __| |/ /
+|  \/ | /  \ |     | |_) | | (_| | (__|   <| | (_| | (__|   <
+`-----| \  / |     |_.__/|_|\__,_|\___|_|\_\ |\__,_|\___|_|\_\\
+      |  \/ K|                            _/ |
+      `------'                           |__/
+"""
+
+def deal_card():
+  """Returns a random card from the deck."""
+  cards = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
+  card = random.choice(cards)
+  return card
+
+
+def calculate_score(cards):
+  """Take a list of cards and return the score calculated from the cards"""
+
+  if sum(cards) == 21 and len(cards) == 2:
+    return 0
+
+  if 11 in cards and sum(cards) > 21:
+    cards.remove(11)
+    cards.append(1)
+  return sum(cards)
+
+def compare(user_score, computer_score):
+  #Bug fix. If you and the computer are both over, you lose.
+  if user_score > 21 and computer_score > 21:
+    return "You went over. You lose 😤"
+
+
+  if user_score == computer_score:
+    return "Draw 🙃"
+  elif computer_score == 0:
+    return "Lose, opponent has Blackjack 😱"
+  elif user_score == 0:
+    return "Win with a Blackjack 😎"
+  elif user_score > 21:
+    return "You went over. You lose 😭"
+  elif computer_score > 21:
+    return "Opponent went over. You win 😁"
+  elif user_score > computer_score:
+    return "You win 😃"
+  else:
+    return "You lose 😤"
+
+def play_game():
+
+  print(logo)
+
+  user_cards = []
+  computer_cards = []
+  is_game_over = False
+
+  for _ in range(2):
+    user_cards.append(deal_card())
+    computer_cards.append(deal_card())
+
+
+  while not is_game_over:
+
+    user_score = calculate_score(user_cards)
+    computer_score = calculate_score(computer_cards)
+    print(f"   Your cards: {user_cards}, current score: {user_score}")
+    print(f"   Computer's first card: {computer_cards[0]}")
+
+    if user_score == 0 or computer_score == 0 or user_score > 21:
+      is_game_over = True
+    else:
+      user_should_deal = input("Type 'y' to get another card, type 'n' to pass: ")
+      if user_should_deal == "y":
+        user_cards.append(deal_card())
+      else:
+        is_game_over = True
+
+
+  while computer_score != 0 and computer_score < 17:
+    computer_cards.append(deal_card())
+    computer_score = calculate_score(computer_cards)
+
+  print(f"   Your final hand: {user_cards}, final score: {user_score}")
+  print(f"   Computer's final hand: {computer_cards}, final score: {computer_score}")
+  print(compare(user_score, computer_score))
+
+
+while input("Do you want to play a game of Blackjack? Type 'y' or 'n': ") == "y":
+  clear()
+  play_game()
