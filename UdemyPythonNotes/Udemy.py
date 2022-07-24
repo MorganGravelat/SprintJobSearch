@@ -1731,7 +1731,7 @@ def calculate_score(cards):
     return 0
 
   if 11 in cards and sum(cards) > 21:
-    cards.remove(11)
+    cards.remove(11) ##REMOVE can remove specific thing from list
     cards.append(1)
   return sum(cards)
 
@@ -1798,3 +1798,22 @@ def play_game():
 while input("Do you want to play a game of Blackjack? Type 'y' or 'n': ") == "y":
   clear()
   play_game()
+
+
+##SCOPE local scope global scope globalscope localscope
+
+enemies = 1 # Global scope
+
+def increase_enemies():
+    enemies = 2 # Local Scope
+    print(f"enemies inside function: {enemies}") #Local scope exists within functions, this assignment of enemies is only in here
+
+increase_enemies()
+print(f"enemies outisde function: {enemies}")
+
+def drink_potion():
+    potion_strength = 2
+    print(potion_strength)
+
+drink_potion()
+print(potion_strength)
