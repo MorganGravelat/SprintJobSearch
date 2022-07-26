@@ -1817,3 +1817,28 @@ def drink_potion():
 
 drink_potion()
 print(potion_strength)
+
+#####################################################
+
+game_level = 3
+def create_enemy():
+    enemies = ["Skeleton", "Zombie", "Alien"]
+    if game_level < 5:
+       new_enemy = enemies[0]
+
+print(new_enemy)
+
+enemies = "Skeleton"
+
+
+
+enemies = 1 #Creating a varialbe called enemies and setting it equal to 1
+
+
+def increase_enemies():
+    enemies = 2
+    #It checks for enemies here then outside if there is none in here
+    print(f"enemies inside function: {enemies}")
+
+increase_enemies()
+print(f"enemies outside function: {enemies}")
