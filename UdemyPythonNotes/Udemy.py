@@ -1836,9 +1836,29 @@ enemies = 1 #Creating a varialbe called enemies and setting it equal to 1
 
 
 def increase_enemies():
-    enemies = 2
+    global enemies #You can set a global variable inside a function like this.
+    #This also allows you to set the global variable within the function like so
+    enemies += 2
     #It checks for enemies here then outside if there is none in here
-    print(f"enemies inside function: {enemies}")
+    print(f"enemies inside function: {enemies}") #enemies = 3
 
 increase_enemies()
-print(f"enemies outside function: {enemies}")
+print(f"enemies outside function: {enemies}") # enemies = 3
+
+##### Return statements
+enemies = 1
+
+def increase_enemies():
+    return enemies + 2 #Takes globally scoped enemies and modifies the value with a return statement in the code
+    #It checks for enemies here then outside if there is none in here
+    print(f"enemies inside function: {enemies}") #enemies = 3
+
+enemies = increase_enemies() #Assign the variable
+print(f"enemies outside function: {enemies}") # enemies = 3
+
+#Global Constants
+#Var define that you will never change
+pi = 3.14159
+
+def calc():
+    print(pi * 2)
