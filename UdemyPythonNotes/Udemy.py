@@ -1826,7 +1826,7 @@ def create_enemy():
     if game_level < 5:
        new_enemy = enemies[0]
 
-print(new_enemy)
+print(enemies) #This is a name error
 
 enemies = "Skeleton"
 
@@ -1836,7 +1836,7 @@ enemies = 1 #Creating a varialbe called enemies and setting it equal to 1
 
 
 def increase_enemies():
-    global enemies #You can set a global variable inside a function like this.
+    global enemies #You can set a global variable inside a function like this. Cannot modify without this
     #This also allows you to set the global variable within the function like so
     enemies += 2
     #It checks for enemies here then outside if there is none in here
@@ -1856,9 +1856,109 @@ def increase_enemies():
 enemies = increase_enemies() #Assign the variable
 print(f"enemies outside function: {enemies}") # enemies = 3
 
+########################
+game_level = 3
+enemies = ["Skeleton", "Zombie", "Alien"]
+
+def create_enemy():
+    enemies = ["Skeleton", "Zombie", "Alien"]
+    if game_level < 5:
+        new_enemy = enemies[0]
+
+if game_level < 5: #This will show up but the function won't
+        new_enemy = enemies[0]
+
+print(new_enemy)
+
+
+####
+enemies = 1
+
+def create_enemy():
+    enemies += 1
+    if game_level < 5:
+        new_enemy = enemies[0]
+
+if game_level < 5: #This will show up but the function won't
+        new_enemy = enemies[0]
+
+print(new_enemy)
+
+#####
 #Global Constants
 #Var define that you will never change
-pi = 3.14159
+PI = 3.14159 #the naming convention is all caps
+URL = 'https://www.google.com'
+TWITTER_HANDLE = "@morgan_g"
 
 def calc():
     print(pi * 2)
+
+calc()
+
+
+def bar():
+    my_variable = 9
+
+    if 16 > 9:
+      my_variable = 16 #This alters the variable because in python there is no block scope,
+      #inside the if is the same as outside as far as scope is concerned
+
+    print(my_variable)
+
+bar()
+
+########################################################Guess the number game
+from random import randint
+from art import logo
+
+EASY_LEVEL_TURNS = 10
+HARD_LEVEL_TURNS = 5
+
+#Function to check user's guess against actual answer.
+def check_answer(guess, answer, turns):
+  """checks answer against guess. Returns the number of turns remaining."""
+  if guess > answer:
+    print("Too high.")
+    return turns - 1
+  elif guess < answer:
+    print("Too low.")
+    return turns - 1
+  else:
+    print(f"You got it! The answer was {answer}.")
+
+#Make function to set difficulty.
+def set_difficulty():
+  level = input("Choose a difficulty. Type 'easy' or 'hard': ")
+  if level == "easy":
+    return EASY_LEVEL_TURNS
+  else:
+    return HARD_LEVEL_TURNS
+
+def game():
+  print(logo)
+  #Choosing a random number between 1 and 100.
+  print("Welcome to the Number Guessing Game!")
+  print("I'm thinking of a number between 1 and 100.")
+  answer = randint(1, 100)
+  print(f"Pssst, the correct answer is {answer}")
+
+  turns = set_difficulty()
+  #Repeat the guessing functionality if they get it wrong.
+  guess = 0
+  while guess != answer:
+    print(f"You have {turns} attempts remaining to guess the number.")
+
+    #Let the user guess a number.
+    guess = int(input("Make a guess: "))
+
+    #Track the number of turns and reduce by 1 if they get it wrong.
+    turns = check_answer(guess, answer, turns)
+    if turns == 0:
+      print("You've run out of guesses, you lose.")
+      return
+    elif guess != answer:
+      print("Guess again.")
+
+
+game()
