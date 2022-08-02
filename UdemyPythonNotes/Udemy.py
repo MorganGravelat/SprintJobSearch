@@ -1987,45 +1987,70 @@ mutate([1,2,3,5,8,13])
 from game_data import data
 from art import logo,vs
 import random
-from replit import clear # You did this on replit so you are using the clear console method on there
+from replit import clear
+
+def makeGuess(answer, A,B):
+  guess = input("Who has more followers? Type 'A' or 'B': ").lower()
+  while guess != 'a' and guess != 'b':
+    guess = input("Please Type 'A' or 'B': ").lower()
+  letter = 'a' if answer == A else 'b'
+  if guess != letter:
+    clear()
+    print(logo)
+    print(f"Sorry, that's wrong. Final score: {game.score}")
+    again = input("\nWould you like to play again? Type Y or N: ").lower()
+    if again != 'y':
+      game.game_going = False
+    else:
+      clear()
+      game.score = 0
+      game.winner = ''
+  else:
+    clear()
+    game.winner = answer
+    game.score += 1
+
+def moreFollowers(A,B):
+  if A['follower_count'] > B['follower_count']:
+    return A
+  else:
+    return B
 
 def game():
-  game_going = True
-  score = 0
-  while game_going == True:
+  game.game_going = True
+  game.score = 0
+  answer = ''
+  game.winner = ''
+  while game.game_going == True:
+
     print(logo)
+
+
     ind_one = random.randint(0, len(data)-1)
     ind_two = random.randint(0, len(data)-1)
-    A = data[ind_one]
+    A = data[ind_one] if game.winner == '' else game.winner
     B = data[ind_two]
-    if A['follower_count'] > B['follower_count']:
-      answer = 'a'
-    else:
-      answer = 'b'
-    if score > 0: print(f"You're right! Current score: {score}.")
+
+    answer = moreFollowers(A,B)
+
+    if game.score > 0: print(f"You're right! Current score: {game.score}.")
+
     print(f"Compare A: {A['name']}, a {A['description']}, from {A['country']}.")
     print(vs)
     print(f"Against B: {B['name']}, a {B['description']}, from {B['country']}.")
-    guess = input("Who has more followers? Type 'A' or 'B': ").lower()
-    while guess != 'a' and guess != 'b':
-      guess = input("Please Type 'A' or 'B': ").lower()
-    if guess != answer:
-      clear()
-      print(logo)
-      print(f"Sorry, that's wrong. Final score: {score}")
-      again = input("\nWould you like to play again? Type Y or N: ").lower()
-      if again != 'y':
-        game_going = False
-      else:
-        clear()
-        score = 0
-    else:
-      clear()
-      score += 1
+
+    makeGuess(answer, A,B)
 
 game()
 
-
+'''
+    {
+        'name': 'Cristiano Ronaldo',
+        'follower_count': 215,
+        'description': 'Footballer',
+        'country': 'Portugal'
+    },
+'''
 ## Their guessing game for comparison
 
 from game_data import data
@@ -2088,3 +2113,6 @@ def game():
       print(f"Sorry, that's wrong. Final score: {score}")
 
 game()
+
+
+
