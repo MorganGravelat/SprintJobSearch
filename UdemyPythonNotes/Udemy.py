@@ -2207,3 +2207,44 @@ while is_on:
             payment = process_coins()
             if is_transaction_successful(payment, drink["cost"]):
                 make_coffee(choice, drink["ingredients"])
+
+
+#############################################################Object Oriented Programming#############################################################
+
+#car = CarBlueprint() assigning a new instance of a car class if that exists
+from another_module import another_variable
+print(another_variable)
+
+import random
+
+from turtle import Turtle, Screen #Example of turtle module that is not in the standard library
+
+
+Jake = Turtle() #Creating a new instance of a turtle class
+Jake.shape("turtle") #Changes the shape of the turtle
+Jake.color('black', 'red') #Changes the color of the turtle
+Jake.begin_fill() #Begins the fill of the turtle
+i = 0 #Initializing a variable
+yes = True #Initializing a variable
+while yes: #While the variable is true
+    Jake.forward(10 + i) #
+    Jake.left(90)
+    Jake.forward(10 + i)
+    Jake.left(90)
+    Jake.forward(10 + i)
+    Jake.left(90)
+    i = random.randint(1, 100)
+    if i > 90:
+        yes = False
+Jake.end_fill() #Ends the fill of the turtle
+my_screen = Screen()
+print(my_screen.canvheight) #Screen will show up and then tell you the height
+my_screen.exitonclick() #Screen now shows up and leaves only when clicked
+
+##Turtle is loaded with python always
+
+#Packages have to be installed
+#If you want pretty table
+#Pycharm settings -> Project Interpreter -> +Python Interpreter -> +Packages -> +pip -> +pip install prettytable
+
+OOP

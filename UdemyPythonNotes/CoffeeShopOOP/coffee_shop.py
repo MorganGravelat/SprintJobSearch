@@ -3,8 +3,8 @@ from money_machine import MoneyMachine
 from menu import Menu, MenuItem
 
 class CoffeeShop:
-    """Models each Part of the Shop"""
-    def __init__(self):
+    """Models each Part of the Shop"""   # OOP Class creation, instantiation, and initialization
+    def __init__(self): # Initialize the Shop with the Menu and the CoffeeMaker and MoneyMachine
         self.menu = Menu()
         self.coffee_maker = CoffeeMaker()
         self.money_machine = MoneyMachine()
