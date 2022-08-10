@@ -2247,4 +2247,155 @@ my_screen.exitonclick() #Screen now shows up and leaves only when clicked
 #If you want pretty table
 #Pycharm settings -> Project Interpreter -> +Python Interpreter -> +Packages -> +pip -> +pip install prettytable
 
-OOP
+#OOP
+numbers = [7,4,1,8,6,8,5,4,0,5,5,9,0,2,4,
+ 3,8,10,2,4,9,5,10,3,5,10,8,0,2,3,0,3,4,10]
+def average(numbers):
+    return sum(numbers) / len(numbers)
+
+print(average(numbers))
+#############################################################TURTLE WORK OOP#############################################################
+from turtle import Turtle as T, Screen as S  # Example of turtle module that is not in the standard library
+import heroes
+import random
+
+my_tuple = (1, 3, 8) #tuples are
+
+my_screen = S()
+my_screen.bgcolor("black")
+Jake = T()  # Creating a new instance of a turtle class
+# Jack = Turtle()
+# Jank = Turtle()
+Jake.shape("turtle")
+# Jack.shape("turtle")
+# Jank.shape("turtle")
+Jake.shapesize(1, 1, 3)
+# Jake.begin_fill()
+Pen = False
+colors = ["red", "green", "blue", "yellow",
+          "grey", "purple", "CornflowerBlue",
+          "DarkOrchid", "IndianRed", "DeepSkyBlue",
+          "LightSeaGreen", "wheat", "SlateGray", "SeaGreen"]
+Jake.pensize(15)
+Jake.speed("fastest")
+Jake.hideturtle()
+def draw_shape(num_sides):
+    angle = 360 / num_sides
+    for _ in range(num_sides):
+        Jake.forward(100)
+        Jake.right(angle)
+
+def random_walk(num_moves):
+    angles = [0, 90, 180, 270]
+    for _ in range(num_moves):
+        Jake.color(random.choice(colors))
+        Jake.forward(30)
+        Jake.right(random.choice(angles))
+
+
+# for i in range(3,10):
+#     Jake.color(random.choice(colors))
+#     draw_shape(i)
+
+# Jake.end_fill()
+random_walk(1000)
+my_screen.exitonclick()
+
+# Jake.shape("turtle") #Changes the shape of the turtle
+# Jake.color('black', 'red') #Changes the color of the turtle
+# Jake.begin_fill() #Begins the fill of the turtle
+# i = 0 #Initializing a variable
+# yes = True #Initializing a variable
+# while yes: #While the variable is true
+#     Jake.forward(10 + i) #
+#     Jake.left(90)
+#     Jake.forward(10 + i)
+#     Jake.left(90)
+#     Jake.forward(10 + i)
+#     Jake.left(90)
+#     i = random.randint(1, 100)
+#     if i > 90:
+#         yes = False
+# Jake.end_fill() #Ends the fill of the turtle
+# my_screen = Screen()
+# print(my_screen.canvheight) #Screen will show up and then tell you the height
+# my_screen.exitonclick()
+
+# You can use from 'turtle import *' To eimport everything
+#############################################################TURTLE WORK OOP END SECTION#############################################################
+#############################################################TUPLE EXAMPLE############################################################################# #
+#Tuple is a collection of items that cannot be changed
+#Tuples are immutable
+#Tuples are faster than lists
+import turtle as t
+import random
+
+tim = t.Turtle()
+t.colormode(255)
+
+def random_color():
+    r = random.randint(0, 255)  # Random red value
+    g = random.randint(0, 255) # Random green value
+    b = random.randint(0, 255) # Random blue value
+    random_color = (r, g, b)
+    return random_color
+
+
+directions = [0, 90, 180, 270]
+tim.pensize(15)
+tim.speed("fastest")
+
+for _ in range(200):
+    tim.color(y)
+    tim.forward(30)
+    tim.setheading(random.choice(directions))
+
+#############################################################TURTLE CIRCLE GRAPH######################################
+import turtle as t
+
+import random
+
+tim = t.Turtle()
+t.colormode(255)
+screen = t.Screen()
+
+def random_color():
+    r = random.randint(0, 255)
+    g = random.randint(0, 255)
+    b = random.randint(0, 255)
+    random_color = (r, g, b)
+    return random_color
+
+
+directions = [0, 90, 180, 270]
+tim.pensize(1)
+tim.speed("fastest")
+
+# for _ in range(200):
+#     tim.color(random_color())
+#     tim.forward(30)
+#     tim.setheading(random.choice(directions))
+def draw_graph(gap_size):
+    for _ in range(int(360 / gap_size)):
+        tim.color(random_color())
+        tim.circle(100)
+        tim.setheading(tim.heading() + gap_size)
+draw_graph(1)
+# for _ in range(72):
+#     tim.color(random_color())
+#     tim.circle(100)
+#     print(current_heading)
+#     # tim.right(2)
+#     tim.setheading(current_heading + 5)
+#     current_heading = tim.heading()
+
+# while current_heading <= 350:
+#     tim.color(random_color())
+#     tim.circle(200)
+#     print(current_heading)
+#     # tim.right(2)
+#     tim.setheading(current_heading + 5)
+#     current_heading = tim.heading()
+
+screen.exitonclick()
+#############################################################TURTLE CIRCLE GRAPH END SECTION######################################
