@@ -2399,3 +2399,198 @@ draw_graph(1)
 
 screen.exitonclick()
 #############################################################TURTLE CIRCLE GRAPH END SECTION######################################
+###HIRST
+import colorgram
+from turtle import Turtle as T, Screen as S
+import turtle as TT
+import random
+
+extracted = colorgram.extract('DOTSJUSTDOTS.jpg', 30)
+
+color_list = [
+ (246, 239, 239), (2, 9, 9), (122, 95, 95),
+ (74, 33, 33), (237, 211, 211), (220, 81, 81),
+ (223, 118, 118), (92, 1, 1), (178, 140, 140),
+ (33, 90, 90), (150, 91, 91), (9, 153, 153),
+ (204, 64, 64), (167, 129, 129), (2, 64, 64),
+ (6, 219, 219), (220, 179, 179), (4, 80, 80),
+ (80, 135, 135), (116, 151, 151), (78, 111, 111),
+ (117, 187, 187), (7, 219, 219), (122, 12, 12),
+ (243, 205, 205), (135, 221, 221), (229, 173, 173)
+ ]
+tim = T()
+TT.colormode(255)
+screen = S()
+left_right = True
+#tim.speed("slowest")
+tim.speed("fastest")
+tim.pensize(1)
+tim.up()
+tim.setheading(0)
+dots = 100
+#tim.hideturtle()
+screen.bgcolor("black")
+# def draw_line_of_dots():
+#     for _ in range(10):
+#         tim.color(random.choice(color_list))
+#         tim.down()
+#         tim.begin_fill()
+#         tim.circle(10)
+#         tim.end_fill()
+#         tim.up()
+#         tim.forward(45)
+# def left_or_right():
+#     global left_right
+#     if left_right:
+#         tim.setheading(tim.heading() + 90)
+#         tim.forward(40)
+#         tim.setheading(tim.heading() + 90)
+#         left_right = not left_right
+#     else:
+#         tim.right(90)
+#         tim.forward(40)
+#         tim.right(90)
+#         left_right = not left_right
+
+
+for dot_count in range(1, dots + 1):
+    tim.dot(20, random.choice(color_list))
+    tim.forward(50)
+
+    if dot_count % 10 == 0:
+        tim.setheading(90)
+        tim.forward(50)
+        tim.setheading(180)
+        tim.forward(500)
+        tim.setheading(0)
+    # draw_line_of_dots()
+    # left_or_right()
+
+
+
+
+
+screen.exitonclick()
+
+
+# rgb_colors = []
+#
+# for color in extracted:
+#     r = color.rgb.r
+#     g = color.rgb.g
+#     b = color.rgb.g
+#     rgb_colors.append((r, g, b))
+
+# print(rgb_colors)
+#############################################################HIRST END######################################
+
+#############################################################Listeners (Higher Order Functions)######################################
+import turtle as T
+
+class Etch_A_Sketch():
+
+    def __init__(self):
+        self.lawson = T.Turtle()
+        self.screen = T.Screen()
+        self.lawson.shape("arrow")
+        self.lawson.turtlesize(.7, .7, .7)
+        self.lawson.speed("fastest")
+
+
+    def move_up(self):
+        self.lawson.forward(10)
+
+    def move_right(self):
+        self.lawson.setheading(self.lawson.heading() - 10)
+
+    def move_left(self):
+        self.lawson.setheading(self.lawson.heading() + 10)
+
+    def move_down(self):
+        self.lawson.forward(10)
+
+    def stop_start(self):
+        pen_status = self.lawson.isdown()
+        if pen_status:
+            self.lawson.up()
+        else:
+            self.lawson.down()
+    def erase_drawing(self):
+        self.lawson.up()
+        self.lawson.setheading(0)
+        self.lawson.setposition(0, 0)
+        self.lawson.clear()
+        self.lawson.down()
+
+    def start_drawing(self):
+        self.screen.listen()
+        self.screen.onkey(key="w", fun=self.move_up)
+        self.screen.onkey(key="s", fun=self.move_down)
+        self.screen.onkey(key="a", fun=self.move_left)
+        self.screen.onkey(key="d", fun=self.move_right)
+        self.screen.onkey(key="space", fun=self.stop_start)
+        self.screen.onkey(key="c", fun=self.erase_drawing)
+
+        self.screen.exitonclick()
+
+
+
+
+#############################################################Listeners (Higher Order Functions) End######################################
+#############################################################TurtleRaces######################################
+import turtle as T
+from random import randint
+T.hideturtle()
+
+is_race_on = False
+screen = T.Screen()
+screen.bgcolor("black")
+screen.setup(600, 400)
+user_bet = screen.textinput(
+        title="Make your bet!",
+        prompt="Which turtle do you think will win? Enter a color(Red,Green,Blue,Orange,Yellow,Pink): "
+    ).lower()
+colors = ["pink", "green", "blue", "orange", "yellow", "red"]
+y_positions = [-70, -40, -10, 20, 50, 80]
+all_turtles = []
+finish_liner = T.Turtle(shape="arrow")
+finish_liner.up()
+finish_liner.color("white")
+finish_liner.hideturtle()
+finish_liner.setposition(230, -200)
+finish_liner.down()
+finish_liner.setheading(90)
+finish_liner.forward(400)
+
+
+for i in range(0, 6):
+    new_turtle = T.Turtle(shape="turtle") #CLASS OOP USING A LOOP TO ADD MULTIPLE INSTANCES OF TURTLE
+    new_turtle.up() #HIDES THE TURTLE DRAWING ON THE SCREEN FOR EACH INSTANCE OF TURTLE
+    new_turtle.color(colors[i]) #SETS THE COLOR OF EACH TURTLE
+    new_turtle.setposition(-230, y_positions[i]) #SETS THE POSITION OF EACH TURTLE
+    all_turtles.append(new_turtle) #ADDING THE TURTLE TO THE LIST OF TURTLES TO BE USED
+
+if user_bet:
+    is_race_on = True
+
+
+while is_race_on == True:
+    for turtle in all_turtles:
+        random_dist = randint(0, 5)
+        turtle.forward(random_dist)
+        if turtle.pencolor() == "red":
+            turtle.forward(4)
+        if turtle.xcor() > 230:
+            is_race_on = False
+            winning_color = turtle.pencolor()
+            if winning_color == user_bet:
+                print(f"YOU GOT IT RIGHT! {winning_color} Takes the race!")
+            else:
+                print(f"You were wrong ): {winning_color} took the race!")
+
+
+print(user_bet)
+
+screen.exitonclick()
+
+#############################################################TurtleRaces END######################################
