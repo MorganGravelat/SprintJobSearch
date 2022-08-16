@@ -82,3 +82,31 @@ function isIsomorphic(string_one, string_two) {
 }
 
 console.log(isIsomorphic("egg", 'add')); // true
+
+
+function sortStack(stack) { //[4, 2, 1]
+    let smallerValue = 0
+    let largerValue = 0
+    if (stack.length <= 1) {
+      return stack
+    }
+
+    let valueOne = stack.pop() //value = 1 [4, 2] // val = 2
+    console.log(stack)
+    sortStack(stack) [4, 2]
+    let valueTwo = stack.pop() //value = 2 [4]
+
+    if (valueOne < valueTwo) {
+      smallerValue = valueOne
+      largerValue = valueTwo
+    }
+    else {
+      smallerValue = valueTwo
+      largerValue = valueOne
+    }
+    stack.push(smallerValue)
+    sortStack(stack)
+    stack.push(largerValue)
+
+    return stack
+  }
