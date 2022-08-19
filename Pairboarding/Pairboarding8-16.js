@@ -45,7 +45,7 @@ Strategy:
 function hasDuplicates(nums) {
     if (nums.length <= 1) return false
 
-    let memo = new Set();
+    let numSet = new Set();
 
     for (let i = 0; i < nums.length - 1; i++) {
         let num = nums[i]
