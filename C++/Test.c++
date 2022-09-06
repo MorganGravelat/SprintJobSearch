@@ -45,32 +45,3 @@ int main()
     return 0;
 
 }
-
-
-// using namespace std;
-
-// int main()
-// {
-//     string txt;
-//     cout << "Data? "; cin >> txt; cout << endl;
-//     ifstream inFile (txt);
-//     if (inFile.is_open())
-//     {
-//         while (getline (inFile, txt))
-//         {
-//             cout << txt << '\n';
-//         }
-//         inFile.close();
-//     }
-//     else cout << "Unable to open file";
-//     return 0;
-
-// }
-
-// int main() {
-//   int x;
-//   cout << "Type a number: ";
-//   cin >> x;
-//   cout << "Your number is: " << x;
-//   return 0;
-// }
