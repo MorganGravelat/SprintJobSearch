@@ -1,0 +1,76 @@
+/* .spread-title {
+    color: black;
+    align-self: center;
+    margin-top: 4rem;
+    margin-left: 2rem;
+    margin-bottom: 4rem;
+    font-family: 'KoHo', sans-serif;
+}
+.spread-title > h3 {
+    color: black;
+    font-size: 2rem;
+    letter-spacing: .1rem;
+    font-weight: bolder;
+    font-family: 'KoHo', sans-serif;
+}
+.spread-detail-div {
+    display: flex;
+    flex-direction:column;
+    margin-left: 7rem;
+    max-width: 75rem;
+    width: 55%;
+}
+.spread-image {
+    color: black;
+    margin-bottom: 1rem;
+    border-radius: 25%;
+    width: 20%;
+    max-height: 20%;
+    display: block;
+    object-fit: cover;
+    max-width: 22rem;
+}
+
+.spread-image-container {
+    width: 10%;
+    max-height: 100%;
+    display: flex;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    padding-right: 3rem;
+    justify-content: flex-end;
+}
+
+.spread-description {
+    align-self: flex-start;
+    background-color: #E3FFFF;
+    box-sizing: border-box;
+    color: black;
+    height: 8.4rem;
+    max-height: 8.4rem;
+    margin: 1rem 0px;
+    margin-left: 2rem;
+    width: 90%;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+    font-weight: medium;
+    font-size: 1.7rem;
+    font-family: 'KoHo', sans-serif;
+}
+
+.space-between {
+    width: 15%;
+}
+
+.likes-bar {
+    background-color: rgba(0, 0, 0, 0);
+    border-radius: 2.4rem 2.4rem 2.4rem 2.4rem;
+    margin-left: 1rem;
+    height: 95%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction:column;
+    margin-right: 6rem;
+} */
