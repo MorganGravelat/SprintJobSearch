@@ -74,3 +74,72 @@
     flex-direction:column;
     margin-right: 6rem;
 } */
+/* @media (max-width: 900px) and (min-width: 1px) {
+    .post-detail-div h1 {
+        position:relative;
+        margin-top: -10%;
+        margin-left: 6%;
+    }
+    .post-list-container {
+        margin-bottom: 10%;
+    }
+    .post-title {
+        color: white;
+        align-self: center;
+        margin-top: 5rem;
+        background-color: #ffc7c7;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-left: 1rem;
+        margin-bottom: 1rem;
+        font-family: 'KoHo', sans-serif;
+        box-shadow: 0 0 8px 10px #ffc7c7;
+    }
+}
+
+@media (max-width: 1200px) and (min-width: 901px) {
+    .post-detail-div h1 {
+        position:relative;
+        margin-top: -11%;
+        margin-left: 5%;
+    }
+    .post-list-container {
+        margin-bottom: 10%;
+    }
+}
+
+@media (max-width: 1400px) and (min-width: 1201px) {
+    .post-detail-div h1 {
+        position:relative;
+        margin-top: -9%;
+        margin-left: 5%;
+    }
+    .post-list-container {
+        margin-bottom: 10%;
+    }
+}
+
+@media (max-width: 1600px) and (min-width: 1401px) {
+    .post-detail-div h1 {
+        position:relative;
+        margin-top: -8%;
+        margin-left: 5%;
+    }
+}
+
+@media (max-width: 1800px) and (min-width: 1601px) {
+    .post-detail-div h1 {
+        position:relative;
+        margin-top: -7%;
+        margin-left: 5%;
+    }
+}
+
+@media (max-width: 2000px) and (min-width: 1801px) {
+    .post-detail-div h1 {
+        position:relative;
+        margin-top: -6%;
+        margin-left: 5%;
+    }
+} */
