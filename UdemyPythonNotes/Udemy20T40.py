@@ -62,6 +62,63 @@ while game_is_on:
 
 
 screen.exitonclick()
+###LAST MAIN ITERATION
+from turtle import Screen
+from turtlep import TurtleP
+from hud import HeadsUpDisplay
+from car import Car
+import time
+import random
+
+screen = Screen()
+screen.colormode(255)
+screen.bgcolor("white")
+screen.setup(width=600, height=900)
+screen.title("Turtle Crossing")
+screen.tracer(0)
+sleepy = 0.09
+player = TurtleP()
+all_cars = []
+for _ in range(5):
+    test_car = Car()
+    all_cars.append(test_car)
+
+player_hud = HeadsUpDisplay()
+
+screen.listen()
+screen.onkey(player.go_up, "Up")
+screen.onkey(player.go_left, "Left")
+screen.onkey(player.go_right, "Right")
+
+game_is_on = True
+while game_is_on:
+    time.sleep(sleepy)
+    for car in all_cars:
+        car.move()
+        screen.update()
+        if (car.xcor() < -380):
+            car.reset_position()
+        if car.distance(player) < 25:
+            player_hud.game_over()
+            screen.update()
+            game_is_on = False
+            break
+    if player.ycor() > 380:
+        player_hud.level_count+=1
+        player_hud.update_level()
+        player.reset_pos()
+        sleepy *= 0.5
+        for _ in range(5):
+            test_car = Car()
+            all_cars.append(test_car)
+        print(sleepy)
+
+
+    screen.update()
+
+
+screen.exitonclick()
+
 ######################################################################MyTurtleCrossingMAINIterationsEND
 ###This is my current hud class.
 from turtle import Turtle
@@ -128,3 +185,32 @@ class Car(Turtle):
     def reset_position(self):
         self.startingpos = random.randint(-400, 400)
         self.goto(300, self.startingpos)
+######################################################################MyTurtleCrossingFINAL CAR CLASS
+from turtle import Turtle
+import random
+import time
+class Car(Turtle):
+
+    def __init__(self):
+        super().__init__()
+        self.r = random.randint(0, 255)  # Random red value
+        self.g = random.randint(0, 255)  # Random green value
+        self.b = random.randint(0, 255)  # Random blue value
+        self.random_color = (self.r, self.g, self.b)
+        self.color(self.random_color)
+        self.startingpos = random.randint(-350, 400)
+        self.startingxcor = random.randint(-300, 350)
+        self.shape("square")
+        self.shapesize(1,2)
+        self.penup()
+        self.goto(self.startingxcor, self.startingpos)
+
+    def move(self):
+        new_x = self.xcor() - 10
+        self.goto(new_x, self.ycor())
+
+    def reset_position(self):
+        self.startingpos = random.randint(-390, 400)
+        self.goto(300, self.startingpos)
+
+######################################################################MyTurtleCrossingFINAL PLAYER CLASS
