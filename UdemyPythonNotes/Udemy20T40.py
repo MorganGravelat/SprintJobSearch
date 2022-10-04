@@ -23,6 +23,46 @@ while game_is_on:#This is the game on loop
     screen.update()#This is the screen update animation
 
 screen.exitonclick()#This is the screen exit on click
+
+##ITERATION2
+from turtle import Screen
+from turtlep import TurtleP
+from hud import HeadsUpDisplay
+from car import Car
+import time
+import random
+
+screen = Screen()
+screen.colormode(255)
+screen.bgcolor("white")
+screen.setup(width=600, height=900)
+screen.title("Turtle Crossing")
+screen.tracer(0)
+
+player = TurtleP()
+all_cars = []
+for _ in range(30):
+    test_car = Car()
+    all_cars.append(test_car)
+
+player_hud = HeadsUpDisplay()
+
+screen.listen()
+screen.onkey(player.go_up, "Up")
+
+game_is_on = True
+while game_is_on:
+    time.sleep(0.01)
+    for car in all_cars:
+        car.move()
+        if (car.xcor() < -380):
+            car.reset_position()
+        screen.update()
+    screen.update()
+
+
+screen.exitonclick()
+######################################################################MyTurtleCrossingMAINIterationsEND
 ###This is my current hud class.
 from turtle import Turtle
 
@@ -61,3 +101,30 @@ class TurtleP(Turtle):
     def go_up(self):
         new_y = self.ycor() + 20#This is the new y coordinate that I set the player turtle to with the self.goto command
         self.goto(self.xcor(), new_y)
+###This is my current car class
+from turtle import Turtle
+import random
+import time
+class Car(Turtle):
+
+    def __init__(self):
+        super().__init__()
+        self.r = random.randint(0, 255)  # Random red value
+        self.g = random.randint(0, 255)  # Random green value
+        self.b = random.randint(0, 255)  # Random blue value
+        self.random_color = (self.r, self.g, self.b)
+        self.color(self.random_color)#This is the color of the car
+        self.startingpos = random.randint(-300, 400)#This is the starting position of the car
+        self.startingxcor = random.randint(-300, 350)#This is the starting x coordinate
+        self.shape("square")#This is the shape of the car
+        self.penup()#This is the pen up
+        self.goto(self.startingxcor, self.startingpos)  # This is the starting position of the car
+
+    def move(self):
+        time.sleep(random.randint(1, 9) / 100)
+        new_x = self.xcor() - 10
+        self.goto(new_x, self.ycor())
+
+    def reset_position(self):
+        self.startingpos = random.randint(-400, 400)
+        self.goto(300, self.startingpos)
