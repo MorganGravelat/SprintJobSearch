@@ -44,3 +44,20 @@ class HeadsUpDisplay(Turtle): #This is the HUD class
     def game_over(self):
         self.goto(0, 0)#This is the location of the hidden turtle
         self.write("Game Over", align="center", font=("Courier", 50, "normal"))
+###This is my current player class.
+from turtle import Turtle
+
+
+class TurtleP(Turtle):
+
+    def __init__(self):
+        super().__init__()##This is the same setup as the last but with different configurables
+        self.shape("turtle")
+        self.color("black")
+        self.up()
+        self.setheading(90)#This causes the player turtle to point up
+        self.goto(0, -430)#This places the player turtle at the bottom of the screen
+
+    def go_up(self):
+        new_y = self.ycor() + 20#This is the new y coordinate that I set the player turtle to with the self.goto command
+        self.goto(self.xcor(), new_y)
