@@ -19,3 +19,17 @@ function threeNumberSum(arr, targetSum) {
     }
     return threes
 }
+//firstDuplicateValue problem Algo Expert
+function firstDuplicateValue(array) {
+    numbers_found = {} // I used a hash table to store the numbers I've seen
+    for (let i = 0; i < array.length; i++) {
+      ele = array[i] //
+      if (!(ele in numbers_found)) {
+        numbers_found[ele] = ele
+      }
+      else {
+        return ele
+      }
+    }
+    return -1;
+  }
