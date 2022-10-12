@@ -1,3 +1,10 @@
+1. WHERE
+2. IN
+3. BETWEEN
+4. LIKE
+5. %
+6. _
+Strings should be in 'single quotes';
 /*Referencing Table K1 Which represents the world table of countries*/
 SELECT population FROM world /*This is the table we are referencing and we are asking specifically for the population 2831741 is what you would get from this query*/
   WHERE name = 'Albania' /*This is the row we are referencing which is selected by askin for the name*/
@@ -84,3 +91,12 @@ SELECT name, population/area
 SELECT name, population
   FROM world
  WHERE population BETWEEN 10000000 AND 20000000 /*This is asking for the population to be between 10000000 and 20000000*/
+
+
+/*SELECT from WORLD tutorial*/
+SELECT name, continent, population FROM world /*This is asking for the name, continent, and population from the world table*/
+
+SELECT name, population/area FROM world
+  WHERE area > 5000000
+SELECT name, population FROM world
+  WHERE name = 'France' /*WHERE keyword is used to select a specific row*/
