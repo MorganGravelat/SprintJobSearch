@@ -98,5 +98,11 @@ SELECT name, continent, population FROM world /*This is asking for the name, con
 
 SELECT name, population/area FROM world
   WHERE area > 5000000
+
 SELECT name, population FROM world
   WHERE name = 'France' /*WHERE keyword is used to select a specific row*/
+
+SELECT name , region
+  FROM world
+  WHERE area < 2000
+    AND gdp > 5000000000
