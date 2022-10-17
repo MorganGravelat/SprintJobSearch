@@ -4,16 +4,14 @@ asking = True
 
 def moveLetters(word):
     newWord = ""
+
     for letter in word:
-        index = alphabet.index(letter) + 13
-        if index > 26:
-            index = index % 26
         if letter == "z":
             newWord += "a"
         elif letter == " ":
             newWord += " "
         else:
-            newWord += alphabet[(alphabet.index(letter)+14)]
+            newWord += alphabet[alphabet.index(letter)+1]
 
     return newWord
 
