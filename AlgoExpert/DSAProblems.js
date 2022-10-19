@@ -63,3 +63,70 @@ function nonConstructibleChange(coins) {
     }
     return currentChangeCreated+1
   }
+
+
+
+///////////////////Find closest value in BST
+function findClosestValueInBst(tree, target) {
+    let currentTree = tree;//We set the current tree to the tree
+    let stillSearching = true;//We set a boolean to true
+    let closest = Infinity;//We set the closest current number to infinity so that we can compare it to the current tree value
+    if (!tree) return "No tree was given!"; //If there is no tree we return a string
+
+    while (stillSearching) { //While we are still searching
+      if (currentTree.value === target) return target; //If the current tree value is equal to the target we return the target
+      if (Math.abs(target - closest) > Math.abs(target - currentTree.value)) { //If the absolute value of the target minus the closest is greater than the absolute value of the target minus the current tree value
+         closest = currentTree.value; //We set the closest to the current tree value
+      }
+      if (currentTree.value > target) {
+        if (!currentTree.left) {//If there is no left child
+          stillSearching = false;//We set the boolean to false
+          break;
+        }
+        currentTree = currentTree.left
+      }
+      else {
+        if (!currentTree.right) {//If there is no right child
+          stillSearching = false;//We set the boolean to false
+          break;
+        }
+        currentTree = currentTree.right
+      }
+    }
+    return closest
+  }
+
+  // This is the class of the input tree. Do not edit.
+  class BST {//We create a class for the BST
+    constructor(value) {//We create a constructor for the BST
+      this.value = value;//We set the value of the BST to the value
+      this.left = null;
+      this.right = null;
+    }
+  }
+
+
+  //Branch Sums
+
+  //We take a binary tree and call a recursive call on every left and right node
+    //We add the value of the current node to the sum
+    //We check if the current node has a left and right child
+    //If it does not we push the sum to the sums array
+    //If it does we call the recursive function on the left and right child
+    //We return the sums array
+    //This is O(n) time and O(n) space
+    function branchSums(root) {
+        const sums = [];
+        calculateBranchSums(root, 0, sums);
+        return sums;
+    }
+    function calculateBranchSums(node, runningSum, sums) {
+        if (!node) return;
+        const newRunningSum = runningSum + node.value;
+        if (!node.left && !node.right) {
+            sums.push(newRunningSum);
+            return;
+        }
+        calculateBranchSums(node.left, newRunningSum, sums);
+        calculateBranchSums(node.right, newRunningSum, sums);
+    }

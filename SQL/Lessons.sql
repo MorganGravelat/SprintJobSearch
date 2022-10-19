@@ -104,5 +104,6 @@ SELECT name, population FROM world
 
 SELECT name , region
   FROM world
+
   WHERE area < 2000
     AND gdp > 5000000000
