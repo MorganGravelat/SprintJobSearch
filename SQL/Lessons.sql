@@ -4,6 +4,8 @@
 4. LIKE
 5. %
 6. _
+7. *
+8. DISTINCT
 Strings should be in 'single quotes';
 /*Referencing Table K1 Which represents the world table of countries*/
 SELECT population FROM world /*This is the table we are referencing and we are asking specifically for the population 2831741 is what you would get from this query*/
@@ -32,8 +34,8 @@ SELECT name, population
 
       SELECT name, population
       FROM world
-      WHERE name LIKE "Al%" /*This % symbol allows the user to select anything that begins with Al / LIKE is used in conjunction with WHERE to tell it to select names like "Al%"*/
-/* The _ symbol can be used to take place of 1 character _ello could return hello*/
+      WHERE name LIKE "Al%" /* 5  This % symbol allows the user to select anything that begins with Al / LIKE is used in conjunction with WHERE to tell it to select names like "Al%"*/
+/* 6  The _ symbol can be used to take place of 1 character _ello could return hello*/
 
 Albania	3200000
 Algeria	32900000
@@ -107,3 +109,11 @@ SELECT name , region
 
   WHERE area < 2000
     AND gdp > 5000000000
+
+
+/* 7  Say you weant everything * keyword */
+SELECT * FROM world /*This is asking for everything from the world table*/
+
+/* 8  DISTINCT KEYWORD*/
+SELECT DISTINCT column FROM table /* This shows how to use DISTINCT to get any data that is unique from a tables column such as unique first names*/
+/* DISTINCT will remove multiple of any first name and might cancel out multiple people named david*/
