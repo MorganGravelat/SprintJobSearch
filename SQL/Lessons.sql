@@ -32,7 +32,7 @@ WHERE first_name IN ('John','Jake','Julie');
 
 
 SELECT * FROM customer
-WHERE first_name LIKE 'J%' AND last_name LIKE 'S%'; /*Could give Julie Sanchez */
+WHERE first_name ILIKE 'j%' AND last_name ILIKE 's%'; /*Could give Julie Sanchez ILIKE is case insensitive*/
 
 
 SELECT name, area FROM world
@@ -72,6 +72,8 @@ WHERE name like '_her%'; /* This can return C_her%yl T_her%esa S_her%ri etc.*/
 SELECT * FROM film
 WHERE title LIKE 'Airport Po_lock';
 
+SELECT * FROM film
+WHERE title ILIKE '%Truman%'
 
 4. Pick the result from the query
 SELECT name,length(name) /*This is asking for the length of the name after displaying the name*/
@@ -156,6 +158,9 @@ SELECT DISTINCT(rental_rate) FROM film; /*This is asking for the unique rental r
 SELECT COUNT(rating) FROM film; /* 1000 ratings are in the 1000 films on the dvdrental database*/
 SELECT COUNT(DISTINCT rating) FROM film; /*  This is asking for the count of unique ratings in the film table which are 5*/
 
+SELECT count(DISTINCT(district)) FROM address/* Shows a count of all the unique districts */
+
+
 SELECT COUNT(title) FROM film
 WHERE rental_rate > 4 AND replacement_cost <= 19.99
 AND rating != 'R'; /*This is another way to say NOT  the other way is AND rating NOT 'R';*/
@@ -200,3 +205,13 @@ WHERE date BETWEEN '2007-01-01' AND '2007-02-01' /*This is asking for the date t
 /* You will need to be careful when using BETWEEN aand >= <=*/
 SELECT * FROM payment
 WHERE payment_date BETWEEN '2007-02-01' AND '2007-02-15';
+
+
+
+/* Common Aggregate Functions */
+    AVG() - Returns the average value /*returns flaoting point value many decimal places */
+    COUNT() - Returns the number of rows /*returns integer value */
+    MAX() - Returns the largest value
+    MIN() - Returns the smallest value
+    SUM() - Returns the sum
+/* Aggregate fgunction calls happen only in the SELECT clause or the HAVING clause */

@@ -130,3 +130,18 @@ function findClosestValueInBst(tree, target) {
         calculateBranchSums(node.left, newRunningSum, sums);
         calculateBranchSums(node.right, newRunningSum, sums);
     }
+// STEP BY STEP
+//Minimum pies for every friend to get even amount of slices of pizza
+function minPies(friends, slices) {
+    let remain = slices
+    let friend;
+    while (remain > 0) {
+        friend = remain
+        remain = friends % remain
+    }
+    let result = ((friends / friend) * slices)/slices;
+    console.log(result)
+    return result
+}
+
+minPies(4, 2)
