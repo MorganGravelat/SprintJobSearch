@@ -193,4 +193,5 @@ import App from './App';
 const root = ReactDOM.createRoot(document.getElementById('root')); //This is the new way to render in React 18
 root.render(<App />); //THIS IS JSX
 
-//components can be classes or functions //The naming convention is to capitalize the first letter of the component and use camel case i.e. ExpenseItem.js
+//components can be classes or functions //The naming convention is to capitalize the first letter of the component and use camel case i.e. ExpenseItem.j
+console.log(4%5); //This will return 4

@@ -145,3 +145,71 @@ function minPies(friends, slices) {
 }
 
 minPies(4, 2)
+/////////////////////////CLASS PHOTOS!!!!
+// def classPhotos(redShirtHeights, blueShirtHeights):
+//     redShirtHeights.sort() #arr = sorted(redShirtHeights) for no mutation
+//     blueShirtHeights.sort()
+//     red_is_front = redShirtHeights[0] > blueShirtHeights[0]
+//     for a, b in zip(redShirtHeights, blueShirtHeights):
+//         if red_is_front:
+//             if b >= a:
+//                 return False
+//         else:
+//             if a >= b:
+//                 return False
+//     return True
+
+
+//This is O(n log n) time and O(1) space
+//q: What is the difference between a sorted array and a sorted list?
+//a: A sorted array is a list that is sorted in place, a sorted list is a list that is sorted and returned
+/////////////////////////REMOVE DUPLICATES IN LINKED LIST
+// def removeDuplicatesFromLinkedList(linkedList):
+//     currentNode = linkedList
+//     while currentNode is not None:
+//         nextNode = currentNode.next
+//         while nextNode is not None and nextNode.value == currentNode.value:
+//             nextNode = nextNode.next
+
+//         currentNode.next = nextNode
+//         currentNode = nextNode
+
+//     return linkedList
+/////////////////////////FIND NODE DEPTHS BELOW
+// def nodeDepths(root):
+//     stack = [[root]]
+//     total = 0
+//     depth = 0
+//     tempArr = []
+//     while len(stack[0]):
+//         tempRoot = stack.pop(0)
+//         tempArr = []
+//         for node in tempRoot:
+//             total+=depth
+//             if node.left:
+//                 print(total, node.value, depth, "total")
+//                 tempArr.append(node.left)
+//             if node.right:
+//                 print(total, node.value, depth, "total")
+//                 tempArr.append(node.right)
+//         print(tempArr)
+//         depth+=1
+//         stack.append(tempArr)
+//     return total
+////////GENIUS COPILOT SOLUTION
+// def nodeDepthsHelper(node, depth):
+//     if node is None:
+//         return 0
+//     return depth + nodeDepthsHelper(node.left, depth + 1) + nodeDepthsHelper(node.right, depth + 1)
+
+// def nodeDepths(root):
+//     # Write your code here.
+//     return nodeDepthsHelper(root, 0)
+/////////////////////////FIND NODE DEPTHS ABOVE
+////////////////////////FIND DEPTH FIRST SEARCH NAMES ALL
+// def depthFirstSearch(self, array):
+// array.append(self.name)
+// for node in self.children:
+//     node.depthFirstSearch(array)
+// return array
+////////////////////////FIND DEPTH FIRST SEARCH NAMES ALL END
