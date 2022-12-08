@@ -206,10 +206,176 @@ minPies(4, 2)
 //     # Write your code here.
 //     return nodeDepthsHelper(root, 0)
 /////////////////////////FIND NODE DEPTHS ABOVE
-////////////////////////FIND DEPTH FIRST SEARCH NAMES ALL
-// def depthFirstSearch(self, array):
-// array.append(self.name)
-// for node in self.children:
-//     node.depthFirstSearch(array)
-// return array
-////////////////////////FIND DEPTH FIRST SEARCH NAMES ALL END
+//region FIND DEPTH FIRST SEARCH NAMES ALL
+// class Node:
+//     def __init__(self, name):
+//         self.children = []
+//         self.name = name
+
+//     def addChild(self, name):
+//         self.children.append(Node(name))
+//         return self
+
+//     def depthFirstSearch(self, array):
+//         array.append(self.name)
+//         for node in self.children:
+//             node.depthFirstSearch(array)
+//         return array
+
+//endregion FIND DEPTH FIRST SEARCH NAMES ALL
+/////MIN WAITING TIME  BEGIN!!!!
+// def minimumWaitingTime(queries):
+//     queries.sort()
+//     return sum([sum(queries[0:i]) for i, j in enumerate(queries)])
+// #i=0 []
+// #i=1 [1] 1 [1]
+// #i=2 [1,2] 3 [1,3]
+// #i=3 [1,2,2] 5 [1,3,5]
+// #i=4 [1,2,2,3] 8 [1,3,5,8]
+// #i=5 [1,2,2,3,6] 14 #ENDS BEFORE THIS
+/////MIN WAITING TIME  END!!!!
+
+/////PRODUCT SUM BEGIN!!!!
+// def productSum(array,depth=1):
+//     sum = 0
+//     for ele in array:
+//         if type(ele) == type([]):
+//             sum += productSum(ele, depth+1)
+//         else:
+//             sum += ele
+//     return sum * depth
+
+//HEAD HURTY
+// def productSum(array, depth=1):
+//     return sum([productSum(x, depth+1) if type(x) is list else x for x in array]) * depth
+/////PRODUCT SUM END!!!!
+//BINARY SEARCH
+//BRYCE VERSION
+def binarySearch(array, target):
+    if len(array) < 1:
+        print(midIndex)
+        return False
+    midIndex = len(array)//2
+    currentNum = array[midIndex]#// rounds down when dividing
+    print(midIndex,currentNum)
+    if currentNum == target:
+        return midIndex
+    elif target < currentNum:
+        print(array[:midIndex],"lessThan")
+        return midIndex - binarySearch(array[:midIndex], target)
+    else:
+        print(array[midIndex:],"moreThan")
+        return midIndex + binarySearch(array[midIndex:], target)
+//MORGAN VERSIOn
+def binarySearch(array, target):
+    left = 0
+    right = len(array) - 1
+    while left <= right:
+        middle = (left + right) // 2
+        match = array[middle]
+        if target == match:
+            return middle
+        elif target < match:
+            right = middle - 1
+        else:
+            left = middle + 1
+    return -1
+//MORGAN VERSION ABOVE
+
+//THREE HIGHEST NUMS BELOW
+from math import inf
+def findThreeLargestNumbers(array):
+    threeNums = [-inf, -inf, -inf]
+    for num in array:
+        for index, i in enumerate(threeNums):
+            if num > i:
+                threeNums.insert(index, num)
+                threeNums.pop()
+                break
+    return sorted(threeNums, reverse=False)
+//THREE HIGHEST NUMS ABOVE
+
+////BUBBLE SORT BELOW
+def bubbleSort(array):
+    sorted = False
+    count = 0
+    while not sorted:
+        sorted = True
+        for i in range(len(array) - 1 - count):
+            if array[i] > array[i+1]:
+                array[i], array[i+1] = array[i+1], array[i]
+                sorted=False
+        count += 1
+    return array
+
+//// Apartment Hunting BEGIN
+from math import inf
+
+def apartmentHunting(blocks, reqs):
+    answer = inf
+    blockDistancesDict = {
+        i: {
+        req: inf for req in reqs
+        } for i in range(len(blocks))
+    }
+
+    for blockIndex, block in enumerate(blocks):
+        for req in reqs:
+            if block[req] is True:
+                for key in blockDistancesDict:
+                    blockDistancesDict[key][req] = min(blockDistancesDict[key][req], abs(blockIndex - key))
+    print(blockDistancesDict,"ourDICT")
+    var2 = [max(blockDistancesDict[block].values()) for block in blockDistancesDict]
+    print(var2)
+    print(var2.index(min(var2)))
+    return var2.index(min(var2))
+//// Apartment Hunting END
+//// Calender Matching BEGIN CURRENTLY BROKEN
+def calendarMatching(calendar1, dailyBounds1, calendar2, dailyBounds2, meetingDuration):
+    dailyB1 = [convert_time(i) for i in dailyBounds1]
+    dailyB2 = [convert_time(i) for i in dailyBounds2]
+    dayStart = max(dailyB1[0],dailyB2[0])
+    dayEnd = min(dailyB1[1],dailyB2[1])
+    availableTime = [[dayStart, dayEnd]]
+    for ele in calendar1:
+        length = convert_time(ele[1]) - convert_time(ele[0])
+        for index, time in enumerate(availableTime):
+            if convert_time(ele[0]) in range(time[0],time[1]):
+                availableTime[index] = adder(*split_time(ele[0],length,time))
+            elif convert_time(ele[1]) in range(time[0],time[1]):
+                availableTime[index] = adder(*split_time(ele[1],length,time))
+    print(availableTime)
+    return -1
+
+def split_time(start_time, duration, time_range):
+    lower_time = convert_time(time_range[0])
+    upper_time = convert_time(time_range[1])
+    lower_range = [lower_time, start_time]
+    upper_range = [clock_add(start_time, duration), upper_time]
+
+    return [lower_range, upper_range]
+
+
+def clock_add(time, duration):
+    time = convert_time(time)
+    time += duration
+    return convert_time(time)
+
+def adder(*args):
+    newList = []
+    for i in args:
+        newList.append(i)
+    return newList
+
+def convert_time(time):
+    if type(time) is str:
+        time = time.split(':')
+        hrs = int(time[0]) * 60
+        mins = int(time[1]) + hrs
+        return mins
+    else:
+        hrs = int(time / 60)
+        mins = int(time % 60)
+        return f"{hrs:02d}:{mins:02d}"
+
+//// Calender Matching END
