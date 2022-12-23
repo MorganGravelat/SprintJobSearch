@@ -399,3 +399,21 @@ function swap(i, j, array) {
     array[i] = temp;
 }
 //// Selection Sort END
+/////////////MOVE ELEMENT TO END BEGIN
+function moveElementToEnd(array, toMove) {
+    let left = 0;
+    let right = array.length - 1;
+    while (left < right) {
+        while (left < right && array[right] === toMove) right--;
+        if (array[left] === toMove) swap(left, right, array);
+        left++;
+    }
+    return array;
+}
+
+function swap(i, j, array) {
+    const temp = array[j];
+    array[j] = array[i];
+    array[i] = temp;
+}
+/////////////MOVE ELEMENT TO END END
