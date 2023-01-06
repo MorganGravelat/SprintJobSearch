@@ -447,3 +447,18 @@ function semordnilap(words) {
     return semordnilapPairs;
   }
 ///////Semordnilap END
+///////Selection Sort BEGIN
+function selectionSort(array) {
+    let Index = 0;
+    while (Index < array.length - 1) {
+      let SmallIndex = Index;
+      for (let i = Index+1; i < array.length; i++) {
+        if (array[SmallIndex] > array[i]) SmallIndex = i;
+      }
+      [array[Index], array[SmallIndex]] = [array[SmallIndex], array[Index]]
+      Index++;
+      console.log(array)
+    }
+    return array
+  }
+///////Selection Sort END
