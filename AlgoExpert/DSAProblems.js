@@ -462,3 +462,18 @@ function selectionSort(array) {
     return array
   }
 ///////Selection Sort END
+//////////
+function caesarCipherEncryptor(string, key) {
+    const newLetters = [];
+    const newKey = key % 26;
+    for (const letter of string) {
+      newLetters.push(getNewLetter(letter, newKey));
+    }
+    return newLetters.join('');
+  }
+
+  function caesarCipherEncryptor(string, key) {
+
+    return string.split("").map((ele,index)=>{ return String.fromCharCode(((ele.charCodeAt(0) + key) - 97) % 26 + 97)}).join('')
+
+  }
