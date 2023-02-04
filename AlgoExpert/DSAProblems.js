@@ -477,3 +477,42 @@ function caesarCipherEncryptor(string, key) {
     return string.split("").map((ele,index)=>{ return String.fromCharCode(((ele.charCodeAt(0) + key) - 97) % 26 + 97)}).join('')
 
   }
+string = "AAAAAAAAAAAAABBCCCCDD"
+function runLengthEncoding(string) {
+    let output = ""
+    let counter = 0;
+    for (let i = 0; i < string.length; i++) {
+      let ele = string[i];
+      let ele2 = string[i+1];
+      counter++
+      if (counter === 9){
+          output+= `${counter}${ele}`
+          counter = 0;
+      }
+      if ((ele !== ele2 || ele2 === undefined) && counter > 0 ) {
+        output += `${counter}${ele}`;
+        counter = 0;
+      }
+      console.log("output,counter,ele1/2",output, counter, ele,ele2)
+
+    }
+   return output
+ }
+runLengthEncoding(string);
+
+function moveElementToEnd(array, toMove) {
+    let i = 0;
+     let j = array.length - 1;
+     while (i < j) {
+       while (i < j && array[j] === toMove) j--;
+       if (array[i] === toMove) swap(i, j, array);
+       i++;
+     }
+     return array;
+   }
+
+   function swap(i, j, array) {
+     const temp = array[j];
+     array[j] = array[i]
+     array[i] = temp;
+   }
