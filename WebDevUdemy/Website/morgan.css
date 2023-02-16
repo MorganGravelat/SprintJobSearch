@@ -1,0 +1,21 @@
+#morgan {
+    background-color: #ec4141;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    margin-top: 20px;
+    height: 94.5vh;
+    width: 98%;
+
+}
+ul, li, h3, p, h1, a {
+    color: white;
+}
+body {
+    background-color: #a51313;
+}
+
+.line-border {
+    width: 100%;
+}

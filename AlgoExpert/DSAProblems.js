@@ -516,3 +516,182 @@ function moveElementToEnd(array, toMove) {
      array[j] = array[i]
      array[i] = temp;
    }
+
+array = [-1, -5, 10]
+function isMonotonic(array) {
+    if (array.length <= 2) return true;
+
+    let direction = null;
+    for (let i = 0; i < array.length-1; i++) {
+      console.log(array[i],array[i+1], direction, array[i+1] > array[i])
+      if (direction === null && (array[i+1] < array[i] || array[i+1] > array[i])) {
+        direction = array[i+1] > array[i]
+      }
+      if ((direction && (array[i+1] < array[i])) || (!direction && (array[i+1] > array[i]))) {
+        return false;
+      }
+    }
+    return true;
+  }
+console.log(isMonotonic(array));
+
+let scores = [8, 4, 2, 1, 3, 6, 7, 9, 5]
+
+function minRewards(scores) {
+    const rewards = scores.map(_=>1); // [1,1,1,1,1,1,1,1,1]
+    for (let i = 1; i < scores.length; i++) { // [1,1,1,1,1,1,1,1,1],
+      let j = i - 1; // 0
+      if (scores[i] > scores[j]) { // 4 > 8
+        rewards[i] = rewards[j] + 1; // [1,2,1,1,1,1,1,1,1]
+        console.log(rewards, i, j)
+      } else {
+        while (j >= 0 && scores[j] > scores[j+1]) { // 0 >= 0 && 8 > 4
+          rewards[j] = Math.max(rewards[j], rewards[j+1] + 1); // [2,2,1,1,1,1,1,1,1]
+          j--; // -1
+        }
+        console.log(rewards, i, j)
+      }
+    }
+    return rewards.reduce((a,b) => a + b); // 15
+  }
+
+
+minRewards(scores)
+
+function fourNumberSum(array, targetSum) { //array = [7, 6, 4, -1, 1, 2] targetSum = 16
+    const allPairSums = {} //Hash Table Sum of all pairs
+    const quadruplets = [] // Array of quadruplets
+
+    for (let i = 1; i < array.length - 1; i++) {// i1 j2 / i2 j3 / i3 j4 / i4 j5
+      console.log(i, "This is I")
+      for (let j = i + 1; j < array.length; j++) {
+        console.log(j, "This is J")
+        const currentSum = array[i] + array[j]; // 10 / 3 / 0 / 3
+        const difference = targetSum - currentSum; // 6 / 13 / 16 / 13
+        console.log(currentSum, difference, 'Current Sum AND Difference')
+        if (difference in allPairSums) { // if 6 / 13 / 16 / 13
+          for (const pair of allPairSums[difference]) {
+            console.log(pair, "This is Pair")
+            quadruplets.push(pair.concat([array[i], array[j]])); //Pushing the pair if applicable
+            console.log(quadruplets, "This is quadruplets array")
+          }
+        }
+      }
+      for (let k = 0; k < i; k++) {
+        const currentSum = array[i] + array[k];
+        console.log(currentSum, "Current sum K Loop")
+        if (!(currentSum in allPairSums)) {
+          allPairSums[currentSum] = [[array[k], array[i]]];
+          console.log(allPairSums, "All pair sums K loop")
+        } else {
+          allPairSums[currentSum].push([array[k], array[i]]);
+          console.log(allPairSums, "All pair sums ELSE K loop")
+
+        }
+      }
+    }
+    console.log(quadruplets, "End of loops RETURN statement")
+    return quadruplets;
+  }
+
+//   Objective:
+//     - given string
+//     - given array of strings
+//     - find all substrings of string that are contained in array
+//     - return true if duplicates appear else false
+//    - return array of true and false values based off of if the substring is contained in the array+
+
+
+// Edge-Cases:
+//     - Array is length 0 return false
+// Strategy:
+//     - check base case
+//     - Initialize a Hash Table Memo var with value of {}
+//     - Add nums to Hash table until all nums have been sorted through
+//     - Return true if any nums already inside hash table
+//     - O(n) Time O(n) space
+function multiStringSearch(bigString, smallStrings) {
+    smallStrArr = []
+    for (let i = 0; i < smallStrings.length; i++) {
+      let decision = false;
+      decision = false;
+      let word = smallStrings[i]
+      console.log(word, decision)
+      for (let j = 0; j < bigString.length; j++) {
+          if (bigString[j] === word[0] && !decision && word.length > 1) {
+            for (let h = 1; h < word.length; h++) {
+              if (word[h] !== bigString[j+h]) {
+                break;
+              }
+              else if (h === word.length - 1) {
+                smallStrArr.push(true)
+                decision = true;
+              }
+            }
+          }
+          else if (word.length === 1) {
+            smallStrArr.push(true)
+            decision = true;
+          }
+          if (j === bigString.length - 1) {
+            smallStrArr.push(false);
+          }
+          if (decision) {
+            break;
+          }
+      }
+    }
+    return smallStrArr
+  }
+
+  function minNumberOfJumps(array) {
+    let n = array.length;
+    let jumps = new Array(n).fill(Infinity);
+    jumps[0] = 0
+
+    for (let i = 1; i < n; i++) {
+      for (let j = 0; j < i; j++) {
+        if (j + array[j] >= i) {
+          jumps[i] = Math.min(jumps[i], jumps[j] + 1)
+        }
+      }
+    }
+
+    return jumps[n-1]
+  }
+
+
+//   Objective:
+//     - given string
+//     - given array of strings
+//     - find all substrings of string that are contained in array
+//     - return true if duplicates appear else false
+//    - return array of true and false values based off of if the substring is contained in the array+
+
+
+// Edge-Cases:
+//     - Array is length 0 return false
+// Strategy:
+//     - check base case
+//     - Initialize a Hash Table Memo var with value of {}
+//     - Add nums to Hash table until all nums have been sorted through
+//     - Return true if any nums already inside hash table
+//     - O(n) Time O(n) space
+
+//Objective
+//  -Give an array of numbers
+//  - Find numbers in the array that are strictly increasing until they reach the tip(highest number) and then strictly decrease
+//  - Return the length of the longest mountain
+// Edge-cases
+//  - If there is no mountain return 0
+//  - If there is only one mountain return the length of the mountain
+//  - If there are no numbers return 0
+// Strategy
+//  - Check base case
+//  - Initialize a variable called longestMountain with a value of 0
+//  - Initialize a variable called mountain with a value of 0
+//  - Initialize a variable called mountainStart with a value of false
+//  - Initialize a variable called mountainEnd with a value of false
+//  - Loop through the array
+//  - If the current number is less than the next number and mountainStart is false
+//  - Set mountainStart to true

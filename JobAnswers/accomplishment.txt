@@ -1,1 +1,13 @@
-I have a few accomplishments that come to mind. One is developing the best app in my class at UCF. I developed an app called Gambling for Kids. It was an educational app that uses the fun of gambling to teach kids faster.My idea was that by heavily rewarding children with currency for their gambling I could both teach them something useful and create an aversion for gambling with less payout. I created the idea for the project and acted as project manager and coder for the whole thing. I created documentation to plan out the features for the project and used C# scripting to create functionality such as a slot machine and an item store. I worked hard and managed to make a project that was chosen as the best in class. I presented the project during a showcase of the top projects in each class and got a perfect score. Even though the idea was a bit much I developed a product that worked both on pc and on the phone, I did so while managing other members of my team and we ended with no significant bugs. I taught myself to learn C# and I can learn any language or skill required for the job.
+I have a few accomplishments that come to mind.
+One is developing the best app in my class at UCF. I developed an app called Gambling for Kids.
+It was an educational app that uses the fun of gambling to teach kids faster.
+My idea was that by heavily rewarding children with currency for their gambling
+I could both teach them something useful and create an aversion for gambling with less payout.
+I created the idea for the project and acted as project manager and coder for the whole thing.
+I created documentation to plan out the features for the project and used C# scripting to
+create functionality such as a slot machine and an item store. I worked hard and managed to
+make a project that was chosen as the best in class.
+I presented the project during a showcase of the top projects in each class and got a perfect score.
+ Even though the idea was a bit much I developed a product that worked both on pc and on the phone,
+ I did so while managing other members of my team and we ended with no significant bugs.
+ I taught myself to learn C# and I can learn any language or skill required for the job.

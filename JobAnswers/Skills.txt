@@ -1,2 +1,4 @@
-I have worked on multiple full stack projects utilizing technologies like Javascript React Redux to create a quality front end and build
-I have skills in full stack programming with Javascript Python CSS HTML and have proven those skills through multiple full stack projects.
+I have worked on multiple full stack projects utilizing technologies like Javascript React Redux
+to create a quality front end and build
+I have skills in full stack programming with Javascript Python CSS HTML and have proven those skills
+through multiple full stack projects.
