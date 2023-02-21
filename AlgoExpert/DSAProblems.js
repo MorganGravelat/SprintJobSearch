@@ -695,3 +695,34 @@ function multiStringSearch(bigString, smallStrings) {
 //  - Loop through the array
 //  - If the current number is less than the next number and mountainStart is false
 //  - Set mountainStart to true
+[1, 2, 3, 3, 4, 0, 10, 6, 5, -1, -3, 2, 3]
+
+class UnionFind { // 0(n) time and space
+  constructor(n) {
+    this.parent = new Array(n).fill(0).map((e, i) => i); // 0(n) time and space
+    this.rank = new Array(n).fill(0); // 0(n) time and space
+  }
+
+  find(x) { // 0(1) amortized time
+    if (this.parent[x] !== x) {
+      this.parent[x] = this.find(this.parent[x]);
+    }
+    return this.parent[x];
+  }
+
+  union(x, y) { // 0(1) amortized time and space
+    let rootX = this.find(x);
+    let rootY = this.find(y);
+
+    if (rootX === rootY) return;
+
+    if (this.rank[rootX] > this.rank[rootY]) {
+      this.parent[rootY] = rootX;
+    } else if (this.rank[rootX] < this.rank[rootY]) {
+      this.parent[rootX] = rootY;
+    } else {
+      this.parent[rootY] = rootX;
+      this.rank[rootX] += 1;
+    }
+  }
+}
