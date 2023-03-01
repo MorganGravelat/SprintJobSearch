@@ -47,7 +47,7 @@ function firstDuplicateValue(array) {
 // If V <= C+1 then we can add V to C and set V = C + V
 // We can do this for all the coins in the array
 //This would be O(n log n) time and O(1) space'
-function nonConstructibleChange(coins) {
+function nonconstructibleChange(coins) {
     let newCoins = coins.sort( function( a , b){
       if(a > b) return 1;
       if(a < b) return -1;
@@ -336,15 +336,15 @@ def calendarMatching(calendar1, dailyBounds1, calendar2, dailyBounds2, meetingDu
     dailyB2 = [convert_time(i) for i in dailyBounds2]
     dayStart = max(dailyB1[0],dailyB2[0])
     dayEnd = min(dailyB1[1],dailyB2[1])
-    availableTime = [[dayStart, dayEnd]]
+    availabletime = [[dayStart, dayEnd]]
     for ele in calendar1:
         length = convert_time(ele[1]) - convert_time(ele[0])
-        for index, time in enumerate(availableTime):
+        for index, time in enumerate(availabletime):
             if convert_time(ele[0]) in range(time[0],time[1]):
-                availableTime[index] = adder(*split_time(ele[0],length,time))
+                availabletime[index] = adder(*split_time(ele[0],length,time))
             elif convert_time(ele[1]) in range(time[0],time[1]):
-                availableTime[index] = adder(*split_time(ele[1],length,time))
-    print(availableTime)
+                availabletime[index] = adder(*split_time(ele[1],length,time))
+    print(availabletime)
     return -1
 
 def split_time(start_time, duration, time_range):
@@ -464,12 +464,12 @@ function selectionSort(array) {
 ///////Selection Sort END
 //////////
 function caesarCipherEncryptor(string, key) {
-    const newLetters = [];
+    const newletters = [];
     const newKey = key % 26;
     for (const letter of string) {
-      newLetters.push(getNewLetter(letter, newKey));
+      newletters.push(getNewletter(letter, newKey));
     }
-    return newLetters.join('');
+    return newletters.join('');
   }
 
   function caesarCipherEncryptor(string, key) {
@@ -725,4 +725,50 @@ class UnionFind { // 0(n) time and space
       this.rank[rootX] += 1;
     }
   }
+}
+
+function validIPAddresses(string) {
+    let validIPs = [];
+    let ip = [];
+    for (let i = 1; i < Math.min(string.length, 4); i++) {
+        let currentIP = string.slice(0, i);
+        if (isValid(currentIP)) {
+        ip.push(currentIP);
+        helper(string.slice(i), ip, validIPs);
+        ip.pop();
+        }
+    }
+    return validIPs;
+}
+
+
+function largestComponent(adjacencyList) {
+	let found = new Set()
+	let largeComponent = 0;
+	For (let node in adjacencyList) {
+		If (!found.has(node)) {
+			const size = traverse(adjacencyList, found, node);
+			If (size > largeComponent) {
+				largeComponent = size
+}
+		}
+
+}
+return largeComponent
+}
+
+
+
+
+function traverse(adjacencyList, found, node) {
+	found.add(node)
+			let currentComponent = 1
+			const neighbor = adjacencyList[node]
+			For (let n in neighbor) {
+				If (!found.has(n)) {
+					currentComponent += traverse(adjencyList, found, n);
+}
+}
+return currentComponent
+
 }
