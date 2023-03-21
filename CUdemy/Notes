@@ -2,7 +2,10 @@
 1. Basic Syntax
 2. Comments
 3. Preprocessor Directives
-
+4. Header File
+5. #include
+6. printf
+7. user input
 */
 //1. Basic Syntax
 int main() // main is a function int is the common return type
@@ -25,7 +28,9 @@ Author: Morgan Gravelat
 Purpose: An example snippet of code that displays my name to the console
 Date: March 21 2023
 */
+
 3. Preprocessor Directives
+// These are usually at the top of the file but can be anywhere
 // Preprocessor directives are used to include libraries
 // Preprocessor directives are not compiled
 // #ifdef, #ifndef, #endif, #define, #undef, #include, #line, #error, #pragma
@@ -46,3 +51,92 @@ Date: March 21 2023
 #include <conio.h> // this is a preprocessor directive
 #include <time.h> // this is a preprocessor directive
 #include <windows.h> // this is a preprocessor directive
+
+4. Header File
+
+// A header file is a file that contains function prototypes
+// Header files define the functions that are available to the user
+// stdio.h is a standard header file it contains function prototypes for input and output
+// to use printf you must include stdio.h it contains the function prototype for printf
+// stdio is short for standard input output
+// header files are case sensitive so always use lowercase letters
+// you can use angle brackets or double quotes to include a header file
+// #include <stdio.h> is the same as #include "stdio.h"
+// use #ifndef and #define to check if a header file has already been included
+
+5. #include
+// As stated above #include is used to include libraries
+// There are 2 types of libraries
+// 1. Standard Libraries
+// 2. User Defined Libraries
+// Standard Libraries are included with the compiler
+// User Defined Libraries are created by the user
+// Standard Libraries
+#include <stdio.h> // this is a preprocessor directive
+// This library is used for input and output
+// It contains functions such as printf, scanf, etc.
+// User Defined Libraries
+#include "myLibrary.h" // this is a preprocessor directive
+// This library is created by the user
+// It contains functions that the user has created
+// It is included in the same directory as the source code
+
+5. Header File
+
+// A header file is a file that contains function prototypes
+// Header files define the functions that are available to the user
+// stdio.h is a standard header file it contains function prototypes for input and output
+// to use printf you must include stdio.h it contains the function prototype for printf
+// stdio is short for standard input output
+// header files are case sensitive so always use lowercase letters
+// you can use angle brackets or double quotes to include a header file
+// #include <stdio.h> is the same as #include "stdio.h"
+// use #ifndef and #define to check if a header file has already been included
+// Header files don't contain any code they only contain function prototypes
+// Header files are used to prevent duplicate function prototypes
+
+6. printf
+// printf is used to display output to the console
+// printf is a function that is defined in stdio.h
+// printf is short for print formatted
+// printf is a standard library function
+// it outputs a formatted string to the console
+// printf is a function that takes 2 parameters
+// 1. A string
+// 2. A list of variables
+
+7. user input
+// scanf is used to get input from the user
+// scanf is a function that is defined in stdio.h
+// scanf is short for scan formatted
+// scanf is a standard library function
+// scanf is a function that takes 2 parameters
+// 1. A string
+// 2. A list of variables
+// There are 3 rules for scanf
+// 1. The string must contain a % for each variable
+// 2. The string must contain a data type for each variable
+// 3. The variables must be in the same order as the data types in the string
+// scanf returns the number of variables that were read
+// if you use scanf to read a value for one of the basic variable types preceded by an & sign
+// if you use scanf to read a string into a character array you must not use the & sign
+// scanf uses white space to separate the input
+// scanf is the inverse of printf which converts integers floating point numbers and characters and c strings to
+// --to text that is to be displayed on screen
+// stdin is short for standard input
+// stdin is the default input stream
+
+/*
+#include <stdio.h>
+int main() {
+    char str[100];
+    int i;
+
+    printf("Enter a value :");
+    scanf("%s %d", str, &i);
+
+    printf("\nYou entered: %s %d ", str, i);
+
+    return 0;
+}
+*/
