@@ -1,0 +1,48 @@
+/*
+1. Basic Syntax
+2. Comments
+3. Preprocessor Directives
+
+*/
+//1. Basic Syntax
+int main() // main is a function int is the common return type
+{
+    printf("Hi, my name is Morgan Gravelat");
+    return 0;
+}
+void main() // void is a function that does not return anything
+{
+    printf("Hi, my name is Morgan Gravelat");
+    return 0; // this is not needed and will give you a build warning
+}
+//2. Comments
+// Comments can look like this
+/*
+    or like this
+*/
+/* You can put this above your code to help explain what it does
+Author: Morgan Gravelat
+Purpose: An example snippet of code that displays my name to the console
+Date: March 21 2023
+*/
+3. Preprocessor Directives
+// Preprocessor directives are used to include libraries
+// Preprocessor directives are not compiled
+// #ifdef, #ifndef, #endif, #define, #undef, #include, #line, #error, #pragma
+// #include is used to include libraries
+// #ifndef is used to check if a library has already been included
+// #define is used to define a constant
+// #undef is used to undefine a constant
+// #pragma is used to include a library
+// #error is used to display an error message
+// #line is used to change the line number
+// #ifdef is used to check if a constant has been defined
+// #endif is used to end an #ifdef or #ifndef block
+#include <stdio.h> // this is a preprocessor directive
+#include <stdlib.h> // this is a preprocessor directive
+#include <string.h> // this is a preprocessor directive
+#include <math.h> // this is a preprocessor directive
+#include <ctype.h> // this is a preprocessor directive
+#include <conio.h> // this is a preprocessor directive
+#include <time.h> // this is a preprocessor directive
+#include <windows.h> // this is a preprocessor directive
