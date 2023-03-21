@@ -6,6 +6,8 @@
 5. #include
 6. printf
 7. user input
+8. variables
+9. data types
 */
 //1. Basic Syntax
 int main() // main is a function int is the common return type
@@ -133,10 +135,57 @@ int main() {
     int i;
 
     printf("Enter a value :");
-    scanf("%s %d", str, &i);
+    scanf("%s %d", str, &i); // the & sign is used to get the address of the variable
+    //the %s is used to read a string and the %d is used to read an integer
+    // you can use %lf to read a double and %c to read a character and %f to read a float and %x to read a hexadecimal and %Lf to read a long double
+    // the string will be read into the str variable and the integer will be read into the i variable
 
     printf("\nYou entered: %s %d ", str, i);
 
     return 0;
 }
 */
+
+8. variables
+
+// variables are used to store data in memory
+// variables are named memory locations
+// the rules for naming variables are that they must start with a letter or an underscore and can be followed by letters, numbers, or underscores
+/*
+These are valid variable names
+Jason
+myFlag
+i
+J5x7
+my_data
+_anotherVariable
+These are invalid variable names
+temp$value - this is invalid because it contains a $
+my flag - this is invalid because it contains a space
+3Jason - this is invalid because it starts with a number
+int - this is invalid because it is a keyword
+
+*/
+
+9. data types
+/*
+There are multiple types of data
+ 1. int - integer
+ 2. float - floating point number
+ 3. double - double precision floating point number
+ 4. char - character
+ 5. string - string of characters
+ 6. bool - boolean
+ 7. void - void
+ 8. long - long integer
+ 9. short - short integer
+ 10. unsigned - unsigned integer
+ 11. signed - signed integer
+*/
+//int is a 4 byte integer
+//it goes type-specifier variable-name;
+//int is a signed integer
+//int x; // this is a variable declaration
+//x = 10; // this is a variable assignment
+//int x,y,z; // this is a variable declaration with multiple variables
+//x = 10; y = 10; z = 10; // this is a variable assignment with multiple variables
