@@ -175,7 +175,7 @@ There are multiple types of data
  3. double - double precision floating point number
  4. char - character
  5. string - string of characters
- 6. bool - boolean
+ 6. _Bool - boolean
  7. void - void
  8. long - long integer
  9. short - short integer
@@ -189,3 +189,19 @@ There are multiple types of data
 //x = 10; // this is a variable assignment
 //int x,y,z; // this is a variable declaration with multiple variables
 //x = 10; y = 10; z = 10; // this is a variable assignment with multiple variables
+// You can assign a hexadecimal value to an integer by using the 0x prefix
+// You can assign an octal value to an integer by using the 0 prefix
+// You can assign a binary value to an integer by using the 0b prefix
+// You can assign a character to an integer by using the single quotes
+//Float is a 4 byte floating point number
+//float is a single precision floating point number
+//float x; // this is a variable declaration
+//x = 10.5; // this is a variable assignment
+//float x,y,z; // this is a variable declaration with multiple variables
+//x = 10.5; y = 10.5; z = 10.5; // this is a variable assignment with multiple variables
+//Double is a 8 byte floating point number
+//double is a double precision floating point number
+//double x; // this is a variable declaration
+//x = 10.5; // this is a variable assignment
+//float jason = 23.3333; // this is a variable declaration and assignment
+//double x=10.5,y=10.5,z=10.5; // this is a variable declaration and assignment with multiple variables
