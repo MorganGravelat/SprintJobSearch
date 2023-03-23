@@ -8,6 +8,9 @@
 7. user input
 8. variables
 9. data types
+10. enums and chars
+11. format specifiers
+12. command line arguments
 */
 //1. Basic Syntax
 int main() // main is a function int is the common return type
@@ -205,3 +208,134 @@ There are multiple types of data
 //x = 10.5; // this is a variable assignment
 //float jason = 23.3333; // this is a variable declaration and assignment
 //double x=10.5,y=10.5,z=10.5; // this is a variable declaration and assignment with multiple variables
+//_Bool is a 1 byte boolean
+//_Bool is a boolean
+//_Bool x = 1; // this is a variable declaration and assignment
+// to use the keyword bool you must include stdbool.h
+// with stdbool.h you can use bool instead of _Bool and true instead of 1 and false instead of 0
+// short int is a 2 byte integer and is a signed integer
+//c offers words like short and long to specify the size of an integer
+// unsigned int is a 4 byte integer and is an unsigned integer
+// unsigned are only used for positive numbers
+// a long double is a 16 byte floating point number and is followed by the letter L
+// long double x = 1.234e+7L; // this is a variable declaration and assignment
+
+10. enums and chars
+// enums are used to define a set of named constants
+// they are a data type that allow a programmer to define a variable and specify the valid values that could be store in that variable
+// it can create a variable called myColor and specify that the only valid values for that variable are red, green, and blue
+// First you must define the enum and give it a name
+// initiate by the keyword enum then the name of the data type then list the identifiers
+// the identifiers are the names of the constants
+// enum primaryColor {red, yellow, blue}; // this is an enum declaration
+// to declare a variable to be of type enum primaryColor you would do the following
+// use the keyword enum followed by the enumerated type name followed by the variable name
+// enum primaryColor myColor, gregsColor; // this is an enum declaration with multiple variables
+// now myColor and gregsColor are of type enum primaryColor and can only be assigned the values red, yellow, or blue
+// enum month {january, february, march, april, may, june, july, august, september, october, november, december};
+// the compiler treats enumeration identifiers as integers constants first name in list is 0, second is 1, third is 2, etc
+// enum month thisMonth;
+// thisMonth = january; // thisMonth is assigned the value 0
+// thisMonth = february; // thisMonth is assigned the value 1
+// if you want a specific integer value for an identifier you can do the following
+// enum month {january = 1, february, march, april, may, june, july, august, september, october, november, december};
+// now january is 1, february is 2, march is 3, etc
+// enum direction {up, down, left=10, right};
+// now up is 0, down is 1, left is 10, right is 11
+// char is a 1 byte character and will hold a single character
+// char uses single quotes
+// char x; // this is a variable declaration
+// x = 'a'; // this is a variable assignment for a character
+// char broiled = 'b'; // this is a variable declaration and assignment
+// broiled = 'T'; // this is a valid assignment
+// broiled = 'Tom'; // this is an invalid assignment
+// broiled = T; // this is an invalid assignment
+// broiled = "T" // this is an invalid assignment
+// if you omit the quotes it will think you are trying to assign a variable
+// double quotes are used for strings
+// you can also use numerical values to assign a character
+// char x = 65; // this is ok for ASCII character 65 is A but this is poor programming practice
+// escape characters are used to represent non-printable characters
+// \n is a newline
+// \t is a tab
+// \b is a backspace
+// \r is a carriage return
+// \v is a vertical tab
+// \f is a form feed
+// \a is an alert
+// \? is a question mark
+/*
+#include <stdio.h>
+
+int main()
+{
+    char myChar = '\n';
+
+    printf("%c", myChar);
+
+    return 0;
+
+}
+// this will print a new line the myChar variable is assigned the value of a new line
+result = '
+ '
+
+
+
+*/
+
+11. format specifiers
+
+// format specifiers are used to format the output of printf
+// %i is used for integers
+// %f is used for floating point numbers
+// %d is used for decimal numbers
+// %g is used for double precision floating point numbers
+// %c is used for characters
+// %s is used for strings
+// %e is used for scientific notation
+// %o is used for octal numbers
+// %x is used for hexadecimal numbers
+// %u is used for unsigned integers
+// %p is used for pointers
+/*
+int main()
+{
+    int integerVar = 100;
+    float floatingVar = 331.79;
+    double doubleVar = 8.44e+11;
+    char charVar = 'W';
+
+    _Bool boolVar = 0;
+
+    printf("integerVar = %i\n", integerVar);
+    printf("floatingVar = %f\n", floatingVar);
+    printf("doubleVar = %e\n", doubleVar);
+    printf("doubleVar = %g\n", doubleVar);
+    printf("charVar = %c\n", charVar);
+    printf("boolVar = %i\n", boolVar);
+    printf("%.1f", 1.2345); // this will print 1.2 since the .1 specifies the number of decimal places to print
+}
+*/
+
+12. command line arguments
+
+// command line arguments are used to pass information to a program when it is executed
+/*
+#include <stdio.h>
+#include <stdlib.h>
+
+int main(int argc, char *argv[])
+{
+    int numberOfArguments = argc;
+    char *argument1 = argv[0];
+    char *argument2 = argv[1];
+
+    printf("Number of arguments = %d\n", numberOfArguments);
+    printf("Argument 1 is the program name: %s\n", argument1);
+    printf("Argument 2 is the first command line argument: %s", argument2);
+
+    return 0;
+}
+
+*/
