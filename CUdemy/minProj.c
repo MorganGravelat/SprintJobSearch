@@ -47,3 +47,19 @@ int main(int argc, char *argv[])
 
 
 */
+/* ENUM Project
+#include <stdio.h>
+
+
+int main()
+{
+    enum Company {GOOGLE, FACEBOOK, XEROX, YAHOO, EBAY=11, MICROSOFT};
+    enum Company comp1 = XEROX, comp2 = GOOGLE, comp3 = EBAY;
+    printf("The value of Xerox: %i\n", comp1); // the value of Xerox is 2
+    printf("The value of Google: %i\n", comp2); // the value of Google is 0
+    printf("The value of Ebay: %i", comp3); // the value of Ebay is 11
+    return 0;
+
+}
+
+*/
