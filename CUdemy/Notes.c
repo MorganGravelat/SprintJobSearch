@@ -11,6 +11,7 @@
 10. enums and chars
 11. format specifiers
 12. command line arguments
+13. operators
 */
 //1. Basic Syntax
 int main() // main is a function int is the common return type
@@ -338,4 +339,62 @@ int main(int argc, char *argv[])
     return 0;
 }
 
+*/
+
+13. operators
+
+// operators are used to perform operations on variables and values
+// there are 6 types of operators
+// arithmetic operators (+, -, *, /, %)
+// assignment operators (=, +=, -=, *=, /=, %=, <<=, >>=, &=, ^=, |=)a
+// comparison operators (==, !=, >, <, >=, <=)
+// logical operators (&&, ||, !)
+// bitwise operators (&, |, ^, ~, <<, >>)
+// ternary operators (?:)
+// unary operators (+, -, ++, --, !, &, *, sizeof, _Alignof, _Generic, _Noreturn, _Static_assert, _Thread_local)
+// sizeof is used to determine the size of a variable or data type
+// relational operators are used to compare two values
+// + is addition
+// - is subtraction
+// * is multiplication
+// / is division
+// % is modulus (remainder)
+// = is assignment
+// += is addition assignment
+// -= is subtraction assignment
+// *= is multiplication assignment
+// /= is division assignment
+// %= is modulus assignment
+// <<= is left shift assignment (shifts the bits of the first operand to the left by the number of bits specified by the second operand)
+// >>= is right shift assignment (shifts the bits of the first operand to the right by the number of bits specified by the second operand)
+// &= is bitwise AND assignment (performs a bitwise AND operation between the first and second operands and assigns the result to the first operand)
+// bitwise compares each bit of the first operand to the corresponding bit of the second operand and returns a value where the corresponding bit is set if both bits are set
+// 0001 & 0011 = 0001
+// == is equal to
+// != is not equal to
+// > is greater than
+// < is less than
+// >= is greater than or equal to
+// <= is less than or equal to
+// && is logical AND
+// || is logical OR
+// ! is logical NOT
+// & is bitwise AND
+// | is bitwise OR
+// ^ is bitwise XOR
+// ~ is bitwise NOT
+// << is left shift (shifts the bits of the first operand to the left by the number of bits specified by the second operand)
+// >> is right shift (shifts the bits of the first operand to the right by the number of bits specified by the second operand)
+// ?: is ternary operator (condition ? expression1 : expression2) if condition is true then expression1 is evaluated and returned otherwise expression2 is evaluated and returned
+// + is unary plus
+/*
+int main()
+{
+    int a = 21;
+    int c;
+
+    c = a;
+    printf("Line 1 - =  Operator Example, Value of c = %d
+
+}
 */
