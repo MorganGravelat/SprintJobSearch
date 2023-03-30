@@ -388,13 +388,32 @@ int main(int argc, char *argv[])
 // ?: is ternary operator (condition ? expression1 : expression2) if condition is true then expression1 is evaluated and returned otherwise expression2 is evaluated and returned
 // + is unary plus
 /*
+#include <stdio.h>
 int main()
 {
     int a = 21;
-    int c;
-
+    int c = 18;
+    int remainder = 0;
     c = a;
-    printf("Line 1 - =  Operator Example, Value of c = %d
+    printf("Value of c = %d \n", --c);
 
+    return 0;
 }
+#include <stdio.h>
+#include <stdbool.h>
+
+int main()
+{
+    _Bool a = true;
+    _Bool c = false;
+    _Bool result;
+    result = !a;
+
+    printf("Value of c or a = %d \n", result);
+
+    return 0;
+}
+
+
+
 */
