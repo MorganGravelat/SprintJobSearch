@@ -62,4 +62,101 @@ int main()
 
 }
 
+
+ALL OPERATORS
+
+#include <stdio.h>
+
+int main() {
+    int a = 10, b = 20;
+    int result;
+
+    // Arithmetic operators
+    result = a + b;
+    printf("%d + %d = %d\n", a, b, result);
+
+    result = a - b;
+    printf("%d - %d = %d\n", a, b, result);
+
+    result = a * b;
+    printf("%d * %d = %d\n", a, b, result);
+
+    result = b / a;
+    printf("%d / %d = %d\n", b, a, result);
+
+    result = b % a;
+    printf("%d %% %d = %d\n", b, a, result);
+
+    // Relational operators
+    if (a == b) {
+        printf("%d == %d is true\n", a, b);
+    } else {
+        printf("%d == %d is false\n", a, b);
+    }
+
+    if (a != b) {
+        printf("%d != %d is true\n", a, b);
+    } else {
+        printf("%d != %d is false\n", a, b);
+    }
+
+    if (a < b) {
+        printf("%d < %d is true\n", a, b);
+    } else {
+        printf("%d < %d is false\n", a, b);
+    }
+
+    if (a > b) {
+        printf("%d > %d is true\n", a, b);
+    } else {
+        printf("%d > %d is false\n", a, b);
+    }
+
+    if (a <= b) {
+        printf("%d <= %d is true\n", a, b);
+    } else {
+        printf("%d <= %d is false\n", a, b);
+    }
+
+    if (a >= b) {
+        printf("%d >= %d is true\n", a, b);
+    } else {
+        printf("%d >= %d is false\n", a, b);
+    }
+
+    // Logical operators
+    int c = 5, d = 6, e = 0;
+
+    if (c && d) {
+        printf("%d && %d is true\n", c, d);
+    } else {
+        printf("%d && %d is false\n", c, d);
+    }
+
+    if (c && e) {
+        printf("%d && %d is true\n", c, e);
+    } else {
+        printf("%d && %d is false\n", c, e);
+    }
+
+    if (c || d) {
+        printf("%d || %d is true\n", c, d);
+    } else {
+        printf("%d || %d is false\n", c, d);
+    }
+
+    if (c || e) {
+        printf("%d || %d is true\n", c, e);
+    } else {
+        printf("%d || %d is false\n", c, e);
+    }
+
+    if (!e) {
+        printf("!%d is true\n", e);
+    } else {
+        printf("!%d is false\n", e);
+    }
+
+    return 0;
+}
 */
