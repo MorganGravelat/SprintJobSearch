@@ -12,7 +12,10 @@
 11. format specifiers
 12. command line arguments
 13. operators
+14.  Cast and sizeof operators
+15. Operator precedence
 */
+
 //1. Basic Syntax
 int main() // main is a function int is the common return type
 {
@@ -379,9 +382,9 @@ int main(int argc, char *argv[])
 // && is logical AND
 // || is logical OR
 // ! is logical NOT
-// & is bitwise AND
-// | is bitwise OR
-// ^ is bitwise XOR
+// & is bitwise AND p = 1 and q = 0 then p & q = 0 if p = 1 and q = 1 then p & q = 1
+// | is bitwise OR p = 1 and q = 0 then p | q = 1 if p = 1 and q = 1 then p | q = 1
+// ^ is bitwise XOR  p = 1 and q = 0 then p ^ q = 1 if p = 1 and q = 1 then p ^ q = 0
 // ~ is bitwise NOT
 // << is left shift (shifts the bits of the first operand to the left by the number of bits specified by the second operand)
 // >> is right shift (shifts the bits of the first operand to the right by the number of bits specified by the second operand)
@@ -413,7 +416,64 @@ int main()
 
     return 0;
 }
+#include <stdio.h>
+int main()
+{
+    int a = 21;
+    int c = 18;
+    int remainder = a%=c;
+    printf("Value of c = %d \n", remainder);
 
+    return 0;
+}
 
+*/
 
+14. Cast and sizeof operators
+/*
+    You can convert data types
+    int x = 10;
+    float y = (float)x;
+    x = y;
+    printf("%f", y);
+
+    cast operators are used to convert data types
+    int x = 10;
+    float y = (float)x; // this is a cast operator
+    x = y;
+    printf("%f", y); // this will print 10.000000
+
+    (int) 21.51 + (int) 26.99 // this will print 47 because the decimal part is truncated so it ends up being 21 + 26 = 47
+    sizeof(x) // this will print the size of the variable x in bytes (4 bytes)
+
+    the * operator is used to declare a pointer
+    int *p; // this declares a pointer to an integer
+    // the * operator is also used to dereference a pointer
+    // dereferencing a pointer means to access the value of the variable that the pointer points to
+    int x = 10;
+    int *p = &x; // this declares a pointer to an integer and assigns the address of x to the pointer
+    printf("%d", *p); // this will print 10
+    // the & operator is used to get the address of a variable
+
+*/
+
+15. Operator precedence
+/*
+    Operator precedence determines the order in which operations are performed
+    int x = 10;
+    int y = 20;
+    int z = 30;
+    int result = x + y * z; // this will print 610 because multiplication has a higher precedence than addition
+    int result = (x + y) * z; // this will print 900 because the parentheses have a higher precedence than multiplication
+    int result = x + (y * z); // this will print 610 because the parentheses have a higher precedence than addition
+    int result = x + y * z / 2; // this will print 305 because multiplication has a higher precedence than division
+    int result = x + y * z / 2 % 3; // this will print 1 because modulus has a higher precedence than division
+    int result = x + y * z / 2 % 3 - 1; // this will print 0 because subtraction has a higher precedence than modulus
+    int result = x + y * z / 2 % 3 - 1 + 4; // this will print 4 because addition has a higher precedence than subtraction
+    int result = x + y * z / 2 % 3 - 1 + 4 * 2; // this will print 12 because multiplication has a higher precedence than addition
+    int result = x + y * z / 2 % 3 - 1 + 4 * 2 - 6; // this will print 6 because subtraction has a higher precedence than addition
+    int result = x + y * z / 2 % 3 - 1 + 4 * 2 - 6 / 3; // this will print 5 because division has a higher precedence than subtraction
+    int result = x + y * z / 2 % 3 - 1 + 4 * 2 - 6 / 3 + 8; // this will print 13 because addition has a higher precedence than subtraction
+    int result = x + y * z / 2 % 3 - 1 + 4 * 2 - 6 / 3 + 8 - 9; // this will print 4 because subtraction has a higher precedence than addition
+    int result = x + y * z / 2 % 3 - 1 + 4 * 2 -
 */
