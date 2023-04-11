@@ -35,3 +35,41 @@ function mutate(node, parent, isLeftChild) {
     }
     mutate(right , node, false);
 }
+
+
+/*
+Split Binary Tree
+
+class BinaryTree {
+    constructor(value) {
+        this.value = value;
+        this.left = null;
+        this.right = null;
+    }
+}
+
+// O(n) time | O(h) space
+// h = height of tree
+function splitBinaryTree(root) {
+    const desiredSubtreeSum = getTreeSum(root) / 2;
+    const canBeSplit = trySubttrees(root, desiredSubtreeSum)[1];
+    rturn canBeSplit ? desiredSubtreeSum : 0;
+}
+
+function trySubtrees(node, desiredSubtreeSum) {
+    if (node === null) return [0, false];
+
+    const [leftSum, canBeSplitLeft] = trySubtrees(node.left, desiredSubtreeSum);
+    const [rightSum, canBeSplitRight] = trySubtrees(node.right, desiredSubtreeSum);
+
+    const currentTreeSum = node.value + leftSum + rightSum;
+    const canBeSplit = canBeSplitLeft || canBeSplitRight || currentTreeSum === desiredSubtreeSum;
+    return [ currentTreeSum, canBeSplit ];
+}
+
+function getTreeSum(node) {
+    if (node === null) return 0;
+    return node.value + getTreeSum(node.left) + getTreeSum(node.right);
+}
+
+*/
