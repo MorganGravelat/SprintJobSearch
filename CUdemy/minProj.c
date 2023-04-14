@@ -160,3 +160,26 @@ int main() {
     return 0;
 }
 */
+/*
+#include <stdio.h>
+
+int main()
+{
+    int minutes;
+    int minInDay = 60*24;
+    int minInYear = minInDay * 365;
+    double days;
+    double years;
+
+    printf("Enter a value in minutes :");
+    scanf("%d", &minutes); // this uses scanf to get the minutes remember the &
+
+    days = (double)minutes / minInDay; // this is the conversion to double
+    years = (double)minutes / minInYear; // make sure to put the (double) in front of the variable
+
+    printf("minutes = %d\n days = %lf\n years = %lf", minutes, days, years);
+    return 0;
+}
+
+
+*/

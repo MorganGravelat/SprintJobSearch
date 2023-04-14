@@ -476,4 +476,12 @@ int main()
     int result = x + y * z / 2 % 3 - 1 + 4 * 2 - 6 / 3 + 8; // this will print 13 because addition has a higher precedence than subtraction
     int result = x + y * z / 2 % 3 - 1 + 4 * 2 - 6 / 3 + 8 - 9; // this will print 4 because subtraction has a higher precedence than addition
     int result = x + y * z / 2 % 3 - 1 + 4 * 2 -
+
+    The postfix operators ++ and -- have the highest precedence
+    the unary operators +, -, !, ~, ++, --, sizeof, and * have the next highest precedence
+    the multiplicative operators *, /, and % have the next highest precedence
+    the additive operators + and - have the next highest precedence
+    the shift operators << and >> have the next highest precedence
+    the relational operators <, <=, >, and >= have the next highest precedence
+    the equality operators == and != have the next highest precedence
 */
