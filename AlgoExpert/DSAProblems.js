@@ -772,3 +772,52 @@ function traverse(adjacencyList, found, node) {
 return currentComponent
 
 }
+
+
+
+// Longest Common Subsequence
+// Objective:
+//     - Given two strings, find the longest common subsequence
+//     - A subsequence is a sequence that can be derived from another sequence by deleting some or no elements without changing the order of the remaining elements
+//     - Return the length of the longest common subsequence
+// Edge Cases:
+//     - If one of the strings is empty return 0
+//     - If the strings are the same return the length of the string
+// Strategy:
+//     - Check base case
+//     - Initialize a variable called longest with a value of 0
+//     - Initialize a variable called current with a value of 0
+//     - Initialize a variable called currentStart with a value of 0
+//     - Initialize a variable called currentEnd with a value of 0
+//     - Loop through the first string
+//     - Loop through the second string
+//     - If the current letter in the first string is equal to the current letter in the second string
+//     - Set currentStart to the current index of the first string
+//     - Set currentEnd to the current index of the second string
+//     - While the current letter in the first string is equal to the current letter in the second string
+//     - Increment current
+//     - Increment currentStart
+//     - Increment currentEnd
+//     - If current is greater than longest
+//     - Set longest to current
+//     - Set current to 0
+//     - Set currentStart to 0
+//     - Set currentEnd to 0
+//     - Return longest
+
+function longestCommonSubsequence(str1, str2) {
+    const lcs = [];
+    for (let i = 0; i < str1.length + 1; i++) {
+        lcs.push(new Array(str2.length + 1).fill(0));
+    }
+    for (let i = 1; i < str1.length + 1; i++) {
+        for (let j = 1; j < str2.length + 1; j++) {
+            if (str1[i - 1] === str2[j - 1]) {
+                lcs[i][j] = lcs[i - 1][j - 1] + 1;
+            } else {
+                lcs[i][j] = Math.max(lcs[i - 1][j], lcs[i][j - 1]);
+            }
+        }
+    }
+    return lcs[str1.length][str2.length];
+}
