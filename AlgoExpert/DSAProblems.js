@@ -908,4 +908,77 @@ def findPrefixScore(self, nums: List[int]) -> List[int]:
             m = max(m, nums[i])
             nums[i] += nums[i-1] + m
         return nums
+
+
+
+
+
+
+
+
+        //Powerset
+
+        //Objective:
+        // - Given an array of unique integers, return all possible subsets (the power set)
+        // - The solution set must not contain duplicate subsets
+        // - Return the solution in any order
+        // - The solution set must not contain duplicate subsets
+        // - Return the solution in any order
+
+        //Strategy:
+        // - Initialize a variable called result with a value of an empty array
+        // - Initialize a variable called current with a value of an empty array
+        // - Initialize a variable called start with a value of 0
+        // - Initialize a variable called end with a value of the length of the array
+        // - Invoke the helper function with the array, start, end, current, and result
+        // - Return result
+
+
+        function powerset(array) {
+            if (idx === null) {
+                idx = array.length - 1;
+            }
+            if (idx < 0) {
+                return [[]];
+            }
+            const ele = array[idx];
+            const subsets = powerset(array, idx - 1);
+            const length = subsets.length;
+            for (let i = 0; i < length; i++) {
+                const currentSubset = subsets[i];
+                subsets.push(currentSubset.concat(ele));
+            }
+            return subsets;
+        }
+
+
+
+
+
+        //Geenrate Parentheses
+var generateParenthesis = function(n) {
+    var ans = []
+
+    const work = (str,leftScore,rightScore) => {
+        if(
+            rightScore > leftScore ||
+            rightScore > n ||
+            leftScore > n
+          ){
+            return
+        }
+        if(leftScore === n && rightScore === n){
+            ans.push(str)
+            return
+        }
+
+        work(str+"(",leftScore+1,rightScore)
+        work(str+")",leftScore,rightScore+1)
+    }
+    work("",0,0)
+    console.log(ans)
+    return ans
+};
+
+
 */
