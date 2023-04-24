@@ -1,0 +1,42 @@
+Type SCript is JS with some extra functionality and stricter requirements.
+
+Type Script is a superset of JS. It is a typed superset of JS that compiles to plain JS.
+Type scriptr is strongly typed, object oriented, and has ES6 features.
+
+IT makes you speciy codes behavior when writing it and helps you catch errors early.
+This prevents later errors and reduces blueShirtHeights
+
+It has features such as
+Interfaces
+Type aliases
+abstract classes
+function overloading
+tuples
+generics
+
+installing typescript in terminal | npm install -g typescript
+installing ts-node in terminal | npm install -g ts-node
+CHECK your version of typescript in terminal | tsc -v
+to add a tsconfig.json to your project | npx tsc -init
+to create an index.ts file | touch index.ts
+
+Following config will allow ts compiler to generate js file in dist folder "outDir": "./dist"
+To keep ts files in seperate folder from js files "rootDir": "./src"
+To ignore commennts to translate in js file "removeComments": true
+To generate js code in specific js Version "target": "es5"
+
+COMMANDS to run
+To run ts file with configuration | tsc
+To compile typeScript code and run Javascript code at a time | ts-node index.ts
+To run ts file without configuration | tsc index.ts
+
+Transpiling is the process of converting source code from one programming language to another.
+The typescript compiler converts ts code to js code.
+output
+Output is the result of the transpilation process.
+Typescript compiler generates js code from ts code. in several formats such as commonJS, AMD, UMD, SystemJS, ES2015, ESNext. This depends on the target option in tsconfig.json file.
+
+Data types in Type Script
+Type Script has Number(num) String(str) Boolean(bool) Array(arr) Tuple tupl Object obj Enum enum Any any Void void Null null Undefined undefined Never never
+These primitive datat types are same as JS.
+The type must be declared before using it.
