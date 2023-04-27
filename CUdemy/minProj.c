@@ -220,4 +220,24 @@ function zigzagTraverse(array) {
   return result;
 }
 
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+
+    printf("Variables of type char occupy %u\n", sizeof(char)); //the size will be 1 byte
+    printf("Variables of type short occupy %u\n", sizeof(short)); // the size will be 2 bytes
+    printf("Variables of type int occupy %u\n", sizeof(int)); // the size will be 4 bytes
+    printf("Variables of type long occupy %u\n", sizeof(long)); // the size will be 4 bytes or 8 bytes in 64 bit systems
+    printf("Variables of type long long occupy %u\n", sizeof(long long)); // the size will be 8 bytes
+    printf("Variables of type float occupy %u\n", sizeof(float)); // the size will be 4 bytes
+    printf("Variables of type double occupy %u\n", sizeof(double)); // the size will be 8 bytes
+    printf("Variables of type long double occupy %u\n", sizeof(long double)); // the size will be 16 bytes
+
+    return 0;
+}
+
 */

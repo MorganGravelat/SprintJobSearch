@@ -1,0 +1,44 @@
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+  }
+
+  label {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  input {
+    padding: 10px;
+    font-size: 18px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    width: 300px;
+    max-width: 100%;
+  }
+
+  button {
+    background-color: #4caf50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 200px; /* set a fixed width */
+    height: 50px; /* set a fixed height */
+    max-width: 100%; /* allow the button to shrink when necessary */
+    min-width: 10%; /* prevent the button from expanding */
+    min-height: 40px;
+    line-height: 30px;
+    font-size: 16px;
+    font-size: 100%;
+  }
+  button:hover {
+    background-color: #3e8e41;
+  }

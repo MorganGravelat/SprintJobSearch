@@ -40,3 +40,4 @@ Data types in Type Script
 Type Script has Number(num) String(str) Boolean(bool) Array(arr) Tuple tupl Object obj Enum enum Any any Void void Null null Undefined undefined Never never
 These primitive datat types are same as JS.
 The type must be declared before using it.
+To run the create index.js file | node index.js

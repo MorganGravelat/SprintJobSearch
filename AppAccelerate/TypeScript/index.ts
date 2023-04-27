@@ -56,9 +56,9 @@ function myLog (x: any): void {
 // const printUser = () : string => {
 //     return "Hello"; // OK because return type is string
 // }
-interface userInterface {
+interface userInterface { // Interface is a contract that defines the structure of an object
     name: string, pw:string, id: number, issSubscribed: boolean
 }
 const printUser = (user: userInterface) : string => {
-    return user.name;
+    return user.name; // OK because return type is string and user is of type userInterface
 }
