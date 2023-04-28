@@ -1,7 +1,7 @@
 // let x = 4; // Error: Cannot redeclare block-scoped variable 'x'.
 //x.length(); // Error: Property 'length' does not exist on type 'number'.
 
-// let x = 4;
+// let x = 4; Test
 // console.log(x); //
 
 let x = 4;
