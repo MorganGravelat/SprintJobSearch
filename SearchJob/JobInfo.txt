@@ -1,0 +1,30 @@
+This is a list of job boards that I've found useful in my job search. I've also included a few other resources that I've found helpful. I hope you find this list useful!
+AngelList (Wellfound)
+BuiltIn (BuiltinNYC, BuiltinSF, BuiltinLA - find your state)
+Arc.dev (remote developer jobs!)
+BootUp
+The Muse
+Y Combinator Jobs (HackerNews, list new jobs at the beginning of the month)
+Otta
+SimplyHired
+Qualified
+Hired
+Problogger
+Dice
+Idealist.org (non-profits/ Mission-driven)
+AllHands (non-profits/activism)
+WayUp (specifically for recent graduates/entry level jobs)
+Girls in Tech
+Y Combinator’s Work at a Startup
+ZipRecruiter
+AuthenticJobs
+StackShare
+RubyNow
+Facebook Startup Job Page - SF
+Facebook Startup Job Page - NY
+LinkUp
+GitHub Jobs
+BetterJobs: matches based on your tech language, using keywords.
+Dribble Job Board (independent community for designers & creative professionals)
+TechJunction
+PowerToFly
