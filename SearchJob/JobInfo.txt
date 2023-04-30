@@ -28,3 +28,11 @@ BetterJobs: matches based on your tech language, using keywords.
 Dribble Job Board (independent community for designers & creative professionals)
 TechJunction
 PowerToFly
+
+Technologies to Look Into
+TypeScript: Many job postings mention TypeScript as a required or desired skill. It’s a statically-typed superset of JavaScript that allows for better scalability and maintainability in large projects.
+Python: Python is another popular language that is commonly used for data analysis, scientific computing, and web development. Its versatility and ease of use make it a valuable skill to have.
+React: React is a popular front-end library for building user interfaces. Its popularity and demand in the job market make it a valuable skill for front-end development.
+Java: Java is a widely used back-end programming language that is commonly used for enterprise-level applications. It is known for its scalability, reliability, and security.
+Data Structures and Algorithms (DSA): A strong foundation in DSA is essential for software development, as it helps in solving complex problems and optimizing algorithms.
+Cloud Technologies: Cloud technologies such as AWS, Azure, and GCP are becoming increasingly important as companies move towards cloud-based solutions. Having knowledge of these platforms and their services can be a valuable asset in the job market.
