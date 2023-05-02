@@ -260,6 +260,121 @@ int main()
 
     return 0;
 }
+//Nested if statements
+
+if (gameIsOver == 0) {
+    if (player1Score > player2Score) {
+        printf ("Player 1 wins.\n");
+    }
+    else if (player2Score > player1Score) {
+        printf ("Player 2 wins.\n");
+    }
+    else {
+        printf ("The game is a tie.\n");
+    }
+else {
+    printf ("The game is over.\n");
+}
+
+//ternerary operator in C
+//variable = (condition) ? expressionTrue : expressionFalse;
+// if condition is true then expressionTrue is executed otherwise expressionFalse is executed
+y = 8;
+x = (y > 7) ? 1 : 2; // x is 1 because y is greater than 7
+
+//switch statement in C
+switch (expression) {
+    case constant1:
+        statement(s);
+        break; // this is optional but it is good practice to put it in there to avoid fall through
+    case constant2:
+        statement(s);
+        break; // the only reason you would not put a break in is if you wanted to fall through to the next case
+    .
+    .
+    .
+    default:
 
 
+
+
+
+
+
+
+
+
+
+
+        statement(s);
+}
+
+
+// C program that calculates your weekly pay
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    double hoursWorked;
+    double hourlyRate;
+    double weeklyPay;
+
+    printf("Enter the number of hours worked this week: ");
+    scanf("%lf", &hoursWorked);
+
+    printf("Enter your hourly rate: ");
+    scanf("%lf", &hourlyRate);
+
+    if (hoursWorked <= 40) {
+        weeklyPay = hoursWorked * hourlyRate;
+    }
+    else {
+        weeklyPay = 40 * hourlyRate;
+        weeklyPay += (hoursWorked - 40) * (hourlyRate * 1.5);
+    }
+
+    printf("Your weekly pay is %.2lf\n", weeklyPay);
+
+    return 0;
+}
+
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+    double hoursWorked;
+    double hourlyRate = 12.00;
+    double weeklyPay;
+
+    printf("Enter the number of hours worked this week: ");
+    scanf("%lf", &hoursWorked);
+
+    if (hoursWorked <= 40) {
+        weeklyPay = hoursWorked * hourlyRate;
+        printf("hours worked if is %.2lf\n", weeklyPay);
+    }
+    else {
+        weeklyPay = 40 * hourlyRate;
+        weeklyPay += (hoursWorked - 40) * (hourlyRate * 1.5);
+        printf("hours worked else is %.2lf\n", weeklyPay);
+    }
+
+    if (weeklyPay <= 300.00) {
+        weeklyPay = 300.00 * 0.85;
+        printf("if pay is %.2lf\n", weeklyPay);
+    } else if (weeklyPay > 300.00 && weeklyPay <= 450.00) {
+        weeklyPay = 300.00 * 0.85;
+        printf("Else if pay is %.2lf\n", weeklyPay);
+        weeklyPay += (weeklyPay - 300.00) * 0.80;
+        printf("Else if pay is %.2lf\n", weeklyPay);
+    } else {
+        weeklyPay = (300.00 * 0.85) + (150.00 * 0.80);
+        printf("Else pay is %.2lf\n", weeklyPay);
+        weeklyPay = weeklyPay + (weeklyPay - 450.00) * 0.75;
+        printf("Second else pay is %.2lf\n", weeklyPay);
+    }
+
+    printf("Your weekly pay is %.2lf\n", weeklyPay);
+}
 */
