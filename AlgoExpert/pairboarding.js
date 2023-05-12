@@ -60,3 +60,43 @@ console.log(validSudoku(
     ,[".",".",".","4","1","9",".",".","5"]
     ,[".",".",".",".","8",".",".","7","9"]]
 ))
+
+
+
+You are given an array arr[] of size n. You have to convert the array into a non-decreasing array. You can only remove numbers from the ends of the array. Which of the sets of operations will result in arr being sorted?
+arr[7] ={4,3,3,8,4,5,2}
+
+Pick ONE option
+Remove 4,3,3,8 from the beginning of the array.
+Remove 8,4,5,2 from the end of the array.
+Remove 4 from the beginning of the array and 4, 5, 2 from the end of the array.
+None of the above
+// 1. Remove 4,3,3,8 from the beginning of the array.
+// 2. Remove 8,4,5,2 from the end of the array.
+// 3. Remove 4 from the beginning of the array and 4, 5, 2 from the end of the array.
+// 4. None of the above
+// The answer would be 1. Remove 4,3,3,8 from the beginning of the array. The resulting array would be [4,5,2] which is sorted in non-decreasing order
+
+// A circular linked list can be used to implement
+
+
+function twoColorable(edges) {
+    const black = new Set();
+    const white = new Set();
+
+    return edges.every((neighbors, parent) => {
+        if (white.has(parent)) {
+            for (let node of neighbors) {
+                if (white.has(node)) return false;
+                black.add(node);
+            }
+        } else {
+            black.add(parent);
+            for (let node of neighbors) {
+                if (black.has(node)) return false;
+                white.add(node);
+            }
+        }
+        return true;
+    })
+}
