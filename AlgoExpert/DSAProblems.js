@@ -1171,3 +1171,34 @@ var promisePool = async function(functions, n) {
 
 };
 DONE IN JAVASCRIPT alternative
+
+function multiply(a, b) {
+    // any zero
+    if ([a, b].includes(`0`)) {
+        return `0`
+    }
+
+    // get length of a, b
+    const [lenA, lenB] = [a.length, b.length]
+
+    // set nums for calculate
+    let nums = Array(lenA + lenB).fill(0), index = nums.length - 1
+
+    // reverse loop from a
+    for (let i = lenA - 1; i >= 0; i--) {
+        let key = index--
+
+        // reverse loop from b
+        for (let j = lenB - 1; j >= 0; j--) {
+            const v = +a[i] * +b[j] + nums[key]
+
+            // current
+            nums[key] = v % 10
+            // carry
+            nums[--key] += Math.floor(v / 10)
+        }
+    }
+
+    // remove `0` noneed
+    return nums.join('').replace(/^0+/, '')
+}
