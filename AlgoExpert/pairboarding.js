@@ -79,7 +79,7 @@ None of the above
 
 // A circular linked list can be used to implement
 
-
+// O(n)
 function twoColorable(edges) {
     const black = new Set();
     const white = new Set();
@@ -99,4 +99,89 @@ function twoColorable(edges) {
         }
         return true;
     })
+} //This function has a time of O(n) and a space of O(n)
+
+function twoColorable(edges) {
+  const colors = edges.map(_ => null);
+  colors[0] = true;
+  const stack = [0];
+
+  while (stack.length > 0) {
+    const node = stack.pop();
+    for (const connection of edges[node]) {
+      if (colors[connection] === null) {
+        colors[connection] = !colors[node];
+        stack.push(connection);
+      } else if (colors[connection] === colors[node]) {
+        return false;
+      }
+    }
+  }
+
+  return true;
+} //This function has a time of O(n) and a space of O(n)
+
+//Rotate Array
+function reverse(a, i, j){
+
+    let li = i;
+
+    let ri = j;
+
+    while(li<ri){
+
+        let temp = a[li];
+
+        a[li++] = a[ri];
+
+        a[ri--] = temp;
+    }
+
 }
+var rotate = function(nums, k) {
+
+ // to decrease computation for same result
+  k = k % nums.length;
+
+  // if k is negative
+  // if(k < 0)
+
+  // k = k + nums.length;
+
+
+  //part 1
+  //reverse left part
+  reverse(nums, 0, nums.length-k-1);
+
+  //part 2
+  //reverse right part
+   reverse(nums, nums.length-k, nums.length-1);
+
+  //all
+
+  reverse(nums, 0, nums.length-1);
+
+  return nums;
+};
+
+//Interleaving String
+var isInterleave = function(s1, s2, s3) {
+    const dp = new Map();
+    const solve = (a = 0, b = 0, c = 0) => {
+        if(c == s3.length) return a == s1.length && b == s2.length;
+        const key = [a, b, c].join(':');
+
+        if(dp.has(key)) {
+            // console.log('hit');
+            return dp.get(key);
+        }
+
+        let takeS1 = false, takeS2 = false;
+        if(s1[a] == s3[c]) takeS1 = solve(a + 1, b, c + 1);
+        if(s2[b] == s3[c]) takeS2 = solve(a, b + 1, c + 1);
+
+        dp.set(key, takeS1 || takeS2);
+        return takeS1 || takeS2;
+    }
+    return solve();
+};

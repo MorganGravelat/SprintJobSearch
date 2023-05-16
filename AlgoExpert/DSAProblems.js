@@ -1171,3 +1171,19 @@ var promisePool = async function(functions, n) {
 
 };
 DONE IN JAVASCRIPT alternative
+River Sizes
+You’re given a two-dimensional array (a matrix) of potentially unequal height and width containing only 0’s and 1’s. Each 0 represents land, and each 1 represent part of a river. A river consists of any number of 1s that are either horizontally or vertically adjacent ( but not diagonally adjacent). The number of adjacent 1’s formin a river determine its size.
+
+Note that a river can twist. In other words, it doesn’t havee to be a straight vertical line or a straight horizontal line; it can be L-shaped, for example. Write a function that returns an array of the sizes of all rivers represented in the input matrix. The sizes don’t need to be in any particle order
+
+// River Sizes ANSWER
+// strategy/
+// - Initialize a variable called sizes with a value of an empty array
+// - Initialize a variable called visited with a value of an empty array
+// - Loop through the matrix
+// Edge cases
+// - If the current element is 0
+// - Continue
+// - If the current element is 1
+// - Invoke the traverse function with the matrix, i, j, visited, and sizes
+// - Return sizes
