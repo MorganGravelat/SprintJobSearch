@@ -1171,19 +1171,34 @@ var promisePool = async function(functions, n) {
 
 };
 DONE IN JAVASCRIPT alternative
-River Sizes
-You’re given a two-dimensional array (a matrix) of potentially unequal height and width containing only 0’s and 1’s. Each 0 represents land, and each 1 represent part of a river. A river consists of any number of 1s that are either horizontally or vertically adjacent ( but not diagonally adjacent). The number of adjacent 1’s formin a river determine its size.
 
-Note that a river can twist. In other words, it doesn’t havee to be a straight vertical line or a straight horizontal line; it can be L-shaped, for example. Write a function that returns an array of the sizes of all rivers represented in the input matrix. The sizes don’t need to be in any particle order
+function multiply(a, b) {
+    // any zero
+    if ([a, b].includes(`0`)) {
+        return `0`
+    }
 
-// River Sizes ANSWER
-// strategy/
-// - Initialize a variable called sizes with a value of an empty array
-// - Initialize a variable called visited with a value of an empty array
-// - Loop through the matrix
-// Edge cases
-// - If the current element is 0
-// - Continue
-// - If the current element is 1
-// - Invoke the traverse function with the matrix, i, j, visited, and sizes
-// - Return sizes
+    // get length of a, b
+    const [lenA, lenB] = [a.length, b.length]
+
+    // set nums for calculate
+    let nums = Array(lenA + lenB).fill(0), index = nums.length - 1
+
+    // reverse loop from a
+    for (let i = lenA - 1; i >= 0; i--) {
+        let key = index--
+
+        // reverse loop from b
+        for (let j = lenB - 1; j >= 0; j--) {
+            const v = +a[i] * +b[j] + nums[key]
+
+            // current
+            nums[key] = v % 10
+            // carry
+            nums[--key] += Math.floor(v / 10)
+        }
+    }
+
+    // remove `0` noneed
+    return nums.join('').replace(/^0+/, '')
+}
