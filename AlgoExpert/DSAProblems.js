@@ -1202,3 +1202,31 @@ function multiply(a, b) {
     // remove `0` noneed
     return nums.join('').replace(/^0+/, '')
 }
+//Max Product
+// Objective:
+//     - Given an integer array nums, find a contiguous non-empty subarray within the array that has the largest product, and return the product.
+// Time O(n)
+// Space O(1)
+var maxProduct = function(nums) {
+
+    let result = nums[0]
+    let currMax = nums[0]
+    let currMin = nums[0]
+
+    for (let i=1; i<nums.length; i++) {
+        let localMax = Math.max(currMax * nums[i], nums[i], currMin * nums[i])
+        let localMin = Math.min(currMax * nums[i], nums[i], currMin * nums[i])
+
+        currMax = Math.max(localMax, localMin)
+        currMin = Math.min(localMax, localMin)
+
+        result = Math.max(result, currMax)
+
+
+    }
+
+    return result
+
+
+
+};
