@@ -1230,3 +1230,38 @@ var maxProduct = function(nums) {
 
 
 };
+
+/*
+You are playing the Bulls and Cows game with your friend.
+
+You write down a secret number and ask your friend to guess what the number is. When your friend makes a guess, you provide a hint with the following info:
+
+The number of "bulls", which are digits in the guess that are in the correct position.
+The number of "cows", which are digits in the guess that are in your secret number but are located in the wrong position. Specifically, the non-bull digits in the guess that could be rearranged such that they become bulls.
+Given the secret number secret and your friend's guess guess, return the hint for your friend's guess.
+
+The hint should be formatted as "xAyB", where x is the number of bulls and y is the number of cows. Note that both secret and guess may contain duplicate digits.
+*/
+
+//Solution
+var getHint = function(secret, guess) {
+    let bulls = 0, cows = 0;
+    let secretMap = new Map(), guessMap = new Map();
+
+    for (let i = 0; i < secret.length; i++) {
+        if (secret[i] === guess[i]){
+            bulls++;
+        } else {
+            secretMap.set(secret[i], (secretMap.get(secret[i]) || 0) + 1);
+            guessMap.set(guess[i], (guessMap.get(guess[i]) || 0) + 1);
+        }
+    }
+
+    for (let key of guessMap.keys()) {
+        if (secretMap.has(key)) {
+            cows += Math.min(secretMap.get(key), guessMap.get(key));
+        }
+    }
+
+    return `${bulls}A${cows}B`;
+};
