@@ -1284,3 +1284,20 @@ var maxArea = function (height) {
 
     return maxStoredWater;
 };
+// Remove Nth Node
+var removeNthFromEnd = function(head, n) {
+    let fast = head, slow = head
+    for (let i = 0; i < n; i++) fast = fast.next
+    if (!fast) return head.next
+    while (fast.next) fast = fast.next, slow = slow.next
+    slow.next = slow.next.next
+    return head
+}; //javascript solution
+class Solution:
+    def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
+        fast, slow = head, head
+        for _ in range(n): fast = fast.next
+        if not fast: return head.next
+        while fast.next: fast, slow = fast.next, slow.next
+        slow.next = slow.next.next
+        return head// python solution
