@@ -1301,8 +1301,6 @@ class Solution:
         while fast.next: fast, slow = fast.next, slow.next
         slow.next = slow.next.next
         return head// python solution
-<<<<<<< HEAD
-=======
 
 /*
 Suppose you are at a party with n people labeled from 0 to n - 1 and among them, there may exist one celebrity. The definition of a celebrity is that all the other n - 1 people know the celebrity, but the celebrity does not know any of them.
@@ -1340,7 +1338,7 @@ def findCelebrity(self, n): //Python Version
                     c = i;
                 }
             }
-            
+
             for (let i=0;i<n;i++) {
                 if (i!=c) {
                     if (!knows(i,c) || knows(c,i)) {
@@ -1348,9 +1346,27 @@ def findCelebrity(self, n): //Python Version
                     }
                 }
             }
-            
+
             return c;
-            
+
         };
     };
->>>>>>> a58045b8a73e737eff83c5435634aa591764fb9a
+    //Subbaray Sort with python
+
+def subarraySort(array):
+    leftValue = -1
+    rightValue = -1
+    maxValue = array[0]
+    for i in range(1, len(array)):
+        if array[i] < maxValue:
+            rightValue = i
+            leftValue = i
+        else:
+            maxValue = array[i]
+    minValue = array[len(array)-1]
+    for i in reversed(range(0, len(array))):
+        if array[i] > minValue:
+            rightValue = i
+        else:
+            minValue = array[i]
+    return [leftValue, rightValue]
