@@ -1370,3 +1370,40 @@ def subarraySort(array):
         else:
             minValue = array[i]
     return [leftValue, rightValue]
+
+    //Palindrome Pairs
+    var palindromePairs = function(words) {
+
+        for i, word in enumerate(words):
+
+        if word in backward and backward[word] != i:
+            res.append([i, backward[word]])
+
+        if word != "" and "" in backward and word == word[::-1]:
+            res.append([i, backward[""]])
+            res.append([backward[""], i])
+
+        for j in range(len(word)):
+            if word[j:] in backward and word[:j] == word[j-1::-1]:
+                res.append([backward[word[j:]], i])
+            if word[:j] in backward and word[j:] == word[:j-1:-1]:
+                res.append([i, backward[word[:j]]])
+
+        return res
+    };
+
+//2348. Number of Zero-Filled Subarrays
+/*
+Given an integer array nums, return the number of subarrays filled with 0.
+
+A subarray is a contiguous non-empty sequence of elements within an array.
+*/
+class Solution:
+    def zeroFilledSubarray(self, nums: List[int]) -> int:
+        res=0
+        for x,g in groupby(nums):
+            t=len(list(g))
+
+            if x==0:
+                res+=comb(t+1,2)
+        return res
