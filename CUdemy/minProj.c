@@ -378,3 +378,116 @@ int main() {
     printf("Your weekly pay is %.2lf\n", weeklyPay);
 }
 */
+/*
+Mini project follow along for program that goes through dynamically adding grades to an averager with a while loop
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    //int num = 3;
+
+    //loop 1: 3*3 = 9
+    //loop 2: 3*3*3 = 27
+    //loop 3: 3*3*3*3 = 81
+    //loop 4: 3*3*3*3*3 = 243
+    //get the number, it is 243
+
+    //use while statement
+    /*while (num<=100) {
+        //calculate the power of 3
+        num = num * 3;
+    }
+    printf("the first power of 3 greater than 100 is %d", num);*/
+
+    // give you the number and exp, please use while statement to calculate
+    //the power
+    // 5 ^ 2 = 5 * 5 = 25
+    /*
+    //Exponential Number While loop
+    int number = 5;
+    int result = number;
+    int exp = 5;
+    int count = 1;
+    while (count < exp) {
+        printf("Count:%d / Exp:%d / Number:%d / Result:%d\n", count, exp, number, result);
+        result = result * number;
+        printf("%d\n", result);
+        count += 1;
+    }
+    printf("The answer is: %d", result);
+    */
+    //A class of 10 students, their grade for the quiz are avaialable
+    //Write a program to calculate the class average for the quiz
+    //Use while structure
+
+        //init
+        /*
+        int total = 0;
+        int counter = 1;
+        int students = 10;
+        int grade = 0;
+        int average = 0;
+        printf("%s", "how many students are there?: ");
+        scanf("%d", &students);
+        //get student grades and calculate the average
+        //while counter is less or equal to 10
+        while (counter <= students) {
+            //input student's grade
+            printf("%s", "enter student's grade: ");
+            scanf("%d", &grade);
+            while (grade < 0 || grade > 100) {
+               printf("%s", "Grades must be above 0 and below 100: ");
+               scanf("%d", &grade);
+            }
+            //add the grade to the total
+            total += grade;
+            //increase the counter by 1
+            counter += 1;
+        }
+
+        average = total / students;
+        printf("The average is %d", average);
+        //input student's grade
+        //add the grade to the total
+        */
+        /*
+        //init variables
+        double total = 0;
+        double average = 0;
+        double grade = 0;
+        int counter = 0;
+        //get student's grade, sum the grades. when user enter -1, means end of program
+
+        //get first user input
+        printf("%s", "please enter the grade: ");
+        scanf("%f", &grade);
+
+        while (grade != -1) {
+            total = (double)total + grade;
+            counter += 1;
+            printf("%s", "please enter the grade: ");
+            scanf("%d", &grade);
+        }
+
+        //printf("total is %d, counter is %d", total, counter);
+        //calculate the average and print out the result
+        //converting the data type: explicitly and implicitly
+        average = total /counter;
+        printf("the average of %d is %.2f", counter, average);*/
+
+        //use while structure to print out a pattern
+        //example of 4*4
+        //* * * *
+        //* * * *
+        //* * * *
+        //* * * *
+/*
+        int row = 0;
+        int column = 0;
+        int size = 0;
+
+        printf("%s", "Please enter the size of the table: ");
+        scanf("%d", &size)
+}
+*/
