@@ -586,3 +586,47 @@ int main()
 //     printf("\nI is: %d X is: %d Y is: %d", i, x, y);
 //     return 0;
 // }
+    //double product = 1;
+    //double count = 15;
+    //double quotient = 10;
+    //double devisor = 5;
+    //product *= 2;
+    //product = product * 2;
+
+    //if (count > 10) {
+    //    printf("%s", "Count is greater than 10\n");
+    //}
+
+    //quotient = quotient / devisor;
+    //printf("%lf\n", quotient); //2.000000
+    //quotient /= devisor;
+    //printf("after second devision: %lf\n", quotient); //0.400000
+    //printf("Two digit precision %.2lf\n", 123.4567); //123.46
+    //printf("Three digits to the right %.3f\n", 3.14159); //3.142
+    /* Question 2 and 3
+    int x = 1;
+    int sum = 0;
+    sum += x;
+    printf("The sum is %d", sum);
+    while (sum <= 10) {
+        printf("The sum is %d", sum);
+        sum += x; //ask about x = 10 and not sum
+    }
+    */
+    /*
+    int x;
+    int y;
+    int i = 1;
+    int power = 1;
+    puts("Enter variable x");
+    scanf("%d",&x);
+    puts("Enter variable y");
+    scanf("%d",&y);
+    power *= x;
+    while (i <= y) {
+        printf("It is not equal to y, i is %d", i);
+        i += 1;
+    }
+    printf("This is power %d", power);
+    return 0;
+    */
