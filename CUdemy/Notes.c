@@ -485,3 +485,104 @@ int main()
     the relational operators <, <=, >, and >= have the next highest precedence
     the equality operators == and != have the next highest precedence
 */
+
+
+// Paper View
+// #include <stdio.h>
+
+// int main()
+// {
+//     /*
+//     Question 1 of lab2A
+//     */
+//     double product = 1;
+//     double count = 15;
+//     double quotient = 10;
+//     double devisor = 5;
+//     //a) Multiply the variable product by 2 using the *= operator.
+//     product *= 2;
+//     //b) Multiply the variable product by 2 using the = and * operators.
+//     product = product * 2;
+//     //c) Test whether the value of the variable count is greater than 10.
+//     //If it is, print "Count is greater than 10".
+//     if (count > 10) {
+//         printf("%s", "Count is greater than 10\n");
+//     }
+//     //d)Calculate the remainder after quotient is divided by divisor and assign
+//     //the result to quotient. Write this statement two different ways.
+//     quotient = quotient / devisor;
+//     printf("%lf\n", quotient); //2.000000
+//     quotient /= devisor;
+//     printf("after second devision: %lf\n", quotient); //0.400000
+//     //e) Print the value 123.4567 with two digits of precision. What value is printed?
+//     printf("Two digit precision %.2lf\n", 123.4567); //123.4567
+//     //f) Print the floating-point value 3.14159 with three digits to the right of the
+//     //decimal point. What value is printed
+//     printf("Thee digits to the right %.3f\n", 3.14159); //3.142
+//     /*
+//     Question 2 and 3 of lab2A
+//     */
+//     //a) Define variable x to be of type int and set it to 1.
+//     int x = 1;
+//     //b) Define variable sum to be of type int and set it to 0.
+//     int sum = 0;
+//     //c) Add variable x to variable sum and assign the result to variable sum.
+//     sum += x;
+//     //d) Print "The sum is: " followed by the value of variable sum.
+//     printf("The sum is %d", sum);
+//     /*
+//     Combine the statements from question 2 into a program that calculates
+//     the sum of the integers from 1 to 10.
+//     Use the while statement to loop through the calculation and increment statements.
+//     The loop should terminate when x becomes 11.
+//     */
+//     x = 1;
+//     sum = 0;
+//     while (x <= 10) {
+//         sum += x; // ask about x = 10 and not sum
+//         printf("\nThe sum is: %d\n", sum);
+//         x+=1;
+//     }
+//     /*
+//     Question 4 of lab2A
+//     */
+//     int x;
+//     int y;
+//     //c) Set integer variable i to 1.
+//     int i = 1;
+//     //d) Set integer variable power to 1.
+//     int power = 1;
+//     //a) Input integer variable x with scanf. Use the conversion specification %d.
+//     puts("Enter variable x");
+//     scanf("%d",&x);
+//     //b) Input integer variable y with scanf. Use the conversion specification %d.
+//     puts("Enter variable y");
+//     scanf("%d",&y);
+//     //e) Multiply integer variable power by x and assign the result to power.
+//     power *= x;
+//     while (i <= y) { //g) Test i to see if it’s less than or equal to y in the condition of a while statement.
+//         printf("\nIt is not equal to y, i is %d", i);
+//         //f) Increment variable i by 1.
+//         i += 1;
+//     }
+//     //h) Output integer variable power with printf.
+//     printf("\nPower is %d", power);
+//     /*
+//     Question 5 of lab2A
+//     */
+//     int x;
+//     int y;
+//     int power = 1;
+//     int i = 1;
+//     puts("Enter variable x");
+//     scanf("%d",&x);
+//     puts("Enter variable y");
+//     scanf("%d",&y);
+//     power *= x;
+//     while(i < y){
+//         x *= power;
+//         i += 1;
+//     }
+//     printf("\nI is: %d X is: %d Y is: %d", i, x, y);
+//     return 0;
+// }
