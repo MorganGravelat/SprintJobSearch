@@ -629,4 +629,25 @@ int main()
     }
     printf("This is power %d", power);
     return 0;
+
+
+
+
+    #include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+
+    int n = 1;
+    printf("%s", "N\t10*N\t100*N\t1000*N");
+
+    while (n <= 10) {
+        printf("\n%d\t%d\t%d\t%d", n,n*10,n*100,n*1000);
+        n+=1;
+    }
+
+    return 0;
+}
+
     */
