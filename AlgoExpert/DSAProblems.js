@@ -1498,3 +1498,31 @@ minStack.getMin(); // return -2
 // };
 
 */
+/*
+554. Brick Wall
+There is a rectangular brick wall in front of you with n rows of bricks. The ith row has some number of bricks each of the same height (i.e., one unit) but they can be of different widths. The total width of each row is the same.
+
+Draw a vertical line from the top to the bottom and cross the least bricks. If your line goes through the edge of a brick, then the brick is not considered as crossed. You cannot draw a line just along one of the two vertical edges of the wall, in which case the line will obviously cross no bricks.
+
+Given the 2D array wall that contains the information about the wall, return the minimum number of crossed bricks after drawing such a vertical line.
+
+Done in python
+
+class Solution:
+    def leastBricks(self, A: List[List[int]]) -> int:
+        x = sum(A[0])
+        arr = {}
+        mx=0
+        for i in range(len(A)):
+            for j in range(len(A[i])-1):
+                if j!=0:
+                    A[i][j]+=A[i][j-1]
+                if A[i][j]-1 not in arr:
+                    arr[A[i][j]-1]=0
+                arr[A[i][j]-1]+=1
+                mx = max(mx,arr[A[i][j]-1])
+        return len(A)-mx
+
+
+
+*/
