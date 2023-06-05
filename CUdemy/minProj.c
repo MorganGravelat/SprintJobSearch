@@ -490,4 +490,203 @@ int main()
         printf("%s", "Please enter the size of the table: ");
         scanf("%d", &size)
 }
+
+
+
+
+    //init
+    int row = 0; //counter for number of rows
+    int column = 0; //counter for number of columns
+    int size = 0; //user input size of n*n table
+    //get user input
+    printf("%s", "please enter the size of the table: ");
+    scanf("%d", &size);
+    //print the table
+    while (row < size) { //print for each row
+        if (row == 0 || row == size-1) {
+            while (column < size) { //print each stars in that row
+                printf("%s", "* ");
+                column += 1;
+        }
+        else {
+            //for rows in between
+            // check if it is the first or last column
+            if (column == 0 || column == size - 1) {
+                printf("%s", "* ");
+            }
+            else {
+                printf("%s", "  ")
+            }
+            column += 1;
+        }
+        }
+        row += 1;
+        column = 0;
+        puts(" ");
+    }
+
+*/
+/*
+Working grade averager
+
+    /*
+    //init
+    int row = 0; //counter for number of rows
+    int column = 0; //counter for number of columns
+    int size = 0; //user input size of n*n table
+    //get user input
+    printf("%s", "please enter the size of the table: ");
+    scanf("%d", &size);
+    //print the table
+    while (row < size) { //print for each row
+        if (row == 0 || row == size-1) {
+            while (column < size) { //print each stars in that row
+                printf("%s", "* ");
+                column += 1;
+        }
+        else {
+            //for rows in between
+            // check if it is the first or last column
+            if (column == 0 || column == size - 1) {
+                printf("%s", "* ");
+            }
+            else {
+                printf("%s", "  ")
+            }
+            column += 1;
+        }
+        }
+        row += 1;
+        column = 0;
+        puts(" ");
+    }
+    */
+    //A class of 10 students, their grade for the quiz are avaialable
+    //Write a program to calculate the class average for the quiz
+    //Use while structure
+
+        //init
+        /*
+        int total = 0;
+        int counter = 1;
+        int students = 10;
+        int grade = 0;
+        int average = 0;
+        printf("%s", "how many students are there?: ");
+        scanf("%d", &students);
+        //get student grades and calculate the average
+        //while counter is less or equal to 10
+        while (counter <= students) {
+            //input student's grade
+            printf("%s", "enter student's grade: ");
+            scanf("%d", &grade);
+            while (grade < 0 || grade > 100) {
+               printf("%s", "Grades must be above 0 and below 100: ");
+               scanf("%d", &grade);
+            }
+            //add the grade to the total
+            total += grade;
+            //increase the counter by 1
+            counter += 1;
+        }
+
+        average = total / students;
+        printf("The average is %d", average);
+        //input student's grade
+        //add the grade to the total
+        */
+        /*
+        //init variables
+        double total = 0;
+        double average = 0;
+        int grade = 0; //For the input of -1 the double will break the system. Use int instead.
+        int counter = 0;
+        //get student's grade, sum the grades. when user enter -1, means end of program
+
+        //get first user input
+        printf("%s", "please enter the grade: ");
+        scanf("%d", &grade);
+
+        while (grade != -1.0) {
+            total = total + grade;
+            counter += 1;
+            printf("%s", "please enter the grade: ");
+            scanf("%d", &grade);
+        }
+
+        //printf("total is %d, counter is %d", total, counter);
+        //calculate the average and print out the result
+        //converting the data type: explicitly and implicitly
+        average = (double)total /counter;
+        printf("the average of %d is %.2f", counter, average);
+        */
+       /*
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
+
+int main()
+{
+
+    char grade = 0;
+    printf("%s", "Please enter your grade: ");
+    for (int i = 0; i < 4; i++) {
+        grade = getchar() //getchar will get the first character in stdio
+
+        //printf("char is %c", grade);
+        if (grade != " ") {
+            putchar(grade);
+        }
+    }
+
+/*
+    //scanf("%c", &grade);
+    grade = getchar(); //you can scan a char like this but will only get one character
+    grade = toupper(grade); // this will make lower case inputs appear as uppercase for the switch.
+    switch (grade) {
+case 'A':
+    puts("you get A");
+    break;
+case 'B':
+    puts("you get B");
+    break;
+case 'C':
+    puts("You get C");
+    break;
+case 'D':
+    puts("you get D");
+    break;
+default:
+    puts("Sorry you get F");
+
+    }
+*/
+/*
+    return 0;
+
+}
+
+
+
+//DO WHILE LOOP BELOW
+int main(void)
+{
+    int i = 1;
+    while (i <= 6) {
+        printf("%s", "Using while loop");
+        printf("%d ", i);
+            i++;
+    }
+    i--;
+    puts("");
+    //do while statement below
+    do {
+        printf("%s", "Using do while loop");
+        printf("%d ", i);
+        i--;
+    } while(i > 0); //A do while is guaranteed to run once where a while will only run during the condition being true
+
+    //return 0; only needed if the main does not have (void) inside the parenthesis
+
+}
 */
