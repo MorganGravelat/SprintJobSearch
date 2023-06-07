@@ -850,5 +850,69 @@ int main(void) {
     }
     printf("\nEnd Sum: %d", sum);
 }
+    /*
+    char pattern[] = "";
+    int size = 0;
 
+    puts("Please enter the size of the pattern: ");
+    scanf("%d", &size);
+
+    for (int i = 0; i < size; i++) {
+        strcat(pattern, "*");
+        puts(pattern);
+    }
+    */
+
+    int row = 0;
+    printf("%s", "please enter the row: ");
+    scanf("%d", &row);
+    /*
+    for (int i = 1; i <= row; i++){
+        for (int j = 1; j <= i; j++) {
+            printf("%s", "*");
+        }
+        puts(" ");
+    }
+    for (int i = row; i >= 1; i--){
+        for (int j = 1; j <= i; j++) {
+            printf("%s", "*");
+        }
+        puts(" ");
+    }
+    */
+
+    /*
+    for (int i = 0; i < row; i++){
+        for (int j = row; j > i; j--) {
+            printf("%s", "*");
+        }
+        puts(" ");
+    }
+    *///below prints out 4
+    //****
+    // ***
+    //  **
+    //   *
+    puts(" ");
+    for (int i = 0; i < row; i++){
+        for (int j = 0; j < i; j++) {
+            printf("%s", " ");
+        }
+        for (int k = i; k < row; k++) {
+            printf("%s", "*");
+        }
+        puts(" ");
+    }
+    puts (" ");
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < row; j++) {
+            if (j < i) {
+                printf("%s", " ");
+            }
+            else {
+                printf("%s", "*");
+            }
+        }
+        puts(" ");
+    }
 */
