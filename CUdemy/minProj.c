@@ -667,7 +667,6 @@ default:
 }
 
 
-
 //DO WHILE LOOP BELOW
 int main(void)
 {
@@ -689,4 +688,167 @@ int main(void)
     //return 0; only needed if the main does not have (void) inside the parenthesis
 
 }
+*/
+/*
+break and continue example
+int main(void)
+{
+    for (int i = 0; i < 10; i++) {
+        if (i == 6) {
+            continue; //Will print 012345789 //or break prints 012345 if you want to completely cancedl out the loop after 6
+        }
+        printf("%d", i);
+    }
+    puts("\njump out of the loop");
+    //return 0; only needed if the main does not have (void) inside the parenthesis
+
+}
+'
+#include <stdio.h>
+#include <string.h>
+
+int main(void) {
+    int a = 0;
+    int b = 3;
+
+    //truth table
+    // a    b  a && b
+    // 0    0  0
+    // 0    1  0
+    // 1    0  0
+    // 1    1  1
+}
+
+
+//ask user to input the size, then please print out below pattern.
+// if user enter 4, the pattern should be
+//*
+//**
+//***
+//****
+
+#include <stdio.h>
+#include <string.h>
+
+int main(void) {
+    char a = "*"
+    char[] = "";
+    int size = 0;
+
+    puts("Please enter the size of the pattern: ");
+    scanf("%d", &size);
+
+    for (int i = 0; i < size; i++) {
+        strcat(a, "*");
+        puts(a);
+    }
+
+}
+
+#include <stdio.h>
+//#include <stdlib.h>
+//#include <ctype.h>
+//#include <string.h> //my version used this but below is the no library needed version
+
+int main(void) {
+    /*
+    char pattern[] = "";
+    int size = 0;
+
+    puts("Please enter the size of the pattern: ");
+    scanf("%d", &size);
+
+    for (int i = 0; i < size; i++) {
+        strcat(pattern, "*");
+        puts(pattern);
+    }
+    */
+/*
+    int row = 0;
+    printf("%s", "please enter the row: ");
+    scanf("%d", &row);
+
+    for (int i = 1; i <= row; i++){
+        for (int j = 1; j <= i; j++) {
+            printf("%s", "*");
+        }
+        puts(" ");
+    }
+    puts (" ");
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < row; j++) {
+            if (j < i) {
+                printf("%s", " ");
+            }
+            else {
+                printf("%s", "*");
+            }
+        }
+        puts(" ");
+    }
+}
+
+*/
+
+/*
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+int main(void) {
+    int sum; //a) Sum the odd integers between 1 and 99 using a for statement. Use the integer variables sum and count.
+    int x = 1;
+    for (int i = 1; i < 100; i++) {
+        if (i % 2 != 0) {
+            sum += i;
+            printf("Sum: %d and I: %d\n", sum,i);
+        }
+    }
+    //b) Print the value 333.546372 in a field width of 15 characters with precisions of 1, 2, 3, 4 and 5. Left-align the output. What are the five values that print?
+    printf("\n%-15.1f \n%-15.2f \n%-15.3f \n%-15.4f \n%-15.5f",333.546372,333.546372,333.546372,333.546372,333.546372);
+    //c) Calculate the value of 2.5 raised to the power of 3 using the pow function. Print the result with a precision of 2 in a field width of 10 positions. What is the value that prints?
+    printf("\n2.5 to the power of 3: %10.2f", pow(2.5,3));
+    puts("");
+    //d) Print the integers from 1 to 20 using a while loop and the counter variable x. Print only five integers per line. [Hint: Use the calculation x % 5. When this is 0, print a newline character, otherwise print a tab character.]
+    while (x <= 20) {
+        if (x % 5 == 0) {
+            printf("%d\n", x);
+        }
+        else {
+            printf("%d\t", x);
+        }
+        x++;
+
+    }
+    puts("");
+    //e) Repeat Exercise 4.3(d) using a for statement
+    for (int i = 1; i <= 20; i++) {
+        if (i % 5 == 0) {
+            printf("%d\n", i);
+        }
+        else {
+            printf("%d\t", i);
+        }
+    }
+}
+
+
+
+//LAB 3B
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+int main(void) {
+    int sum = 0;
+
+    for (int i = 0; i <= 1000; i++) {
+        if (i % 2 == 0 && i % 3 != 0) {
+            sum += i;
+            printf("\nCurrent Sum: %d AND i: %d", sum, i);
+        }
+    }
+    printf("\nEnd Sum: %d", sum);
+}
+
 */
