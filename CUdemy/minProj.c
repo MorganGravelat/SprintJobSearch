@@ -915,4 +915,120 @@ int main(void) {
         }
         puts(" ");
     }
+
+    //divide and conquer
+    //standard library function, include the proper headers to use those functions. Like printf, scanf
+    //quick and easy to use
+    //standard library functions are portable, they work on all systems
+
+
+    /*
+COP3223 Summer 2023 Assignment 1_1
+Copyright 2023 Gravelat Morgan
+*/
+
+#include <stdio.h>
+
+int main(void) {
+    int hours;        // Stores the hours worked each time you input the amount for an employee
+    float hourly;     // Stores the hourly pay made by the employee
+    float salary;     // Temporary variable to store the overall amount made by the employee
+
+    // This loop will run forever until it is broken out of by the if statement below
+    while (1) {
+        // Prompt for the user to input the number of hours the employee worked
+        printf("%s", "Enter # of hours worked (-1 to end): ");
+        scanf("%d", &hours);
+
+        // If the user's input for hours is -1, then the loop is terminated
+        if (hours == -1) {
+            break;
+        }
+
+        // Prompt for the user to input the hourly pay of the employee
+        printf("%s", "Enter hourly rate of the worker ($00.00): ");
+        scanf("%f", &hourly);
+
+        // Calculate the salary based on whether the hours worked exceed 40 hours or not
+        if (hours > 40) {
+            // For hours over 40, calculate the salary with time and a half pay
+            salary = (hourly * 40) + ((hourly * 1.5) * (hours - 40));
+        }
+        else {
+            // For hours less than or equal to 40, calculate the salary without overtime
+            salary = hourly * hours;
+        }
+
+        // Print the calculated salary of the employee to the console
+        printf("Salary is $%.2f\n\n\n", salary);
+    }
+
+    return 0;
+}
+
+
+
+/*
+COP3223 Summer 2023 Assignment 1_3
+Copyright 2023 Gravelat Morgan
+*/
+
+#include <stdio.h>
+
+int main(void) {
+    int rows, i, j, space, asterisks;
+
+    // Prompt the user to input an odd number between 1 and 19 for the rows of the diamond
+    printf("Please enter an odd number of rows between 1 and 19: ");
+    scanf("%d", &rows);
+
+    // Ensure the user inputs an odd number between 1 and 19
+    while (rows % 2 == 0 || rows < 1 || rows > 19) {
+        printf("Please enter an odd number of rows between 1 and 19: ");
+        scanf("%d", &rows);
+    }
+
+    // Create the upper half of the diamond
+    for (i = 1; i <= rows; i += 2) {
+        // Calculate the space before the asterisk
+        space = (rows - i) / 2;
+        // Calculate the number of asterisks per row
+        asterisks = i;
+
+        // Print the space that leads the tip of the diamond
+        for (j = 1; j <= space; j++) {
+            printf("%s", " ");
+        }
+
+        // Print the asterisks for the top of the diamond
+        for (j = 1; j <= asterisks; j++) {
+            printf("%s", "*");
+        }
+
+        //Skip to the next line for each iteration of the loop
+        printf("\n%s", "");
+    }
+
+    // Create the lower half of the diamond
+    for (i = rows - 2; i >= 1; i -= 2) {
+        // Calculate the space before the asterisk
+        space = (rows - i) / 2;
+        // Calculate the number of asterisks per row
+        asterisks = i;
+
+        // Print the leading spaces
+        for (j = 1; j <= space; j++) {
+            printf("%s", " ");
+        }
+
+        // Print the asterisks for the lower part of the diamond
+        for (j = 1; j <= asterisks; j++) {
+            printf("%s", "*");
+        }
+
+        //Skip to the next line for each iteration of the loop
+        printf("\n%s", "");
+    }
+}
+
 */
