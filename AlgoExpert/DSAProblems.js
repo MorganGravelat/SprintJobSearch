@@ -1541,4 +1541,63 @@ var checkPossibility = function(N) {
                 return false
     return true
 };
+
+
+
+
+4Sum
+Medium
+9.5K
+1.1K
+company
+Amazon
+company
+Bloomberg
+company
+Apple
+Given an array nums of n integers, return an array of all the unique quadruplets [nums[a], nums[b], nums[c], nums[d]] such that:
+
+0 <= a, b, c, d < n
+a, b, c, and d are distinct.
+nums[a] + nums[b] + nums[c] + nums[d] == target
+You may return the answer in any order.
+
+Example 1:
+
+Input: nums = [1,0,-1,0,-2,2], target = 0
+Output: [[-2,-1,1,2],[-2,0,0,2],[-1,0,0,1]]
+Example 2:
+
+Input: nums = [2,2,2,2,2], target = 8
+Output: [[2,2,2,2]]
+
+var fourSum = function (nums, target) {
+    // TWO POINTERS
+    nums.sort((a, b) => +a - +b)
+    let ans = []
+
+    for (let i = 0; i < nums.length - 3; i++) {
+        if (i > 0 && nums[i - 1] === nums[i]) continue // preventing i dupes
+        for (let j = i + 1; j < nums.length - 2; j++) {
+            if (j > i + 1 && nums[j - 1] === nums[j]) continue // preventing j dupes
+            let k = j + 1
+            let l = nums.length - 1
+            while (k < l) {
+                let sum = nums[i] + nums[j] + nums[k] + nums[l]
+                if (sum === target) {
+                    ans.push([nums[i], nums[j], nums[k], nums[l]])
+                    k++
+                    while (nums[k - 1] === nums[k] && k < l) k++ // preventing k dupes
+                } else if (sum > target) l--
+                else k++
+            }
+        }
+    }
+
+    // preventing i, j & k dupes is enough! this will take care of l dupes
+
+    // TC => O(N^3 + N*LOG(N)) ~ 10^6 iterations
+    // SC => O(1)
+    return ans
+};
 */
