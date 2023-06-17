@@ -1102,4 +1102,42 @@ int main(void) {
     */
     printf("Hello");
 
+
+
+    //Djistance formula simple project
+    #include <stdio.h>
+#include <math.h>
+
+// Helper function that calculates the distance
+double distance(double x1, double y1, double x2, double y2) {
+    // Calculating the difference between x and y
+    double dist_x = x2 - x1;
+    double dist_y = y2 - y1;
+
+    // Using the formula x2 - x1^2 and y2 - y1^2 with the sqrt() and pow() math.h functions
+    return sqrt(pow(dist_x, 2) + pow(dist_y, 2));
+}
+
+double main() {
+    double x1, y1, x2, y2;
+
+    // Prompting the user for the first positions x and y values
+    printf("Enter the first points X and Y coordinates Enter(x then y):\n");
+    scanf("%lf %lf", &x1, &y1);
+
+    // Prompting the user for the second positions x and y values
+    printf("Enter the second points X and Y coordinates Enter(x then y):\n");
+    scanf("%lf %lf", &x2, &y2);
+
+    // Calling the distance helper function to calculate the distance
+    //  between the two points and return the value to dist
+    double dist = distance(x1, y1, x2, y2);
+
+    // Printing the calculated distance with three decimals
+    printf("The distance between these points is: %.3lf\n", dist);
+
+    return dist;
+}
+
+
 */
