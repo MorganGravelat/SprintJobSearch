@@ -1600,4 +1600,71 @@ var fourSum = function (nums, target) {
     // SC => O(1)
     return ans
 };
+
+211. Design Add and Search Words Data Structure
+
+Design a data structure that supports adding new words and finding if a string matches any previously added string.
+
+Implement the WordDictionary class:
+
+WordDictionary() Initializes the object.
+void addWord(word) Adds word to the data structure, it can be matched later.
+bool search(word) Returns true if there is any string in the data structure that matches word or false otherwise. word may contain dots '.' where dots can be matched with any letter.
+
+
+var TrieNode = function(char) {
+    this.char = char;
+    this.children = new Map();
+    this.terminator = false;
+}
+
+TrieNode.prototype.toString = function() {
+    return `[TrieNode] ${this.char}`;
+}
+
+var WordDictionary = function() {
+    this.root = new TrieNode("*");
+};
+
+/**
+ * @param {string} word
+ * @return {void}
+ */
+WordDictionary.prototype.addWord = function(word = "") {
+    var node = this.root;
+
+    for (var char of word) {
+        if (! node.children.has(char)) {
+            node.children.set(char, new TrieNode(char));
+        }
+        node = node.children.get(char);
+    }
+
+    node.terminator = true;
+};
+
+/**
+ * @param {string} word
+ * @return {boolean}
+ */
+WordDictionary.prototype.search = function(word, node = this.root) {
+    for (var i = 0; i < word.length; i ++) {
+        var char = word[i];
+        if (char == ".") {
+            for (var child of node.children.values()) {
+                if (this.search(word.substring(i+1), child)) {
+                    return true;
+                }
+            }
+            return false;
+        }
+        else if (node.children.has(char)) {
+            node = node.children.get(char);
+        } else {
+            return false;
+        }
+    }
+
+    return node.terminator;
+};
 */
