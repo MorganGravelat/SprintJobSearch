@@ -1667,4 +1667,56 @@ WordDictionary.prototype.search = function(word, node = this.root) {
 
     return node.terminator;
 };
+
+
+//139. Word Break
+Given a string s and a dictionary of strings wordDict, return true if s can be segmented into a space-separated sequence of one or more dictionary words.
+
+Note that the same word in the dictionary may be reused multiple times in the segmentation.
+
+
+
+Example 1:
+
+Input: s = "leetcode", wordDict = ["leet","code"]
+Output: true
+Explanation: Return true because "leetcode" can be segmented as "leet code".
+Example 2:
+
+Input: s = "applepenapple", wordDict = ["apple","pen"]
+Output: true
+Explanation: Return true because "applepenapple" can be segmented as "apple pen apple".
+Note that you are allowed to reuse a dictionary word.
+Example 3:
+
+Input: s = "catsandog", wordDict = ["cats","dog","sand","and","cat"]
+Output: false
+
+/**
+ * @param {string} s
+ * @param {string[]} wordDict
+ * @return {boolean}
+ */
+const wordBreak = (s, wordDict) => {
+	// We break down the word each recursive call
+	// Base case is the broken down word becomes an empty string, which means we found a path
+    if(!s) return true;
+
+	// We need to loop everyword in the wordDict
+    for(let word of wordDict) {
+		// indexOf will give us the prefix START of the word we pass in
+        // So if s.indexOf(word) is 0, we know the word is the prefix
+        if(s.indexOf(word) === 0) {
+			// If they match, we continue our recursion
+			// We pass in the NEW s with the word sliced from the prefix, we also need to pass wordDict
+			// If we ever hit our base case, this will evaluate to true and return true overall
+            if(wordBreak(s.slice(word.length), wordDict)) {
+                return true;
+            }
+        }
+    }
+
+	// If we never make it to a base case, we have no answers
+    return false;
+};
 */
