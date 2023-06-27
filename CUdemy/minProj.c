@@ -1140,4 +1140,73 @@ double main() {
 }
 
 
+
+/*
+COP3223 Summer 2023 Assignment 2_1
+Copyright 2023 Gravelat Morgan
+*/
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+// Function to generate a random number within the specified difficulty level
+int numberPicker(int diff) {
+    int num;
+    if (diff == 1) {
+        num = rand() % 10 + 1;   // Generating a random number between 1 and 10 (inclusive)
+    } else if (diff == 2) {
+        num = rand() % 100 + 1;  // Generating a random number between 1 and 100 (inclusive)
+    } else {
+        num = rand() % 1000 + 1; // Generating a random number between 1 and 1000 (inclusive)
+    }
+
+    return num;
+}
+
+int main(void) {
+    int play = 1;         // Variable to control the game loop
+    int difficulty;       // Variable that holds the difficulty setting of the game per run
+    int number;           // Variable that holds the number that the player is trying to guess each game
+    int guess;            // Variable that holds the guess the user gave
+    int guesses = 0;      // Counter to keep track of the number of guesses
+
+    srand(time(NULL));   // Seed the random number generator with the current time
+
+    while (play) {
+        printf("Let's play Guess the Number\n");
+        printf("Pick a difficulty level (1, 2, 3): ");
+        scanf("%d", &difficulty);  // Prompt the user to choose the difficulty level
+
+        number = numberPicker(difficulty);  // Generate a random number based on the chosen difficulty
+
+        printf("I have my number. What's your guess? ");
+        scanf("%d", &guess);
+        guesses++;
+
+        while (guess != number && guesses < 8) {  // Keep looping until the guess is correct or the maximum number of guesses is reached
+            guesses++;
+            if (guess > number) {
+                printf("Too high. Guess again: ");  // Provide feedback if the guess is too high
+            } else {
+                printf("Too low. Guess again: ");   // Provide feedback if the guess is too low
+            }
+            scanf("%d", &guess);  // Prompt the user for the next guess
+        }
+
+        if (guesses < 8) {
+            printf("You got it in %d guesses!\n", guesses);  // Display the number of guesses if the number is correctly guessed
+        } else {
+            printf("Better luck next time\n");  // Display a message if the maximum number of guesses is reached
+        }
+
+        guesses = 0;  // Reset the guess counter for the next game
+        printf("Play again? (1 for yes or 0 for no): ");
+        scanf("%d", &play);  // Prompt the user if they want to play again
+    }
+
+    return 0;
+}
+
+
 */
