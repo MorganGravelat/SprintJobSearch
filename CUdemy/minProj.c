@@ -1209,4 +1209,127 @@ int main(void) {
 }
 
 
+/**
+ * @param {string} s
+ * @param {string} t
+ * @return {boolean}
+ */
+var isOneEditDistance = function(s, t) {
+  const len = Math.max(s.length, t.length)
+  for (let i = 0; i < len; i++) {
+    if (s[i] !== t[i]) {
+      return s.slice(i) === t.slice(i+1)
+        || s.slice(i+1) === t.slice(i)
+        || s.slice(i+1) === t.slice(i+1)
+    }
+  }
+  return false;
+};
+
 */
+/*
+
+    Poker Shuffle C Program
+
+*/
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+#define SUITS 4
+#define FACES 13
+#define CARDS 52
+
+// Prototypes
+void shuffle(int deck[][FACES]);
+void deal(int deck[][FACES], const char *face[], const char *suit[], int hand[][2]);
+int hasPair(const int hand[][2]);
+int hasTwoPairs(const int hand[][2]);
+int hasThreeOfAKind(const int hand[][2]);
+int hasFourOfAKind(const int hand[][2]);
+int hasFlush(const int hand[][2]);
+int hasStraight(const int hand[][2]);
+
+int main(void) {
+    // Creating deck array
+    int deck[SUITS][FACES] = {0};
+
+    srand(time(NULL)); // Setting time for random generation
+    shuffle(deck); // Shuffling deck
+
+    // Creating suits array
+    const char *suit[SUITS] = {"Hearts", "Diamonds", "Clubs", "Spades"};
+
+    // Creating face array
+    const char *face[FACES] = {"Ace", "Deuce", "Three", "Four", "Five",
+                               "Six", "Seven", "Eight", "Nine", "Ten",
+                               "Jack", "Queen", "King"};
+
+    int hand[5][2] = {0}; // Creating array for hand information
+    deal(deck, face, suit, hand); // Running the deal function with all the necessary arguments
+
+    // If statements to check for each kind of hand possibility
+    if (hasPair(hand)) {
+        printf("The hand has a pair.\n");
+    }
+
+    if (hasTwoPairs(hand)) {
+        printf("The hand has two pairs.\n");
+    }
+
+    if (hasThreeOfAKind(hand)) {
+        printf("The hand has three of a kind.\n");
+    }
+
+    if (hasFourOfAKind(hand)) {
+        printf("The hand has four of a kind.\n");
+    }
+
+    if (hasFlush(hand)) {
+        printf("The hand has a flush.\n");
+    }
+
+    if (hasStraight(hand)) {
+        printf("The hand has a straight.\n");
+    }
+
+    return 0;
+}
+
+// Shuffle the deck
+void shuffle(int deck[][FACES]) {
+    // Randomly choosing slots for the cards
+    for (size_t card = 1; card <= CARDS; ++card) {
+        size_t row = 0; // Row number
+        size_t column = 0; // Column number
+
+        // Do-while structure to choose locations until empty slot is found
+        do {
+            row = rand() % SUITS;
+            column = rand() % FACES;
+        } while(deck[row][column] != 0);
+
+        deck[row][column] = card; // Places card data into chosen spot
+    }
+}
+
+// Function that deals out the hand
+void deal(int deck[][FACES], const char *face[], const char *suit[], int hand[][2]) {
+    // Chooses a card for each card in the user's hand
+    for (size_t card = 1; card <= 5; ++card) {
+        // Loops through the rows in the deck
+        for (size_t row = 0; row < SUITS; ++row) {
+            // Loops through the current row's columns
+            for (size_t column = 0; column < FACES; ++column) {
+                // If a current card is there, it displays
+                if (deck[row][column] == card) {
+                    printf("%5s of %-8s\n", face[column], suit[row]); // Should still be two column format
+                    hand[card - 1][0] = column; // Stores the face value in the hand
+                    hand[card - 1][1] = row; // Stores the suit value in the hand
+                }
+            }
+        }
+    }
+}
