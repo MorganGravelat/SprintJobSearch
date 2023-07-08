@@ -1351,3 +1351,60 @@ int hasPair(const int hand[][2]) {
 
     return 0; // No pair found
 }
+// Determine if hand has two pairs
+int hasTwoPairs(const int hand[][2]) {
+    int frequency[FACES] = {0}; // array to store frequency of each face value
+    int pairCount = 0; // count of pairs
+
+    // Count the frequency of each face value
+    for (int i = 0; i < 5; ++i) {
+        frequency[hand[i][0]]++;
+    }
+
+    // Check if any face value has a frequency of 2
+    for (int i = 0; i < FACES; ++i) {
+        if (frequency[i] == 2) {
+            pairCount++;
+        }
+    }
+
+    return pairCount == 2; // Two pairs found if the pair count is 2
+}
+
+// Determine if hand has three of a kind
+int hasThreeOfAKind(const int hand[][2]) {
+    int frequency[FACES] = {0}; // array to store frequency of each face value
+
+    // Count the frequency of each face value
+    for (int i = 0; i < 5; ++i) {
+        frequency[hand[i][0]]++;
+    }
+
+    // Check if any face value has a frequency of 3
+    for (int i = 0; i < FACES; ++i) {
+        if (frequency[i] == 3) {
+            return 1; // Three of a kind found
+        }
+    }
+
+    return 0; // No three of a kind found
+}
+
+// Determine if hand has four of a kind
+int hasFourOfAKind(const int hand[][2]) {
+    int frequency[FACES] = {0}; // array to store frequency of each face value
+
+    // Count the frequency of each face value
+    for (int i = 0; i < 5; ++i) {
+        frequency[hand[i][0]]++;
+    }
+
+    // Check if any face value has a frequency of 4
+    for (int i = 0; i < FACES; ++i) {
+        if (frequency[i] == 4) {
+            return 1; // Four of a kind found
+        }
+    }
+
+    return 0; // No four of a kind found
+}
