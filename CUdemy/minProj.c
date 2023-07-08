@@ -1333,3 +1333,21 @@ void deal(int deck[][FACES], const char *face[], const char *suit[], int hand[][
         }
     }
 }
+// Determine if hand has a pair
+int hasPair(const int hand[][2]) {
+    int frequency[FACES] = {0}; // array to store frequency of each face value
+
+    // Count the frequency of each face value
+    for (int i = 0; i < 5; ++i) {
+        frequency[hand[i][0]]++;
+    }
+
+    // Check if any face value has a frequency of 2
+    for (int i = 0; i < FACES; ++i) {
+        if (frequency[i] == 2) {
+            return 1; // Pair found
+        }
+    }
+
+    return 0; // No pair found
+}
