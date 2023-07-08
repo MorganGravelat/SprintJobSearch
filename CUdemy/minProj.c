@@ -1408,3 +1408,41 @@ int hasFourOfAKind(const int hand[][2]) {
 
     return 0; // No four of a kind found
 }
+// Determine if hand hasa flush
+int hasFlush(const int hand[][2]) {
+    int suit = hand[0][1]; // Suit of the first card
+
+    // Check if all cards have the same suit
+    for (int i = 1; i < 5; ++i) {
+        if (hand[i][1] != suit) {
+            return 0; // Not a flush
+        }
+    }
+
+    return 1; // Flush found
+}
+
+// Determine if hand has a straight
+int hasStraight(const int hand[][2]) {
+    int frequency[FACES] = {0}; // array to store frequency of each face value
+
+    // Count the frequency of each face value
+    for (int i = 0; i < 5; ++i) {
+        frequency[hand[i][0]]++;
+    }
+
+    // Check for a straight starting from Ace
+    if (frequency[0] && frequency[1] && frequency[2] && frequency[3] && frequency[12]) {
+        return 1; // Straight found
+    }
+
+    // Check for a straight starting from other face values
+    for (int i = 1; i <= 9; ++i) {
+        if (frequency[i] && frequency[i+1] && frequency[i+2] && frequency[i+3] && frequency[i+4]) {
+            return 1; // Straight found
+        }
+    }
+
+    return 0; // No straight found
+}
+// END OF POKER HAND PROGRAM
