@@ -1720,3 +1720,31 @@ const wordBreak = (s, wordDict) => {
     return false;
 };
 */
+var customSortString = function (order, s) {
+    let sMap = {};
+    let d = ``;
+    let e = ``;
+
+    for (let i of s) {
+      sMap[i] ? (sMap[i] += 1) : (sMap[i] = 1);
+    }
+
+    //injecting the sorted keys into the final string
+    for (let i of order) {
+      if (Object.keys(sMap).includes(i)) {
+        console.log("hemlo", i);
+        d += i.repeat(sMap[i]);
+        delete sMap[i];
+      }
+    }
+
+    //sorting the remaining  charcters based on their ascending order
+    sMap = Object.entries(sMap).sort((a, b) => a[0] - b[0]);
+
+    //injecting the remaining characters
+    for (let i of sMap) {
+      d += i[0].repeat(i[1]);
+    }
+
+    return d;
+  };
