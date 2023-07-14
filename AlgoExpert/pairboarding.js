@@ -120,3 +120,8 @@ function twoColorable(edges) {
 
   return true;
 } //This function has a time of O(n) and a space of O(n)
+
+// Tower of Hanoi is easy to solve recursively, but can you solve it iteratively? Write a function that takes an integer n and returns the minimum number of moves to solve the puzzle.
+function towerHanoi(discs) {
+	return Math.pow(2, discs) - 1;
+}

@@ -1748,3 +1748,22 @@ var customSortString = function (order, s) {
 
     return d;
   };
+
+  //Find if there is any 7 in the arraay of numbers no matter how long they are.
+let myFunc = num => Number(num); //converts string to number
+
+function sevenBoom(arr) {
+	for (let i = 0; i < arr.length; i++) {
+		let tempArr = Array.from(String(arr[i]), myFunc); // converts number to string and then to array
+		console.log(tempArr)
+			if (tempArr.includes(7)) {
+				console.log("Boom!");
+				return "Boom!";
+			}
+	}
+	return "there is no 7 in the array"
+}
+//ONE LINER
+function sevenBoom(arr) {
+    return arr.map(ele => String(ele)).join().indexOf("7") >= 0 ? "Boom!" : "there is no 7 in the array"
+}
