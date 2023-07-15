@@ -125,3 +125,40 @@ function twoColorable(edges) {
 function towerHanoi(discs) {
 	return Math.pow(2, discs) - 1;
 }
+
+
+/*
+Jake is a very habitual person. He eats breakfast at 7:00 a.m. each morning, lunch at 12:00 p.m. and dinner at 7:00 p.m. in the evening.
+
+Create a function that takes in the current time as a string and determines the duration of time before Jake's next meal. Represent this as an array with the first and second elements representing hours and minutes, respectively.
+
+Examples
+timeToEat("2:00 p.m.") ➞ [5, 0]
+// 5 hours until the next meal, dinner
+
+timeToEat("5:50 a.m.") ➞ [1, 10]
+// 1 hour and 10 minutes until the next meal, breakfast
+*/
+function timeToEat(currentTime) {
+	let [time, meridiem] = currentTime.split(" ");
+    let [hour, minute] = time.split(":");
+
+    hour = parseInt(hour);
+    meridiem.startsWith("p") ? hour += 12 : hour = hour;
+    minute = parseInt(minute);
+
+    if (hour < 7 || hour >= 19) {
+        if (hour < 12) {
+            hour += 12
+            console.log(Math.abs(7-hour), 59-minute)
+        }
+    } else if (hour < 12) {
+        console.log(12 - hour, 59 - minute)
+    } else {
+        console.log(19 - hour, 59 - minute)
+    }
+
+
+}
+
+timeToEat("5:50 a.m.")
