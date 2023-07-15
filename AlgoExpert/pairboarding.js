@@ -162,3 +162,79 @@ function timeToEat(currentTime) {
 }
 
 timeToEat("5:50 a.m.")
+function timeToEat(currentTime) {
+    let [time, meridiem] = currentTime.split(" ");
+    let [hour, minute] = time.split(":");
+
+    hour = parseInt(hour);
+    if (meridiem.startsWith("p")) {
+      hour += 12; // Convert to 24-hour format if meridiem is "p.m."
+    }
+    minute = parseInt(minute);
+
+    const breakfastTime = { hour: 7, minute: 0 };
+    const lunchTime = { hour: 12, minute: 0 };
+    const dinnerTime = { hour: 19, minute: 0 };
+
+    let nextMeal;
+
+    if (
+      hour < breakfastTime.hour ||
+      (hour === breakfastTime.hour && minute < breakfastTime.minute)
+    ) {
+      nextMeal = breakfastTime;
+    } else if (
+      hour < lunchTime.hour ||
+      (hour === lunchTime.hour && minute < lunchTime.minute)
+    ) {
+      nextMeal = lunchTime;
+    } else if (
+      hour < dinnerTime.hour ||
+      (hour === dinnerTime.hour && minute < dinnerTime.minute)
+    ) {
+      nextMeal = dinnerTime;
+    } else {
+      nextMeal = breakfastTime;
+      nextMeal.hour += 24;
+    }
+
+    let durationHours = nextMeal.hour - hour;
+    let durationMinutes = nextMeal.minute - minute;
+
+    if (durationMinutes < 0) {
+      durationHours--;
+      durationMinutes += 60;
+    }
+
+    return [durationHours, durationMinutes];
+  }
+
+
+
+
+  function findValidIPAddresses(string) {
+    if (string.length < 4) return [];
+
+    let l = [];
+    for (let i = 1; i < string.length - 2; i++) {
+      for (let j = i + 1; j < string.length - 1; j++) {
+        for (let k = j + 1; k < string.length; k++) {
+          let a = [string.slice(0, i), string.slice(i, j), string.slice(j, k), string.slice(k)];
+          let isValid = true;
+
+          for (let s of a) {
+            if (parseInt(s) > 255 || s.length !== String(parseInt(s)).length) {
+              isValid = false;
+              break;
+            }
+          }
+
+          if (isValid) {
+            l.push(a.join("."));
+          }
+        }
+      }
+    }
+
+    return l;
+  }
