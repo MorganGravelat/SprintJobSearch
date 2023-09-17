@@ -26,3 +26,19 @@ public class Main {
 		System.out.println(num1 + "/" + num2 + " = " + ((double)num1/num2) );//(double) is a temporary type cast
 		System.out.println(num1 + "/" + num2 + " = " + (num1%num2) );
 		*/
+		//System.out.printf("[%10.2f]", 120.231254); //just like in c conversion specifiers
+
+		//	String name1 = "abc", name2 = "abc";
+		//	if ( name1 == name2 ) System.out.println("Same");
+		//	else System.out.println("Not the Same");
+		//	String name1 = "abc", name2 = new String("abc");
+		//	if ( name1.compareTo(name2) == 0 ) System.out.println("Same");
+		//	else System.out.println("Not the Same");
+		//	String name1 = "abc", name2 = new String("aBc");
+		//	if ( name1.compareToIgnoreCase(name2) == 0 ) System.out.println("Same");
+		//	else System.out.println("Not the Same");
+			//String name1 = "abc", name2 = new String("abc");
+			//if ( name1.equals(name2) == true ) System.out.println("Same");
+			//else System.out.println("Not the Same");
+	}
+}
