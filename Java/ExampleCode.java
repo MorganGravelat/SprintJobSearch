@@ -99,3 +99,49 @@ public class main {
 
 }
 ////////////////NEXT FILE
+
+public class Main { // NO fields in the class once main is created inside as a method and just the 1 method of main
+
+	public void nonStaticMethod () { //If within the same class it can be public or private it won't matter
+		System.out.println("I am from the Non Static Method");
+	}
+
+	public static void staticMethod() { //TEST TEST TEST you have to know how to access private fields from outside the class with getters and setters
+		System.out.println("I am from the Static Method...");
+	}
+
+	public void anotherNonStaticMethod() {
+		nonStaticMethod(); //Non static methods can call others with no problem
+	}
+
+	int nonStaticInt; //initialized as 0
+	static int staticInt; // static int ! int static
+
+	public static void main(String[] args) {
+
+		int nonStaticData;
+		static int staticData;
+
+		//You can run MyClass statmethods without an object of that class inside this class Main
+		//MyClass.staticMethod(); //This will run the static method even before object creation because it is static
+
+		//MyClass myObject = null;
+		//((MyClass)null).staticMethod(); //Even type converting a null object into an object MyClass is enough to make the static work USELESS BUT FUN TO KNOW
+		MyClass myObject = new MyClass();
+		//myObject.staticMethod();
+		myObject.nonStaticMethod(); // You need the created myObject to run this one
+
+
+	}
+}
+
+
+class MyClass {
+	public static void staticMethod() { //If you want all objects of that class to say the same thing make it static
+		System.out.println("From the Static Method...");
+	}
+
+	public void nonStaticMethod() {
+		System.out.println("From the NON-Static Method...");
+	}
+}
