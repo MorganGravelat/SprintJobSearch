@@ -42,3 +42,25 @@ public class Main {
 			//else System.out.println("Not the Same");
 	}
 }
+////////////////NEXT FILE
+import java.util.Scanner;
+
+public class main {
+
+	public static void main(String[] args) {
+		String student_id = ""; //Setting up variables for the program requirements
+		String full_name = "";
+		String first_class = "";
+		String second_class = "";
+		String [] class_one_arr;
+		String [] class_two_arr;
+		String crn1, crn2;
+		int credits1, credits2;
+		double cost1, cost2;
+		Scanner stringScanner = new Scanner(System.in);
+
+
+	}
+
+}
+////////////////NEXT FILE
