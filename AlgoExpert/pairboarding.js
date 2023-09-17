@@ -238,3 +238,13 @@ function timeToEat(currentTime) {
 
     return l;
   }
+
+  function arrayOfProducts(array) {
+    let retArr = [];
+    for (let i = 0; i < array.length; i++) {
+      let var1 = array.slice(0,i).reduce((acc, curr) => acc * curr, 1);
+      let var2 = array.slice(i+1).reduce((acc, curr) => acc * curr, 1);
+      retArr.push(var2 * var1);
+    }
+    return retArr
+  }
