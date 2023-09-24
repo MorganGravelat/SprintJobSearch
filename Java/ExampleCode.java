@@ -273,3 +273,58 @@ class Company {
     	}
     	return count;
     }
+ public boolean SearchByName (String fullName) {
+        //This method returns true if fullName exists as an employee
+        //It returns false otherwise
+        //this is a not a case sensitive search.
+    	for (Employee e : employeeList) {
+    		if (e.getFullName().equalsIgnoreCase(fullName)) return true;
+    	}
+    	return false;
+    }
+
+    public void reverseEmployees () {
+        //This method reverses the order in which the employees were added to the list
+        //The last employee is swapped `with the first employee, the
+    	//second last with the second and so on..`
+    	int first = 0;
+    	int last = employeeList.size() - 1;
+
+    	for (;first < last;first++,last--) {
+    		Employee emp = employeeList.get(first);
+    		employeeList.set(first, employeeList.get(last));
+    		employeeList.set(last, emp);
+    	}
+    }
+
+    public void deleteEmployeesBySalary (double targetSalary){
+        //This method deletes all employees who are paid targetSalary as a gross salary
+    	for (Employee e : employeeList) {
+    		if (e.grossPay() == targetSalary) employeeList.remove(e);
+    	}
+    }
+
+    public void printCheck ( String employeeNumber) {
+        Employee emp = null;
+        String fString = "";
+        for (Employee e : employeeList) {
+        	if (e.getEmployeeNumber().equalsIgnoreCase(employeeNumber)) {
+        		emp = e;
+        	}
+        }
+        if (emp == null) {
+        	System.out.println("NO SUCH EMPLOYEE EXISTS");
+        }
+        else {
+        	fString = String.format("%s\n%28s:%25s\n%30s:%14s\n%31s:%13.2f\n"
+        			+ "%25s:%19.2f\n\n%28s:		$%.2f\n\n%23s\n%22s: $%20.2f\n\n%20s: %24.2f Dollars\n\n%s",
+        			"	-----------------------------------------------------------",
+        			"Employee's name", emp.getFullName(), "Employee's number", emp.getEmployeeNumber(), "Hourly rate of pay", emp.getPayRate(),
+        			"Hours worked", emp.getHoursWorked(), "Total Gross Pay", emp.grossPay(),"Deductions",
+        			"Tax (6 %)", (emp.grossPay()*.06),"Net Pay", (emp.grossPay() * .94),
+        			"	-----------------------------------------------------------");
+        	System.out.println(fString);
+        }
+
+    }
+} //End of class Company
