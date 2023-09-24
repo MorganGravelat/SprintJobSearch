@@ -168,4 +168,46 @@ class Employee {
 	public void setEmployeeNumber(String employeeNumber) {
 		this.employeeNumber = employeeNumber;
 	}
+
+	public double getPayRate() {
+		return payRate;
+	}
+
+	public void setPayRate(double payRate) {
+		this.payRate = payRate;
+	}
+
+	public double getHoursWorked() {
+		return hoursWorked;
+	}
+
+	public void setHoursWorked(double hoursWorked) {
+		this.hoursWorked = hoursWorked;
+	}
+
+
+    public Employee( String fullName, String employeeNumber, double payRate, double hoursWorked ) {
+    	this.fullName = fullName;
+    	this.employeeNumber = employeeNumber;
+    	this.payRate = payRate;
+    	this.hoursWorked = hoursWorked;
+    }
+
+	public double grossPay () {
+		return payRate * hoursWorked;
+	}
+
+    private double netPay () {
+    	return (this.grossPay()) * .94;
+    }
+
+    public void printCheck () {
+    	System.out.printf("%.2f",netPay());
+    }
+
+    @Override
+    public String toString () {
+    	return String.format("[%s/%s, %.0f Hours @ %.1f per hour]",
+    			employeeNumber, fullName, hoursWorked, payRate);
+    }
 }
