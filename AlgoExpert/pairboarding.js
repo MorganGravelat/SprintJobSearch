@@ -248,3 +248,28 @@ function timeToEat(currentTime) {
     }
     return retArr
   }
+
+
+// Laptop Rentals
+// You are given a list of intervals, where each interval represents the start and end time of a certain laptop rental. Each interval's start time will be non-negative, and no interval overlaps another.
+ 
+function laptopRentals(times) {
+    if (times.length === 0) return 0;
+
+    times.sort((a, b) => a[0] - b[0]);
+
+    const heap = new MinHeap();
+    let currentLaptops = 0;
+
+    for (const interval of times) {
+        while (heap.peek() !== null && heap.peek() <= interval[0]) {
+            heap.remove();
+        }
+
+        heap.insert(interval[1]);
+
+        currentLaptops = Math.max(currentLaptops, heap.length);
+    }
+
+    return currentLaptops;
+}

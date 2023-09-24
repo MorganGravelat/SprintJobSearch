@@ -145,3 +145,27 @@ class MyClass {
 		System.out.println("From the NON-Static Method...");
 	}
 }
+
+//Working with OOP concepts
+class Employee {
+    private String fullName;
+    private String employeeNumber;
+    private double payRate;
+	private double hoursWorked;
+
+    public String getFullName() {
+		return fullName;
+	}
+
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
+	}
+
+	public String getEmployeeNumber() {
+		return employeeNumber;
+	}
+
+	public void setEmployeeNumber(String employeeNumber) {
+		this.employeeNumber = employeeNumber;
+	}
+}
