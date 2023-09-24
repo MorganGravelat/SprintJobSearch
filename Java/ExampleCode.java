@@ -211,3 +211,65 @@ class Employee {
     			employeeNumber, fullName, hoursWorked, payRate);
     }
 }
+
+//Starting work on company class
+class Company {
+    private ArrayList<Employee> employeeList;
+
+    private String companyName;
+    private static String companyTaxId;
+
+    public static String getCompanyTaxId() {
+		return companyTaxId;
+	}
+
+	public static void setCompanyTaxId(String companyTaxId) {
+		Company.companyTaxId = companyTaxId;
+	}
+
+	public String getCompanyName() {
+		return companyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
+	}
+
+	public Company() {
+        employeeList = new ArrayList<>();
+        companyName = "People's Place";
+        companyTaxId = "v1rtua7C0mpan1";
+    }
+
+    public boolean hire (Employee employee) {
+    	//This method adds an employee to the array list unless they have an employee number that is already used
+    	for (Employee e : employeeList) {
+    		if (e.getEmployeeNumber() == employee.getEmployeeNumber()) return false;
+    	}
+    	employeeList.add(employee);
+    	return true;
+    }
+
+    public void printCompanyInfo() {
+    // This method prints the company name, the tax id and the current number of employees
+    // You may choose to print that any way you like!
+    	System.out.printf("\n[Company Name: %s | Company Tax Id: %s | Number of Employees: %d]\n",
+    			companyName, companyTaxId, employeeList.size());
+    }
+
+    public void printEmployees() {
+        //This methods prints all employees (One employee per line)
+        //Note that you already have toString in Employee
+    	for (Employee e : employeeList) {
+    		System.out.println(e);
+    	}
+    }
+
+    public int countEmployees( double maxSalary ) {
+        //This method returns the number of employees paid less than maxSalary
+    	int count = 0;
+    	for (Employee e : employeeList) {
+    		if ((e.grossPay()) != maxSalary) count++;
+    	}
+    	return count;
+    }
