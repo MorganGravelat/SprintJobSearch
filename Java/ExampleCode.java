@@ -147,6 +147,53 @@ class MyClass {
 }
 
 //Working with OOP concepts
+//NEXT PROJECT
+import java.util.ArrayList;
+
+class DriverClass {
+    public static void main(String[] args) {
+
+        String fullName = "Erika T. Jones";
+        String employeeNumber = "ej789";
+        double payRate = 10.50, hoursWorked = 36;
+
+        Employee e;
+        e = new Employee(fullName, employeeNumber, payRate, hoursWorked);
+
+        System.out.println(e); //Testing toString
+
+        e.printCheck(); //This prints the check of Erika T. Jones
+
+        Company company = new Company();
+
+        company.hire(new Employee("Saeed Happy", "sh895", 200, 2));
+        company.hire(e);
+
+        company.printCompanyInfo();
+
+        company.hire(new Employee("Enrico Torres", "et897", 150, 4));
+        company.hire(new Employee("Walid Williams", "ww547", 150, 3));
+
+        System.out.println("Number of employees excluding the boss: " + company.countEmployees(600));
+
+        //Add as many employees as you want
+        //give each employee a unique employee number
+
+        company.printCheck("ej789");
+
+        company.deleteEmployeesBySalary(600);
+
+        company.reverseEmployees();
+
+        System.out.println(company.SearchByName("WaLiD WiLLiAms"));
+
+        company.printEmployees();
+
+        System.out.println("Bye!");
+
+    }
+
+}
 class Employee {
     private String fullName;
     private String employeeNumber;
