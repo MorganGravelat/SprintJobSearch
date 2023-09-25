@@ -375,3 +375,139 @@ class Company {
 
     }
 } //End of class Company
+////////////////NEXT FILE
+//PRACTICE TEST
+public class Question {
+	/* 8 Test Attempt 1
+	public static void main(String args[]) {
+        String[] name = new String[3]; // Array of size 3 [0 / 1 / 2]
+        int i = 0;
+
+        for (i = 0; i < 3; i++) // i = 0/1/2/ENDS UP 3
+            name[i] = new String("Abc");
+
+        System.out.println(i + " Outside");
+        name[i] = new String("Xyz"); //THIS BREAK HAHAHA name[3] is outside the bounds of the name array
+        System.out.println(name[i-1]);
+        for (i = 0; i < 4; i++) {
+        	if (i < 3)
+        		System.out.println(i + name[i]);
+        }
+    }
+    */
+	/* 1
+
+		public static void main(String args[]) {
+			int five = 5;
+			String name = "hi";
+			System.out.println( 5 + 6 * 2 + name + five + 4 + 5 ); //Before you can add any number together but after the string comes in it all gets added into a string.
+		}
+	*/
+	/* 2
+	public static void main(String args[]) {
+		Employee[] company;
+		company = new Employee [3];
+		for (Employee e: company) //Employee e is a temporary variable that represents the data of the Employees in the array so it will be null in the end
+			e = new Employee ();
+		for (int i = 0; i<3; i++)
+			System.out.print(company [i]);
+		}
+	*/
+	/* 3
+	public static void main(String args[]) {
+		SimpleClass simpleRef1, simpleRef2, simpleRef3;
+
+		simpleRef1 = new SimpleClass(1);
+		simpleRef2 = new SimpleClass(2);
+		simpleRef3 = new SimpleClass(3);
+
+		System.out.println(simpleRef1.hashCode());
+		System.out.println(simpleRef2.hashCode());
+		System.out.println(simpleRef3.hashCode() + "\n");
+		simpleRef1 = simpleRef2; //Memory address of
+		simpleRef2 = simpleRef3;
+		simpleRef3 = simpleRef1;
+		System.out.println(simpleRef1.hashCode()); //simpleRef1 & 3 are pointing to the old simpleRef2
+		System.out.println(simpleRef2.hashCode()); //Thus 1 and 3 are going to have the same hashCode as old two
+		System.out.println(simpleRef3.hashCode()); //2 was set to 3 before this happened so 2 is the old 3 now
+
+		System.out.print(simpleRef3);
+		System.out.print(simpleRef2);
+		System.out.println(simpleRef1); //This will print out the numbers 232 since 1 and 3 now contain simpleData = 2 and 2 is simpleData = 3
+	}
+	*/
+	/* 4
+	private int val;
+	private void method1 () {
+		method2();
+		val = 1;
+	}
+	public static void main(String args[]) {
+		Question q = new Question ();
+
+		q.method1();
+		method2();
+	}
+	private static void method2() {
+		System.out.print((new Question()).val + " "+ new Question()); //5 65 6 will print in the end
+	}
+
+	public Question () {
+		val = 5; //on each new creation val=5 so when it is set to 1 then a new one is created the val goes back to 5 before printing
+	}
+
+	public String toString() {
+		return "6";
+	}
+	*/
+	/*5
+	public static void main(String args[]) {
+		Test t1 = new Test(); //Test() is not a method of Test and so this will error here
+		Test t2 = t1;
+		t2 = new Test(2,1);
+		t1 = t2;
+		System.out.println(t1.x + " " + t2.y);
+	}
+
+	*/
+
+	/*6
+	public static void main(String args[]) {
+		String s1 = "abc";
+		String s2 = "abc";
+		//System.out.println(s1.hashCode() + " " + s2.hashCode());
+		String s3 = new String("abc"); //Same hash code but a different memory address than the two string literals.
+		//System.out.println(1==1);
+
+		System.out.print("A");
+		if (s1 == s2) { //s1 and s2 are string literals and thus will == eachother
+			if (s1 != s3) { //s1 and s3 are different types s1 a string literal and s3 is created as a new making it an object with a seperate memoryu address.
+				if (s2 == s3) //string literal vs Object string
+					System.out.print("B"); //no else so only A prints
+			} else
+				System.out.print("C");
+		}
+	}
+	*/
+	/*7
+	public static void main(String args[]) {
+		Test t = new Test();
+		System.out.println(Test.x + " " + Test.y); //The fields x and y are not visible outside of the class since they are private.
+	}
+	*/
+	/*8
+	public static void main(String args[]) {
+		String[] name = new String[3];
+		int i = 0;
+
+		for (i = 0; i < 3; i++)
+			name[i] = new String("Abc");
+
+		name[i] = new String("Xyz"); //name[3] does not exist
+
+		for (i = 0; i < 4; i++) {
+			if (i < 3)
+				System.out.print(name[i]);
+		}
+	}
+	*/
