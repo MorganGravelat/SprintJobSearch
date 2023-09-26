@@ -511,3 +511,199 @@ public class Question {
 		}
 	}
 	*/
+    /*9
+	private static int val;
+	private void method1 () {
+		method2();
+		val = 1;
+	}
+	public static void main(String args[]) {
+		Question q = new Question ();
+
+		q.method1();
+		method2();
+	}
+	private static void method2() {
+		System.out.print((new Question()).val + " " + new Question());
+	}
+
+	public Question() {
+		val = 5;
+	}
+
+	public String toString() {
+		return "6";
+	}
+	*/
+	/*10
+	public static int doSomething (int a, int b) {
+		return ++a + --b; //++ before the var affects it before and ++ after affects it immediately after reading it
+		//3 + 0
+	}
+	public static void main (String args[]) {
+		int x = 2, y=1;
+		y = doSomething( x , y); // y = 3
+		System.out.println(x + "" + y); //2+""+3 remember addition does not work after a string is introduced concat
+	}
+	*/
+	/*11
+	public static void main(String args[]) {
+		int counter = -1; //pointless the loop sets it to 1
+		for (counter = 1; counter <= 3; counter++) { //runs counter = 1/2/3/4 when 4 counter <= 3 procs and the loops is done
+			if (counter <= 1) { //If the counter was < 3 instead of <=
+				System.out.print("UCF");//Starting at 1 this will print the first run of the loop
+				//break;
+			}
+		}
+		if (counter == 4) //counter = 4 after loop so this prints
+			System.out.print("UCF");
+	}
+	*/
+	/*12
+	public static void main(String args[]) {
+		int x = 2, y =3;
+		System.out.println( x+y/x+y); //Order of operations are / before + so 2+3/2+3 is actually 2+1+3 OR 6 since there is no 3.0 the number is an int so 3/2 is 1
+	}
+	*/
+	/*13
+	public static void main(String args[]) {
+		Test t1 = new Test(5, 7);
+		Test t2 = new Test(1, 2) , t3 = null;
+		System.out.println(t1.hashCode() + " " + t2.hashCode());
+		t3 = t2;
+		t2 = t1;
+		t1 = t3;
+		t3 = t1;
+		System.out.println(t1.hashCode() + " " + t2.hashCode() + " " + t3.hashCode());
+		t2.print(); // Since t2 = t1 print uses 5 + 7
+	}
+	*/
+	/*14
+	public static void main(String args[]) {
+		String name1 = new String("Jon");
+		String name2 = name1;
+		//System.out.println(name1.hashCode() + " " + name2.hashCode()); //pointless since hash code just identified the object but not he address
+		name1 = new String("Jon"); //This creates a new address in memory for name1 so
+		System.out.println(name1 == name2); //These two have different memory addresses if they were "Jon" the string literal it would be true
+	}
+	*/
+
+	/*15
+	public static void main(String args[]) {
+		for (int counter = 1; counter < 6; counter++) {
+			System.out.print(counter);
+			if (counter > 2 || counter > 3) {
+				continue;
+			}
+			System.out.print("UCF"); //Works for counter 1/2 then continues through each for loop
+		}
+		System.out.print("UCF"); //Going to run once
+	}
+	*/
+	/*16
+	public static void main(String args[]) {
+		Employee [] company;
+		company = new Employee[3];
+
+		for (Employee e : company) {
+			//e = new Employee(); This would allow the word employee to print over and over
+			System.out.print(e); //Without the new employee being set to each e it will just be null
+		}
+	}
+	*/
+	/*17
+	public static void main(String args[]) {
+		MyClass myObject = new MyClass(true);
+		System.out.println(myObject); //Since the toString is overrided to print "false" it will print "false"
+	}
+	*/
+
+}
+
+
+
+/*2
+class Employee {
+	public String toString() {
+		return "employee";
+	}
+}
+*/
+/*3
+class SimpleClass {
+	public int simpleData;
+
+	public SimpleClass (int simpleData) {
+		this.simpleData = simpleData;
+	}
+
+	@Override
+	public String toString() {
+		return simpleData + "";
+	}
+}
+*/
+/*5
+
+class Test {
+	public int x,y;
+	public Test(int x, int y) {
+		this.x = 1;
+		this.y = 2;
+	}
+	public Test(int x) {
+		this.x = x;
+		this.y = x;
+	}
+}
+*/
+/*7
+class Test {
+	private static int x, y;
+
+	public Test() {
+		x = 1;
+		y = 2;
+	}
+}
+*/
+/*13
+class Test {
+	private int x, y;
+
+	public void setAll(int x , int y) {
+		this.x = x;
+		this.y = y;
+	}
+
+	public Test(int x, int y) {
+		this.y = y;
+		this.x = x;
+	}
+
+	public void print() {
+		System.out.println(x + y);
+	}
+}
+*/
+/*16
+class Employee {
+	public String toString() {
+		return "employee";
+	}
+}
+*/
+/*17
+class MyClass {
+	private boolean goAgain;
+
+	public MyClass(boolean goAgain) {
+		this.goAgain = goAgain;
+	}
+
+	@Override
+	public String toString() {
+		return "false";
+	}
+}
+*/
