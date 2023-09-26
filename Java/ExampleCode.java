@@ -617,6 +617,105 @@ public class Question {
 		System.out.println(myObject); //Since the toString is overrided to print "false" it will print "false"
 	}
 	*/
+    	/*18
+	public void printStuff() {
+		System.out.println(3/2 + 3/2 + 3/2);
+	}
+	public static void main(String args[]) {
+		SomeClass.printStuff();
+	}
+	*/
+	/* 19
+	public static void changeData(int a, Integer b) {
+		a = 1;
+		b = 1;
+	}
+	public static void main(String args[]) {
+		int x = 2;
+		Integer y = 2; //This wraps the primitive int in an object with methods
+		changeData(x, y); //Doesn't do anything really since it changes them out of the context of this main function
+
+		System.out.print(x + " " + y); //2 2
+	}
+	*/
+	/*20
+	public static void main(String args[]) {
+		Test t = new Test(1, 2);
+		System.out.println(Test.x + Test.y); //Static reference to a non static field make sure you are on guard.
+	}
+	*/
+	/*21
+	private static int showMe () {
+		return 5%2%5;
+	}
+	public static void main(String args[]) {
+		System.out.println(showMe()); //remainder 1 since 5%2 = 1 and 1%5 = 1 still
+	}
+	*/
+
+	/*22
+
+	public static void changeName(String name) {
+		name = new String("Ian");
+	}
+
+	public static void main(String args[]) {
+		String hurricane = "Irma"; //hurricane is Irma
+		changeName(hurricane); // Does nothing since you are only changing the local variable in the changeName method
+
+		System.out.print(hurricane); //Irma still
+	}
+	*/
+
+	/* 23
+	public static void main(String args[]) {
+		Test t1 = new Test(); //Not defined you need to specify this constructor type or ELSE!
+		Test t2 = new Test(5);
+		t1 = t2;
+		Test t3 = new Test(5,7);
+		System.out.println(t1.x + t2.y + t3.x);
+	}
+	*/
+
+	/*24
+	public static void main(String args[]) {
+		Test t1 = new Test(); //This sets the static numbers to 5 and 7 if print was static it would = 12 even if called from Test itself
+		t1.print(); //This prints out the new t1 Test object and since creating the Test it sets x = 5 and y = 7 thus 5 + 7 = 12 printing 12
+	}
+	*/
+	/*25
+	public static void main(String args[]) { //prints UCFUCF
+		int score = 65;
+		switch ( score / 10 % 10) { // 65/10 = 6 since it isn't a double 6 % 10 = 6
+		case 5 : System.out.print("UCF");
+		case 6 : System.out.print("UCF"); //No break statement means this is not going to stop the switch but this will proc due to 6 being the switch entry
+		default: System.out.print("UCF"); //Default will go off so UCFUCF is printing from this switch
+		}
+
+		if (score == 6) System.out.print("UCF"); //The switch doesn't set score = to what it tests on it just tests on 6 and score stays the same.
+	}
+	*/
+	/*26
+	public static void main(String args[]) {
+		int n = 3, x = 10;
+		do {
+			n = n + 1; //INFINITE LOOP!!! AAAAA
+			if (n > 7)
+				System.out.print(n);
+		} while (n > -1 || x < 5);
+
+		System.out.print("DONE");
+	}
+	*/
+
+	/*27
+	public static void main(String args[]) {
+		Test t = new Test(2, 1);
+		Test r = t; // r = t at the same address now so
+		r.setAll(5,3); // setting the r variables to 5 / 3 is the same as setting the t variables to 5 / 3
+		System.out.println(r.x + t.y); //r.x = 5 r.y = 3 t.x = 5 t.y = 3 so 8 no matter which ones you use
+	}
+	*/
 
 }
 
@@ -704,6 +803,72 @@ class MyClass {
 	@Override
 	public String toString() {
 		return "false";
+	}
+}
+*/
+/*18
+class SomeClass {
+	public static void printStuff() {
+		System.out.println((double) (3/2) + (double) 3/2 + 3/2); //(double) (3/2) is double (1) but (double) 3/2 is 1.5 and 3/2 is still 1 parenthesis matter
+	}
+}
+
+*/
+/*20
+class Test {
+	public int x, y;
+
+	public Test(int x, int y) {
+		this.x = 10;
+		this.y = 20;
+	}
+}
+*/
+/* 23
+class Test {
+	public int x;
+	public int y;
+
+	public void setData(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+
+	public Test(int x, int y) {
+		setData(x, y);
+	}
+
+	public Test(int x) {
+		setData(x, x);
+	}
+}
+*/
+
+/* 24
+class Test {
+	public static int x, y;
+	public static void setAll() {
+		x = 5;
+		y = 7;
+	}
+	public Test() {
+		setAll();
+	}
+	public void print() {
+		System.out.println(x + y);
+	}
+}
+*/
+/*27
+class Test {
+	public int x, y;
+	public void setAll(int x, int y) {
+		this.x = x;
+		this.y = y;
+	}
+
+	public Test(int x, int y) {
+		setAll(x, y);
 	}
 }
 */
