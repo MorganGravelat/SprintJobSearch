@@ -126,3 +126,25 @@ function transposeMatrix(matrix) {
     }
     return transposedMatrix;
   }
+//Majority Element in python
+class Solution:
+    def majorityElement(self, nums: List[int]) -> int:
+        nums.sort()
+        n = len(nums)
+        return nums[n//2]
+//Convert to title in java
+class Solution {
+    public String convertToTitle(int columnNumber) {
+        StringBuilder sb=new StringBuilder("");
+        while(columnNumber!=0)
+        {
+            columnNumber-=1;
+            int rem=columnNumber%26;
+            sb.append((char)(rem+65));
+            columnNumber/=26;
+        }
+        sb=sb.reverse();
+        return sb.toString();
+
+    }
+}
