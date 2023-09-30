@@ -148,3 +148,43 @@ class Solution {
 
     }
 }
+//Implement Stack Using Queues in javascript
+var MyStack = function() {
+    this.stack = [];
+};
+
+MyStack.prototype.push = function(x) {
+    this.stack.push(x);
+};
+
+MyStack.prototype.pop = function() {
+    if (this.stack.length === 0) {
+        return null; // Or throw an error, as popping from an empty stack is undefined behavior
+    }
+    return this.stack.pop();
+};
+
+MyStack.prototype.top = function() {
+    if (this.stack.length === 0) {
+        return null; // Or throw an error
+    }
+    return this.stack[this.stack.length - 1];
+};
+
+MyStack.prototype.empty = function() {
+    return this.stack.length === 0;
+};
+// Number of 1 bits in java
+public class Solution {
+    // you need to treat n as an unsigned value
+    public int hammingWeight(int n) {
+        int ans=0;
+        //TC => O(k), where k is total number of set bits. set bit is 1. unset bit is 0.
+         while(n!=0){
+             n = n & (n-1);
+            ans++;
+        }
+
+        return ans;
+    }
+}
