@@ -188,3 +188,25 @@ public class Solution {
         return ans;
     }
 }
+
+class Solution {
+    public:
+        bool winnerOfGame(string color) {
+            int n = color.size();
+            int cntA = 0;
+            int cntB = 0;
+            for(int i=1; i<n-1; i++) {
+                if(color[i-1] == 'A' and color[i] == 'A' and color[i+1] == 'A') cntA++;
+                else if(color[i-1] == 'B' and color[i] == 'B' and color[i+1] == 'B') cntB++;
+            }
+            return cntA > cntB;
+        }
+    };
+
+    class Solution:
+    def winnerOfGame(self, colors: str) -> bool:
+        C = [0, 0]
+        for g, xs in groupby(colors):
+            n = sum(1 for _ in xs)
+            C[g == 'B'] += max(0, n-2)
+        return C[0] > C[1]
