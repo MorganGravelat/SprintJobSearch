@@ -210,3 +210,32 @@ class Solution {
             n = sum(1 for _ in xs)
             C[g == 'B'] += max(0, n-2)
         return C[0] > C[1]
+// Combination Sum in java using backtracking
+class Solution {
+    public List<List<Integer>> combinationSum(int[] candidates, int target) {
+      List<List<Integer>> list = new ArrayList<>();
+      Arrays.sort(candidates);
+      backtrack(list, new ArrayList<>(), candidates, target, 0);
+      return list;
+    }
+    public void backtrack(List<List<Integer>> list, List<Integer> temp, int[] nums, int remain, int start) {
+        if(remain < 0) return;
+        else if (remain == 0) list.add(new ArrayList<>(temp));
+        else {
+            for(int i = start; i < nums.length; i ++) {
+                temp.add(nums[i]);
+                backtrack(list, temp, nums, remain - nums[i], i);
+                temp.remove(temp.size() - 1);
+            }
+        }
+    }
+}
+// Multiply Strings in javascript on leetcode
+/**
+ * @param {string} num1
+ * @param {string} num2
+ * @return {string}
+ */
+var multiply = function(num1, num2) {
+    return String(BigInt(num1)*BigInt(num2));
+};
