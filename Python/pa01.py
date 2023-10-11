@@ -46,13 +46,13 @@ def hill_cipher(key_matrix, plaintext):
     ciphertext = ""
     for i in range(0, len(plaintext), key_size):
         block = plaintext[i:i+key_size]
-        encrypted_block = []
+        cipher_block = []
         for row in key_matrix:
             result = 0
             for k, char in enumerate(block):
                 result += row[k] * (ord(char) - ord('a'))
-            encrypted_block.append(result % 26 + ord('a'))
-        ciphertext += ''.join([chr(char) for char in encrypted_block])
+            cipher_block.append(result % 26 + ord('a'))
+        ciphertext += ''.join([chr(char) for char in cipher_block])
     return ciphertext
 
 def file_search(file_name):
@@ -63,6 +63,7 @@ def file_search(file_name):
 
 def main():
     if len(sys.argv) != 3:
+        print("Proper Execution: python3 pa01.py kX.txt pX.txt")
         sys.exit(1)
 
     key_filename = sys.argv[1]
@@ -70,6 +71,16 @@ def main():
 
     key_filepath = file_search(key_filename)
     plaintext_filepath = file_search(plaintext_filename)
+
+    if key_filepath is None and plaintext_filepath is None:
+        print(f"{key_filename} and {plaintext_filename} are not found")
+        sys.exit(1)
+    if plaintext_filepath is None:
+        print(f"{plaintext_filename} is not found")
+        sys.exit(1)
+    if key_filepath is None:
+        print(f"{key_filename} is not found")
+        sys.exit(1)
 
     key_matrix = key_matrix_array(key_filepath)
     plaintext = write_plaintext(plaintext_filepath)
@@ -87,7 +98,7 @@ def main():
 
     print("\nCiphertext:")
     for i in range(0, len(ciphertext), 80):
-        print(ciphertext[i:i+chunk_size])
+        print(ciphertext[i:i+80])
 
 if __name__ == "__main__":
     main()

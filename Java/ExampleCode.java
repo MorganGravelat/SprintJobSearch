@@ -872,3 +872,312 @@ class Test {
 	}
 }
 */
+import java.util.ArrayList;
+
+public class Tester {
+	private static ArrayList <Employee> myList = new ArrayList <Employee> ();
+
+	private static boolean fire ( String name ) {
+		int index = searchByName(name);
+
+		if (index != -1) {
+			myList.remove(index);
+			return true;
+		}
+
+		return false;
+	}
+
+	private static void hire ( Employee e) {
+		myList.add(e);
+	}
+
+	private static int searchByName (String name) {
+
+		int index;
+		for (index = 0; index<myList.size(); index++) {
+			if ( name.compareToIgnoreCase( ( myList.get(index).getName() ) ) == 0 ) {
+				return index;
+			}
+		}
+		return -1;
+	}
+
+	private static boolean searchBySalary (double salary) {
+		int index;
+		for (index = 0; index<myList.size(); index++) {
+			if ( (myList.get(index).getSalary()) == salary ) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	private static boolean printCheck ( String name) {
+		int index = searchByName( name );
+		Employee e;
+		if ( index != -1 ) {
+			e = myList.get(index);
+			e.printCheck();
+			return true;
+		}
+		return false;
+	}
+	public static void main(String[] args) {
+
+//		Kyle k1 = new Kyle("Stupid Kyle", "Big Bitch", "Lithe and puny, incredibly small.");
+//		k1.isKyleStrong();
+//
+//		if (k1.getName().equals("Stupid Kyle")) {
+//			System.out.println("Of course kyle is stupid as fuck his mic and sound is muted in disc rigt now");
+//		}
+//		if (k1.getProperty().equals("Big Bitch")) {
+//			System.out.println("I mean if he is so stupid he has got to be a big bitch am I right!\nWhy don't you say shit you coward!");
+//		}
+//		if (k1.getNeckSize().equals("Lithe and puny, incredibly small.")) {
+//			System.out.println("Kyle has the smallest neck that mans evolution has been able to produce any smaller and it would crumble at a molecular level.");
+//		}
+		//ArrayList <Employee> myList = new ArrayList <Employee> ();
+		myList.add(new Employee ("Jimmy Jones", 120.50));
+		myList.add(new Employee ("Jenna Ortega", 320.50));
+		myList.add(new Employee ("Josia Jorton", 325.50));
+
+		//System.out.println(myList);
+//		for (int i = 0; i < myList.size(); i++) {
+//			System.out.println(myList.get(i));
+//		} //You can do this using an iterator
+
+//		for (Employee e : myList ) {
+//			System.out.println(e);
+//		}
+
+//		String name = "Jenna Ortega";
+//		Employee e;
+		boolean found = false;
+//		for (int index = 0; index<myList.size(); index++) {
+//			e = myList.get(index);
+//			if ( name.compareToIgnoreCase(e.getName()) == 0) {
+//				found = true;
+//				break;
+//			}
+//		}
+//		System.out.printf("%s", "Is Jenna Ortega in the array?");
+//		if (found) {
+//			System.out.printf(" %s", "Yes!");
+//		} else {
+//			System.out.printf(" %s", "No!");
+//		}
+		String nameToFire = "Jenna Ortega";
+		//Employee e;
+		/*
+		for (int index = 0; index<myList.size(); index++) {
+			//e = myList.get(index); //or just grab the name using this same method below
+			if ( nameToFire.compareToIgnoreCase( (myList.get(index)).getName() ) == 0) {
+				myList.remove(index);
+				found = true;
+				System.out.printf("%s %s",nameToFire, "is fired!\n");
+				break;
+			}
+		}
+		if (!found) System.out.println(nameToFire + " is not an employee");
+
+		for (Employee e : myList) { //Employee e cannot exist above if this is going to exist so comment it out
+			System.out.println(e);
+		}
+		*/
+		System.out.println("Before....");
+		for (Employee e : myList) {
+			System.out.println(e);
+		}
+
+		for ( Employee e : myList) {
+			if ( e.getName().compareToIgnoreCase(nameToFire) == 0) {
+				myList.remove(e);
+				//break;
+			}
+		}
+
+		System.out.println("After....");
+		for (Employee e : myList) {
+			System.out.println(e);
+		}
+		System.out.println(myList.size());
+		//myList.forEach((n) -> System.out.println(n)); //For each that prints each Employee object using the overwritten toString method
+
+		//System.out.println(myList.size());
+		//boolean b = true; //Look at documentation
+		//String boolString = String.valueOf(b); //prints true as a string
+		//double d = 120.3658;
+		//String doubleString = String.valueOf(d); //prints 120.3658 as a string
+		//String myString = new String("This is my string");
+		//System.out.printf("%s", myString.toLowerCase()); //To lower case is the way you can check through a string without having to worry about case
+		//int index = 2;
+
+		//char myChar = myString.charAt(index);
+
+		//for (index = 0; index < myString.length(); index++) {
+		//	System.out.printf(" %c", myString.charAt(index));
+		//}
+		//System.out.printf(" %s", boolString);
+		//Employee e = new Employee ("Jim Jacobson", 56);
+		//System.out.println(e); //This will print out the toString method that you overwrote below
+
+
+
+		//Employee [] array; // Just a pointer at this point
+		//Employee [] array = new Employee[4]; //Here you have 0-449 index of references but no employee object.
+		//for (int i = 0; i < 4; i++) {
+		//	System.out.println(array[i]); //Currently would just print null for each spot in the array
+		//}
+	}
+
+}
+//_________________
+class Kyle {
+	private String name;
+	private String property;
+	private String neckSize;
+
+
+
+	public Kyle(String name, String property, String neckSize) {
+		this.name = name;
+		this.property = property;
+		this.neckSize = neckSize;
+	}
+
+//	public String getNeckSize() {
+//		return neckSize;
+//	}
+//
+//	public void setNeckSize() {
+//		this.neckSize = neckSize;
+//	}
+//
+//	public String getName() {
+//		return name;
+//	}
+//
+//	public void setName(String name) {
+//		this.name = name;
+//	}
+//
+//	public String getProperty() {
+//		return property;
+//	}
+//
+//	public void setProperty(String property) {
+//		this.property = property;
+//	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getProperty() {
+		return property;
+	}
+
+	public void setProperty(String property) {
+		this.property = property;
+	}
+
+	public String getNeckSize() {
+		return neckSize;
+	}
+
+	public void setNeckSize(String neckSize) {
+		this.neckSize = neckSize;
+	}
+
+	public void isKyleStrong() {
+		System.out.println("Kyle is by far the weakest human on earth, never put strong and kyle in a sentence ever again got it?!");
+	}
+
+
+}
+class Employee { //Every class has to be in there own java file normally but do not do that for TA sake.
+	private String name;
+	private double salary;
+	private static String taxCode; //static changes this variable for all employees when it is changed for one
+	//All static objects share the same memory location this belongs to all who are in the class.
+
+	public static String getTaxCode() { //Dealing with static methods you don't need any objects to exist to still get this
+		return taxCode;
+	}
+	public static void setTaxCode(String someCode) {
+		taxCode = someCode;
+	}
+	private double getNetPay() {
+		if ( getTaxCode().equals("01") ) //None static methods can access static fields and methods
+				return salary * .93;	 // The reverse is not true
+		return salary;
+	}
+	public void printCheck () {
+		System.out.println("----------------------------------------------------------");
+		System.out.println("ABC Comapny\n101 Any Street\nOrlando 32817");
+		System.out.println("Name of Employee: " + name);
+		System.out.printf("Gross pay: " + salary +"\t Net Pay: %.2f\n", getNetPay());
+		System.out.println("----------------------------------------------------------");
+	}
+	//public void setName(String aName) {
+	//	name = aName;
+	//}
+//	public void setName(String name) {
+//		this.name = name;
+//	}
+//	public void setSalary(double salary) {
+//		this.salary = salary;
+//	}
+//
+//	public String getName () {
+//		return name;
+//	}
+//	public double getSalary() {
+//		return salary;
+//	}
+
+	public String getName() { // these getters and setters are generated through the source tab on eclipse by eclipse not java
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public double getSalary() {
+		return salary;
+	}
+	public void setSalary(double salary) {
+		this.salary = salary;
+	}
+	public Employee( String aName, double aSalary) {
+		name = aName;
+		salary = aSalary;
+	}
+	public Employee( double aSalary, String aName ) { //Showing that the order matters if you do not have this you
+		name = aName;								  //cannot give the salary before the name
+		salary = aSalary;
+	}
+	public Employee () {
+		name = "No Name";
+		salary = -1;
+	}
+	public Employee( String aName) {
+		name = aName;
+	}
+
+	public Employee (double aSalary) {
+		salary = aSalary;
+	}
+	public void printEmployeeInfo () {
+		System.out.println(name + " " + salary);
+	}
+
+	@Override
+	public String toString () { // with argument int dummy is method overloading they are different methods but with toString() normally it just overwrites the method
+		return "Name: " + name + " | Salary: " + salary;
+	}
+}
