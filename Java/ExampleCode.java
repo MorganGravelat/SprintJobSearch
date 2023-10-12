@@ -873,9 +873,16 @@ class Test {
 }
 */
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Tester {
 	private static ArrayList <Employee> myList = new ArrayList <Employee> ();
+
+	private static void addSomeEmployees () {
+		myList.add( new Employee ("Jenna Jones", 120));
+		myList.add( new Employee ("Erick Jones", 120));
+		myList.add( new Employee ("Ewwik Jonas", 120));
+	}
 
 	private static boolean fire ( String name ) {
 		int index = searchByName(name);
@@ -886,6 +893,8 @@ public class Tester {
 		}
 
 		return false;
+
+
 	}
 
 	private static void hire ( Employee e) {
@@ -905,13 +914,23 @@ public class Tester {
 
 	private static boolean searchBySalary (double salary) {
 		int index;
-		for (index = 0; index<myList.size(); index++) {
-			if ( (myList.get(index).getSalary()) == salary ) {
+		for (index = 0; index < myList.size(); index++) {
+			if (myList.get(index).getSalary() == salary) {
 				return true;
 			}
 		}
 		return false;
 	}
+//	private static int searchBySalary (double salary) {
+//	int index;
+//	int count = 0;
+//	for (index = 0; index < myList.size(); index++) {
+//		if (myList.get(index).getSalary() == salary) {
+//			count++;
+//		}
+//	}
+//	return count;
+//}
 
 	private static boolean printCheck ( String name) {
 		int index = searchByName( name );
@@ -923,7 +942,103 @@ public class Tester {
 		}
 		return false;
 	}
+
+	private static void printAll() {
+		System.out.println("LIST OF ALL EMPLOYEES...");
+		for (Employee e : myList)
+			System.out.println(e);
+	}
+	//___________________________________
+	private static int menu() {
+		int option=0;
+		String selection;
+		do {
+
+
+		System.out.println("_________________\n\t\t WELCOME....");
+		System.out.println("1- Hire New Employee");
+		System.out.println("2- Fire an Employee by name");
+		System.out.println("3- Search for an Employee by Name");
+		System.out.println("4- Search for an Employee by Salary");
+		System.out.println("5- Print the Check for an Employee");
+		System.out.println("6- Print the Check for all Employees");
+		System.out.println("0- Exit Program");
+		System.out.print("Enter your Selection: ");
+		selection = ( new Scanner(System.in).nextLine() );
+		option = Integer.parseInt(selection);
+
+
+		} while (option > 6 || option < 0);
+
+		return option;
+	}
+
 	public static void main(String[] args) {
+		Employee.setTaxCode("01");
+		int option = -1;
+		addSomeEmployees();
+		do {
+		option = menu ();
+		String name;
+		double salary;
+		Scanner myScan = new Scanner(System.in);
+
+		switch ( option ) {
+		case 1 :
+			System.out.print("Enter the name:");
+			name = myScan.nextLine();
+			System.out.print("Enter the salary:");
+			salary = myScan.nextDouble();
+
+			hire(new Employee(name, salary));
+			break;
+
+		case 2 :
+			System.out.print("Enter the name of the employee to remove:");
+			name = myScan.nextLine();
+			if ( fire(name) )
+				System.out.println(name + " is fired!");
+			else
+				System.out.println(name + " is not employed with us!");
+			break;
+
+		case 3 :
+			System.out.print("Enter the name you are searching..:");
+			name = myScan.nextLine();
+			if (searchByName(name) == -1)
+				System.out.println("No such name exists!");
+			else
+				System.out.println(name + " is found");
+			break;
+
+		case 4 :
+			System.out.print("Enter the salary to check..:");
+			salary = myScan.nextDouble();
+			if(searchBySalary(salary) == true)
+				System.out.println("Found");
+			else
+				System.out.println("No Employee is paid $" + salary);
+			break;
+
+		case 5 :
+			System.out.print("Enter the name of the employee:");
+			name = myScan.nextLine();
+			if ( searchByName( name ) == -1 )
+				System.out.println("Sorry! Wrong name");
+			else
+				printCheck( name );
+			break;
+		case 6 :
+			printAll();
+			break;
+		case 0 :
+			System.out.println("Bye!");
+			break;
+		default:
+			System.out.println("Incorrect case given");
+		}
+		} while ( option != 0);
+		/*
 
 //		Kyle k1 = new Kyle("Stupid Kyle", "Big Bitch", "Lithe and puny, incredibly small.");
 //		k1.isKyleStrong();
@@ -985,6 +1100,7 @@ public class Tester {
 			System.out.println(e);
 		}
 		*/
+		/*
 		System.out.println("Before....");
 		for (Employee e : myList) {
 			System.out.println(e);
@@ -1002,6 +1118,7 @@ public class Tester {
 			System.out.println(e);
 		}
 		System.out.println(myList.size());
+		*/
 		//myList.forEach((n) -> System.out.println(n)); //For each that prints each Employee object using the overwritten toString method
 
 		//System.out.println(myList.size());
