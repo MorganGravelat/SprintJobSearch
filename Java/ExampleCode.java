@@ -1298,3 +1298,101 @@ class Employee { //Every class has to be in there own java file normally but do 
 		return "Name: " + name + " | Salary: " + salary;
 	}
 }
+//DRIVER CLASS BELOW NEW PROJECT
+public class Driver {
+	public static void main(String[] args) {
+		HourlyPaid hp;
+		hp = new HourlyPaid();
+
+
+
+
+	}
+}
+//_________________
+
+class Employee {
+	private String name;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Employee() {
+		name = "NO NAME";
+
+	}
+	public Employee ( String name) {
+		this.name = name;
+	}
+	public String toString () {
+		return "[" + name + "]";
+	}
+	public void someMethod() {
+		System.out.println("Some stuff from the Employee Class...");
+	}
+}
+//____________________________________
+class HourlyPaid extends Employee {	//HourlyPaid is an Employee
+
+	private int hoursWorked;
+	private double wage;
+
+	public int getHoursWorked() {
+		return hoursWorked;
+	}
+
+	public void setHoursWorked(int hoursWorked) {
+		this.hoursWorked = hoursWorked;
+	}
+
+	public double getWage() {
+		return wage;
+	}
+
+	public void setWage(double wage) {
+		this.wage = wage;
+	}
+
+	@Override
+	public String toString() {
+		return "HP"+super.toString();
+	}
+
+	public HourlyPaid() {
+		super("Lawson Joneschamp");
+		hoursWorked = -1;
+	}
+
+	public HourlyPaid ( String name, int hoursWorked, double wage) {
+		super ( name );
+		this.hoursWorked = hoursWorked;
+		this.wage = wage;
+	}
+//	public HourlyPaid(int hoursWorked) {
+//		super("Lawson JonesyChampy Lawless The Second");
+//		this.hoursWorked = hoursWorked;
+//	}
+
+//	@Override
+//	public void someMethod() {
+//		System.out.println("Some stuff in the hourly paid class...");
+//	}
+//	public void someMethod(int dummy) {
+//		super.someMethod();
+//		System.out.println("Some stuff in the hourly paid class..." + dummy);
+//	}
+
+//	public int getHoursWorked() {
+//		return hoursWorked;
+//	}
+//
+//	public void setHoursWorked(int hoursWorked) {
+//		this.hoursWorked = hoursWorked;
+//	}
+
+
+}
