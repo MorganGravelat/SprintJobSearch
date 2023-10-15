@@ -1301,9 +1301,30 @@ class Employee { //Every class has to be in there own java file normally but do 
 //DRIVER CLASS BELOW NEW PROJECT
 public class Driver {
 	public static void main(String[] args) {
-		HourlyPaid hp;
-		hp = new HourlyPaid();
+//		Employee e = new HourlyPaid("John Jonhson", 45, 36);
+//		e.printCheck();
+//		Employee s = new Supervisor("James Jink", 20000, 50000);
+//		s.printCheck();
+//		System.out.println(s);
+		//HourlyPaid hp;
+		//Employee hp;
+		//Object genericRef = null;
+		//hp = new HourlyPaid("Erik Edwqaards", 5, 20);
+		//Employee e = null;
 
+		//genericRef = new HourlyPaid("Erik Edwqaards" , 1 , 10);
+		//genericRef.printCheck(); //NMOT WORKING
+		//genericRef = new String ("Hi");
+		//e = new HourlyPaid("Erik Edwqaards" , 1 , 10);
+
+		//genericRef = new String ("Hi");
+		//System.out.println(e); //THis will print the HourlyPaid print statement
+
+		//hp.printCheck();
+		//hp.setName("Erika J. Jones");
+		Supervisor r = new Supervisor();
+
+		r.abcd();
 
 
 
