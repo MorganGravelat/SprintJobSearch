@@ -1431,3 +1431,41 @@ class HourlyPaid extends Employee {	//HourlyPaid is an Employee
 
 
 }
+
+class SalaryPaid extends Employee {
+
+	public void abce () { //YOu cannot have an abc in the class if the abc() is static in Employee
+		System.out.println("I am from SalaryPaid...");
+	}
+
+	private double salary;
+
+	public double getSalary () {
+		return salary;
+	}
+
+	public void setSalary (double salary) {
+		this.salary = salary;
+	}
+
+	public SalaryPaid() {
+		this.salary = 0;
+	}
+
+	public SalaryPaid(String name, double salary) {
+		super(name);
+		this.salary = salary;
+	}
+
+	@Override
+	public void printCheck () {
+		System.out.println(getName());
+		System.out.println("Gross Pay $" + salary);
+	}
+
+	@Override
+	public String toString() {
+		return "S -->" + getName() + " Salary: " + salary;
+	}
+
+}
