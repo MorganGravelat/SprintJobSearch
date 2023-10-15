@@ -1387,18 +1387,25 @@ class HourlyPaid extends Employee {	//HourlyPaid is an Employee
 
 	@Override
 	public String toString() {
-		return "HP"+super.toString();
+		return "HP -->" + getName() + " Hours/wage: " + hoursWorked + "/" + wage;
 	}
 
 	public HourlyPaid() {
-		super("Lawson Joneschamp");
+		//super("Lawson Joneschamp");
+		super();
 		hoursWorked = -1;
+		wage = 0;
 	}
 
 	public HourlyPaid ( String name, int hoursWorked, double wage) {
 		super ( name );
 		this.hoursWorked = hoursWorked;
 		this.wage = wage;
+	}
+
+	public void printCheck () {
+		System.out.println(this);
+		System.out.println("Gross Pay = $" + hoursWorked * wage);
 	}
 //	public HourlyPaid(int hoursWorked) {
 //		super("Lawson JonesyChampy Lawless The Second");
