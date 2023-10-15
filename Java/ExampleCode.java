@@ -1469,3 +1469,36 @@ class SalaryPaid extends Employee {
 	}
 
 }
+class Supervisor extends SalaryPaid {
+
+	public void abcd () {
+		//super.abc(); //this will run the abc from the Salary Paid class if the abc is not static otherwise it will run employees
+		//Employee.abc();
+		super.abce();
+	}
+
+	private double bonus;
+
+	public void setBonus (double bonus) {
+		this.bonus = bonus;
+	}
+
+	public double getBonus () {
+		return bonus;
+	}
+
+	public Supervisor () {
+		bonus = 0;
+	}
+
+	public Supervisor ( String name, double salary, double bonus) {
+		super ( name, salary);
+		this.bonus = bonus;
+	}
+
+	@Override
+	public String toString () {
+		return "SP->" + getName() + "Salary = " + getSalary() + " Bonus = " + bonus + " Total yearly pay: " + (getSalary() + bonus);
+
+	}
+}
