@@ -1332,7 +1332,11 @@ public class Driver {
 }
 //_________________
 
-class Employee {
+abstract class Employee {
+
+	public static void abc () {
+		System.out.println("I am from Employee...");
+	}
 	private String name;
 
 	public String getName() {
@@ -1352,9 +1356,12 @@ class Employee {
 	public String toString () {
 		return "[" + name + "]";
 	}
-	public void someMethod() {
-		System.out.println("Some stuff from the Employee Class...");
-	}
+//	public void someMethod() {
+//		System.out.println("Some stuff from the Employee Class...");
+//	}
+	abstract public void printCheck();
+
+
 }
 //____________________________________
 class HourlyPaid extends Employee {	//HourlyPaid is an Employee
