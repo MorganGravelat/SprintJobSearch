@@ -239,3 +239,31 @@ class Solution {
 var multiply = function(num1, num2) {
     return String(BigInt(num1)*BigInt(num2));
 };
+//Path Sum 2</>
+// Given the root of a binary tree and an integer targetSum, return all root-to-leaf paths where the sum of the node values in the path equals targetSum. Each path should be returned as a list of the node values, not node references.
+
+// A root-to-leaf path is a path starting from the root and ending at any leaf node. A leaf is a node with no children.
+
+/**
+ * @param {TreeNode} root
+ * @param {number} sum
+ * @return {number[][]}
+ */
+var pathSum = function(root, sum) {
+    if (root === null) return [];
+    const res = [];
+    backtrack(root, sum, res, []);
+    return res;
+  };
+
+  function backtrack(root, sum, res, tempList) {
+    if (root === null) return;
+    if (root.left === null && root.right === null && sum === root.val)
+      return res.push([...tempList, root.val]);
+
+    tempList.push(root.val);
+    backtrack(root.left, sum - root.val, res, tempList);
+
+    backtrack(root.right, sum - root.val, res, tempList);
+    tempList.pop();
+  }
