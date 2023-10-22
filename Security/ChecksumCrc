@@ -53,3 +53,46 @@ Now perform two’s complement of the added value 1111 0100
 Convert the value to a hexadecimal so we can append it to the message
 0000 1100 2 =0C 16
 Final message that will be transmitted is then 36 64 96 C8 0C 16
+// VALIDATING THE Checksum
+7. Validate the checksum from Question 5
+Checksum from Question 1: 36 64 96 C8 0C 16
+Convert into binary
+32 = 0011 0010
+64 = 0110 0100
+96 = 1001 0110
+C8 = 1100 1000
+0C = 0000 1100
+Addition:
+32 0 0 1 1 0 0 1 0
++ 64 0 1 1 0 0 1 0 0
+= 1 0 0 1 0 1 1 0
++ 96 1 0 0 1 0 1 1 0
+= 1 0 0 1 0 1 1 0 0
++ C8 1 1 0 0 1 0 0 0
+= 1 1 1 1 0 1 0 0
++ 0C 0 0 0 0 1 1 0 0
+= 1 0 0 0 0 0 0 0 0
+The final result (ignoring overflow) is all zeroes, so the message with checksum is
+validated! In another words, the message was not corrupted!
+8. Validate the checksum from Question 6
+Checksum from Question 6: 12 34 56 78 EC 16
+Convert into binary
+12 = 0001 0010
+34 = 0011 0100
+56 = 0101 0110
+78 = 0111 1000
+EC = 1110 1100
+Addition:
+CIS3360 Practice Assignment 1 Exam 2
+Professor McAlpin UCF-CECS
+12 0 0 0 1 0 0 1 0
++ 34 0 0 1 1 0 1 0 0
+= 0 1 0 0 0 1 1 0
++ 56 0 1 0 1 0 1 1 0
+= 1 0 0 1 1 1 0 0
++ 78 0 1 1 1 1 0 0 0
+= 1 0 0 0 1 0 1 0 0
++ EC 1 1 1 0 1 1 0 0
+= 1 0 0 0 0 0 0 0 0
+The final result (ignoring overflow) is all zeroes, so the message with checksum is
+validated! In another words, the message was not corrupted!
