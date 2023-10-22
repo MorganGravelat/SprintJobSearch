@@ -96,3 +96,89 @@ Professor McAlpin UCF-CECS
 = 1 0 0 0 0 0 0 0 0
 The final result (ignoring overflow) is all zeroes, so the message with checksum is
 validated! In another words, the message was not corrupted!
+CRC 3
+CRC 3
+Generating CRC
+1. Calculate the CRC, and the final message using: Message = 91116 , Divisor = X 3 + X 2 + 1
+Message:
+First, we need to convert the message (dividend) in hexadecimal to binary.
+So 91116 = 1001 0001 0001 2
+Polynomial:
+Second, we need to convert the polynomial (divisor) into a binary form.
+So X3 + X 2 + 1 is the same as X3 + X 2 + 0X 1 + 1
+And so X3 + X 2 + 0X 1 + 1 = 1101
+Now what?
+Now that we have the binary representations of both the message and the divisor, we
+can go ahead and generate the CRC! Because this is a 3-bit CRC, you will need to pad the
+message with 3 zeroes at the end of the message.
+You can do the full calculation bit by bit or do faster in the way shown on Question 2.
+1 1 1 1 0 1 0 1 0 0 1 0
+1 1 0 1 | 1 0 0 1 0 0 0 1 0 0 0 1 0 0 0
+1 1 0 1
+1 0 0 0
+1 1 0 1
+1 0 1 0
+1 1 0 1
+1 1 1
+1 1 0 1
+0 1 1 1
+1 1 0 1
+0 1 1 0
+0 0 0 0
+1 1 0 0
+1 1 0 1
+0 0 1 1
+0 0 0 0
+0 1 1 0
+0 0 0 0
+1 1 0 0
+1 1 0 1
+0 0 1 0
+0 0 0 0
+0 1 0
+CIS3360 Practice Assignment 2 Exam 2
+Professor McAlpin UCF-CECS
+Remainder:
+Your remainder is always 1 bit less than the polynomial, so in this case 3 bits = 010.
+Appended Message:
+1001 0001 0001 010
+Now you should convert the remainder to a hexadecimal representation. First, start
+with padding it with a leading zero to make it 4 bits = 0010.
+Now convert it to hexadecimal, and append it to the message.
+00102 = 216
+911216 and that’s it!
+
+//CRC 4 CALCUALTION
+CRC 4
+Generating a CRC
+5. Calculate the CRC, and the final message using: Message = A0E 16 , Divisor = X 4 + X 3 + 1
+Message:
+CIS3360 Practice Assignment 2 Exam 2
+Professor McAlpin UCF-CECS
+First, we need to convert the message (dividend) in hexadecimal to binary.
+So A0E 16 = 1010 0000 1110 2
+Polynomial:
+Second, we need to convert the polynomial (divisor) into a binary form.
+So X4 + X 3 + 1 is the same as X4 + X 3 + 0X 2 + 0X 1 + 1
+And so X4 + X 3 + 0X 2 + 0X 1 + 1 = 11001
+Now what?
+Now that we have the binary representations of both the message and the divisor, we
+can go ahead and generate the CRC! Because this is a 4-bit CRC, you will need to pad the
+message with 4 zeroes at the end of the message.
+1 1 1 1
+1 1 0 0 1 | 1 0 1 0 0 0 0 0 1 1 1 0 0 0 0 0
+1 1 0 0 1
+1 1 0 1 0
+1 1 0 0 1
+1 1 0 0 1
+1 1 0 0 1
+1 1 0 0 0
+1 1 0 0 1
+0 1 0 0
+Remainder:
+Your remainder will be 0100.
+Appended Message:
+1010 0000 1110 0100
+Now convert it to hexadecimal, and append it to the message.
+01002 = 416
+A0E416 and that’s it!
