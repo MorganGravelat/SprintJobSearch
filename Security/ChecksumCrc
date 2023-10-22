@@ -182,3 +182,76 @@ Appended Message:
 Now convert it to hexadecimal, and append it to the message.
 01002 = 416
 A0E416 and that’s it!
+
+CRC 4 Validation
+8. Validate the CRC using the result from Question 6.
+Appended message:
+1010 1011 1100 1000
+The CRC remainder is 4 bits = 1000
+Polynomial:
+Use the same polynomial = 11011
+Now What?
+Now that we have everything, do the modulo-2 division.
+CIS3360 Practice Assignment 2 Exam 2
+Professor McAlpin UCF-CECS
+1 1 1 1 1 1 1
+1 1 0 1 1 | 1 0 1 0 1 0 1 1 1 1 0 0 1 0 0 0
+1 1 0 1 1
+1 1 1 0 0
+1 1 0 1 1
+1 1 1 1 1
+1 1 0 1 1
+1 0 0 1 1
+1 1 0 1 1
+1 0 0 0 0
+1 1 0 1 1
+1 0 1 1 0
+1 1 0 1 1
+1 1 0 1 1
+1 1 0 1 1
+0 0 0 0
+The 0000 is the “syndrome” (again, fancy word for remainder in the phase of CRC
+validation). If your syndrome is all zeroes, that means no change has occurred in your
+original message. If your syndrome is non-zero, that means there was a change in your
+original message.
+CRC 3 Validation
+3. Validate the CRC using the result from Question 1.
+Appended message:
+1001 0001 0001 010
+But wait, you’re thinking it should be 1001 0001 0001 0010. Remember however, that
+we padded the remainder 010 with a leading zero, so do not use the padded remainder,
+but the true remainder which should be 3 bits!
+CIS3360 Practice Assignment 2 Exam 2
+Professor McAlpin UCF-CECS
+Polynomial:
+Use the same polynomial = 1101
+Now What?
+Now that we have everything, do the modulo-2 division.
+1 1 1 1 1 1 1
+1 1 0 1 | 1 0 0 1 0 0 0 1 0 0 0 1 0 1 0
+1 1 0 1
+1 0 0 0
+1 1 0 1
+1 0 1 0
+1 1 0 1
+1 1 1 0
+1 1 0 1
+1 1 1 0
+1 1 0 1
+1 1 0 0
+1 1 0 1
+1 1 0 1
+1 1 0 1
+0 0 0
+The 000 is the “syndrome” (again, fancy word for remainder in the phase of CRC
+validation). If your syndrome is all zeroes, that means no change has occurred in your
+original message. If your syndrome non-zero, that means there was a change in your
+original message.
+Computers as you may already know, use 0’s and 1’s to communicate. The generated
+CRC remainder that is attached to the original message serves the purpose of checking
+the integrity of the original message. Because communication mediums are not perfect,
+there are cases where the message 1001 0001 0001 010 may change to something like
+1001 0000 0000 010.
+When you perform the validation on the 1001 0000 0000 010, you will know that there
+was a change to your original message, because your syndrome will NOT be all zeros. A
+computer will reject this corrupted message, and ask the sender to re-transmit.
