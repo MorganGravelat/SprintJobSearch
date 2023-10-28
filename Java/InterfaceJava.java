@@ -36,3 +36,86 @@ interface Interface { //interfaces are classes with no code
 	abstract public void method();
 	final int data = 500; //final is a constant it applies to all data inside the interface whether you specify or not
 }
+class Class implements Interface {
+	public void method() {
+		System.out.println(" doing method inside class Class!");
+	}
+
+	public void printData() {
+		//data = 700; //final data is not changeable at any point and interface data is ALWAYS FINAL!
+		System.out.println(data);
+	}
+}
+//interface Drivable { //interfaces can only have abstract methods
+//	abstract public void drive();
+//}
+//
+//interface Washable {
+//	public void wash (); //abstract does not matter
+//}
+////_______________________
+//class Teenager implements Drivable, Washable {
+//
+//	@Override
+//	public void drive() {
+//		System.out.println("Driving my parents crazy....");
+//	}
+//
+//	@Override
+//	public void wash() {
+//		System.out.println("Smear in cologne");
+//	}
+//}
+//abstract class Vehicle {
+//	private int length = 0;
+//
+//	public int getLength() {
+//		return length;
+//	}
+//
+//	public void setLength(int length) {
+//		this.length = length;
+//	}
+//
+//	public void getLengthOfVehicle() {
+//		System.out.println("Vehicle is this long: " + length);
+//	}
+//
+////	public void drive() {
+////		System.out.println("Driving a vehicle");
+////	}
+//}
+////________________________
+//class Plane extends Vehicle implements Drivable, Washable {
+//
+//	public void planeThing() {
+//		System.out.println("Plane Thing");
+//	}
+//
+//	@Override
+//	public void drive() {
+//		System.out.println("Driving the plane go wrrrrrrrr and brrrrrr and AAAAAHHHHH WE ARE GOING DOWN!");
+//	}
+//
+//	@Override
+//	public void wash() {
+//		System.out.println("Too big to wash you must use a monster sized rag!!");
+//	}
+//
+////	public Plane(int length) {
+////		this.setLength(length);
+////	}
+//}
+//
+//class Bike implements Drivable, Washable {
+//
+//	@Override
+//	public void drive() {
+//		System.out.println("GET OUT OF THE BIKE LANE GOOOOD WHYYYY THE ROADS ARE CLOSED FOR THE CHILD MARCH!");
+//	}
+//
+//	@Override
+//	public void wash() {
+//		System.out.println("Spray paint and small rags");
+//	}
+//}
