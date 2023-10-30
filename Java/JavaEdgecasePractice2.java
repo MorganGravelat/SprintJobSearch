@@ -42,6 +42,11 @@ public class Tester /*implements P for Problem 9*/ /*extends KitchenAppliance fo
 		System.out.print(appPrice+"|");
 	}
 	*/
+	///* Problem 17
+	public static void checkingOn(Employee e1, Employee e2) {
+		e1.work(e2);
+	}
+	//*/
 	public static void main(String[] args) {
 		/*Problem 1
 		Employee es = new Manager();
@@ -159,9 +164,26 @@ public class Tester /*implements P for Problem 9*/ /*extends KitchenAppliance fo
 		Parent p = new Child (1,2);
 		p.print();
 		*/
-		///*
+		/* Problem 16
+		try {
+			System.out.print("In try: ");
+			throw new MyException();
+		} catch (MyException me) { //This catch will activate since you created a new exception
+			System.out.print(me.getMessage());
+		} catch (Exception e) { //This will not proc since the first one did
+			System.out.print("Ah!");
+		} finally { //Finally always fires off
+			System.out.print("Regardless");
+		}
+		*/
+		/* Problem 17
+		Employee e = new Employee();
+		Manager m = new Manager();
+		Employee em = new Manager();
 
-		//*/
+		checkingOn(e, m); //No matter what e.work() will print A when a manager or employee is put in since it is all extended from emp.
+		*/
+
 	}
 	/*Problem 9
 	public static void doNothing( int dammy ) {
@@ -376,6 +398,30 @@ class Child extends Parent {
 
 	public void print() {
 		System.out.print(y);
+	}
+}
+*/
+/*Problem 16
+class MyException extends Exception {
+	public String getMessage() {
+		return "My Bad!";
+	}
+}
+*/
+/* Problem 17
+class Employee {
+	public void work(Employee e) { //manager extends employee so it still counts asn an Employee e when it is in work();
+		System.out.print("A");
+	}
+	public void work(Manager m) {
+		System.out.print("B");
+	}
+}
+
+class Manager extends Employee {
+
+	public void work(Employee e) {
+		System.out.print("C");
 	}
 }
 */
