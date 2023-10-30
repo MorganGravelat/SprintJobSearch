@@ -42,11 +42,11 @@ public class Tester /*implements P for Problem 9*/ /*extends KitchenAppliance fo
 		System.out.print(appPrice+"|");
 	}
 	*/
-	///* Problem 17
+	/* Problem 17
 	public static void checkingOn(Employee e1, Employee e2) {
 		e1.work(e2);
 	}
-	//*/
+	*/
 	public static void main(String[] args) {
 		/*Problem 1
 		Employee es = new Manager();
@@ -183,6 +183,66 @@ public class Tester /*implements P for Problem 9*/ /*extends KitchenAppliance fo
 
 		checkingOn(e, m); //No matter what e.work() will print A when a manager or employee is put in since it is all extended from emp.
 		*/
+		/* Problem 18
+		Employee m = new Manager(50);
+		Employee s = new Supervisor();
+
+		m = s;
+
+		m.work();
+		*/
+		/* Problem 19
+		Manager m = new Manager(50);
+		Employee e = new Manager(100);
+
+		System.out.print(m.type() + " and ");
+		e.work(50);
+		*/
+
+		/* Problem 20
+		String[] names = new String[2];
+
+		int i = 0;
+
+		for (String name : names) {
+			name = new String("1");
+			names[i] = name;
+			i++;
+		}
+
+		try {
+			for (String name : names)
+				System.out.print(name);
+
+			throw new NullPointerException();
+		} catch (Exception e) {
+			System.out.print("ERROR");
+		} finally {
+			System.out.print("A");
+		}
+		*/
+		/* Problem 21
+		int a = 0, b = 3;
+
+		try {
+			try {
+				System.out.println(b / a); //this will throw an arithmetic exception so the null pointer wont catch it
+			} catch (NullPointerException npe) {
+				System.out.print("A");
+			}
+			finally { //prints B
+				System.out.print("B");
+			}
+		} catch (Exception e) { //Since it didn't catch in the first try statement it will catch here
+			System.out.print("C"); //So C will print
+		} finally {
+			System.out.print("D"); //In the end it will be BCD in the console
+		}
+		*/
+		///* Problem 22
+		A aObject = new C();
+		System.out.println(aObject);
+		//*/
 
 	}
 	/*Problem 9
@@ -422,6 +482,68 @@ class Manager extends Employee {
 
 	public void work(Employee e) {
 		System.out.print("C");
+	}
+}
+*/
+/* Problem 18
+abstract class Employee {
+	public abstract void work();
+}
+
+class Manager extends Employee {
+	private double salary;
+
+	public void work() { salary = 0; }
+
+	public Manager(double salary) { this.salary = salary;}
+
+	public void work(double salary) { System.out.print("M" + salary);}
+
+}
+
+class Supervisor extends Manager {
+	public Supervisor() { super(100); }
+
+	public void work() { System.out.print("S"); }
+}
+*/
+/* Problem 19
+interface Person {
+	public String type();
+}
+
+abstract class Employee implements Person {
+	public void work(int salary) { System.out.print("M" + salary);}
+	public abstract void work();
+}
+
+class Manager extends Employee {
+
+	public int salary;
+
+	public String type() { return "Manager";}
+
+	public void work() { salary = 0; }
+
+	public Manager(int salary) { this.salary = salary; }
+
+	public void work(int salary) { System.out.print("M" + salary);}
+}
+*/
+
+/*Problem 22
+class A {
+
+}
+class B extends A {
+	public String toString() {
+		return super.toString() + "A";
+	}
+}
+
+class C extends B {
+	public String toString() {
+		return "C";
 	}
 }
 */
