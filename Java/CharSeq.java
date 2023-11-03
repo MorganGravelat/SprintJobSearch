@@ -93,3 +93,18 @@ class Code implements CharSequence {
 	public int length() {
 		return numRows * numColumns;
 	}
+	@Override
+	public String subSequence(int start, int end) {
+		char[] result = new char[end - start + 1];
+		int resultIndex = 0;
+
+		for (int i = start; i <= end; i++) {
+			int row = i / numColumns;
+			int col = i % numColumns;
+			int asciiUnicode = codeArray[row][col];
+			result[resultIndex++] = (char) asciiUnicode;
+		}
+
+		return new String(result);
+	}
+}
