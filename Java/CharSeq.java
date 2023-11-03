@@ -89,3 +89,7 @@ class Code implements CharSequence {
 		int asciiUnicode = codeArray[row][col];
 		return (char)asciiUnicode;
 	}
+	@Override
+	public int length() {
+		return numRows * numColumns;
+	}
