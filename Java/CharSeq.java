@@ -81,3 +81,11 @@ class Code implements CharSequence {
 			System.out.println("");
 		}
 	}
+// ______________________________________________________________
+	@Override
+	public char charAt(int index) {
+		int row = index / numColumns;
+		int col = index % numColumns;
+		int asciiUnicode = codeArray[row][col];
+		return (char)asciiUnicode;
+	}
