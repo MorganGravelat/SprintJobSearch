@@ -47,3 +47,37 @@ public class DriverClass {
 		System.out.println("\nGoodbye!");
 	}
 }
+class Code implements CharSequence {
+
+	private int[][] codeArray;
+	private int numRows, numColumns;
+
+	public Code(int numRows, int numColumns) {
+		this.numRows = numRows;
+		this.numColumns = numColumns;
+		codeArray = new int[numRows][numColumns];
+	}
+
+	public void loadCodeArray(int numRows, int numColumns) {
+		Scanner myScan = new Scanner(System.in);
+		int i, j;
+		for (i = 0; i < numRows; i++) {
+			System.out.print("Enter Row " + (i + 1) + ": ");
+			for (j = 0; j < numColumns; j++) {
+				codeArray[i][j] = myScan.nextInt();
+			}
+
+		}
+	}
+
+	public void printCodeArray(int numRows, int numColumns) {
+		int i, j;
+		System.out.println("\n_____________\n");
+		for (i = 0; i < numRows; i++) {
+
+			for (j = 0; j < numColumns; j++) {
+				System.out.print(codeArray[i][j] + "\t");
+			}
+			System.out.println("");
+		}
+	}
