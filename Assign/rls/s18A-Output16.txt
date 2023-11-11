@@ -1,4 +1,3 @@
-
 AAAAAAAAAAAAAAAAAA
-X
-16 bit checksum is     55a1 for all   20 chars
+
+16 bit checksum is 55a1 for all 20 chars
