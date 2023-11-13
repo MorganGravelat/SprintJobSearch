@@ -1,75 +1,126 @@
+"""=============================================================================
+| Assignment: pa02 - Calculating an 8, 16, or 32 bit
+| checksum on an ASCII input file
+|
+| Author: Morgan Gravelat
+| Language: Python
+|
+| To Compile: python pa02.py //Caution - expecting input parameters
+|
+|
+| To Execute: python-> python3 pa02.py inputFile.txt 8
+|
+| where inputFile.txt is an ASCII input file
+| and the number 8 could also be 16 or 32
+| which are the valid checksum sizes, all
+| other values are rejected with an error message
+| and program termination
+|
+| Note: All input files are simple 8 bit ASCII input
+|
+| Class: CIS3360 - Security in Computing - Fall 2023
+| Instructor: McAlpin
+| Due Date: Nov 12 at 11:59pm
+|
++============================================================================="""
+
 import sys
 import os
 
-# Function to calculate the checksum
-def calculate_checksum(text, checksum_size):
+def calculate_checksum(text, checksum_bits):
+
     checksum = 0
+    text_size = len(text)
+    padding_count = 0
 
-    if checksum_size == 8:
-        pad_char = '\n'
+
+    if checksum_bits in [16, 32]:
+        padding = 'X'
     else:
-        pad_char = 'X'
+        padding = ''
 
-    # Pad the input text with the appropriate character to match the checksum size
-    while len(text) % (checksum_size // 8) != 0:
-        text += pad_char
 
-    if checksum_size == 8:
+    if checksum_bits == 16 and text_size % 2 != 0:
+        text += padding
+        padding_count = 1
+
+
+    elif checksum_bits == 32:
+        padding_count = (4 - (text_size % 4)) % 4
+        text += padding * padding_count
+
+
+    if checksum_bits == 8:
         for char in text:
             checksum = (checksum + ord(char)) & 0xFF
-
-    elif checksum_size == 16:
+    elif checksum_bits == 16:
         for i in range(0, len(text), 2):
-            word = (ord(text[i]) << 8) + ord(text[i+1])
-            checksum = (checksum + word) & 0xFFFF
-
-    elif checksum_size == 32:
+            chars = (ord(text[i]) << 8) + ord(text[i+1])
+            checksum = (checksum + chars) & 0xFFFF
+    elif checksum_bits == 32:
         for i in range(0, len(text), 4):
-            dword = (ord(text[i]) << 24) + (ord(text[i+1]) << 16) + (ord(text[i+2]) << 8) + ord(text[i+3])
-            checksum = (checksum + dword) & 0xFFFFFFFF
-
-    return checksum, len(text)
+            chars = (ord(text[i]) << 24) + (ord(text[i+1]) << 16) + (ord(text[i+2]) << 8) + ord(text[i+3])
+            checksum = (checksum + chars) & 0xFFFFFFFF
 
 
+    return checksum, text_size, padding_count
 
-# Main program
+# Function to split text into chunks
+def split_into_chunks(text, chunk_size=80):
+
+    chunks = []
+    for i in range(0, len(text), chunk_size):
+        chunk = text[i:i+chunk_size]
+        chunks.append(chunk)
+
+    return chunks
+
+# Main function
 if __name__ == "__main__":
-    # Check if the correct number of command line arguments is provided
     if len(sys.argv) != 3:
-        print("Usage: python pa02.py <input_file> <checksum_size>")
+        print("Please input in this format => python3 pa02.py <input_file> <checksum_bits(8/16/32)>")
         sys.exit(1)
 
-    input_file_name = sys.argv[1]
-    checksum_size = int(sys.argv[2])
+    text_file_name = sys.argv[1]
+    checksum_bits = int(sys.argv[2])
 
-    # Validate the checksum size
-    if checksum_size not in [8, 16, 32]:
+    if checksum_bits not in [8, 16, 32]:
         sys.stderr.write("Valid checksum sizes are 8, 16, or 32\n")
         sys.exit(1)
 
-    # Search for the input file in the current directory and its subdirectories
-    found = False
+    file_found = False
 
     for root, _, files in os.walk('.'):
         for file in files:
-            if file == input_file_name:
+            if file == text_file_name:
                 input_file_path = os.path.join(root, file)
 
-                # Open and read the input file
                 with open(input_file_path, 'r') as file:
                     input_text = file.read()
 
-                # Echo the input text
-                print(input_text)
+                checksum, text_size, padding_count = calculate_checksum(input_text, checksum_bits)
 
-                # Calculate the checksum
-                checksum, text_length = calculate_checksum(input_text, checksum_size)
+                echo_text = input_text
+                if padding_count > 0:
+                    echo_text += 'X' * padding_count
 
-                # Output the checksum in the specified format
-                print(f"{checksum_size} bit checksum is {checksum:0{checksum_size // 4}x} for all {text_length} chars")
+                for chunk in split_into_chunks(echo_text):
+                    print(chunk)
 
-                found = True
-                break  # Exit the loop after processing the file
+                print(f"{checksum_bits:2d} bit checksum is {checksum:8x} for all {text_size + padding_count:4d} chars")
 
-    if not found:
-        print(f"File '{input_file_name}' not found in the current directory and its subdirectories.")
+                file_found = True
+                break
+
+    # If file is not found, print message
+    if not file_found:
+        print(f"{text_file_name} not found")
+
+"""=============================================================================
+| I Morgan Gravelat (mo870937) affirm that this program is
+| entirely my own work and that I have neither developed my code together with
+| any another person, nor copied any code from any other person, nor permitted
+| my code to be copied or otherwise used by any other person, nor have I
+| copied, modified, or otherwise used programs created by others. I acknowledge
+| that any violation of the above terms will be treated as academic dishonesty.
++============================================================================"""
