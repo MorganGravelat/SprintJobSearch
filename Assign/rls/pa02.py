@@ -65,17 +65,17 @@ def calculate_checksum(text, checksum_bits):
 
     return checksum, text_size, padding_count
 
-# Function to split text into chunks
-def split_into_chunks(text, chunk_size=80):
 
-    chunks = []
-    for i in range(0, len(text), chunk_size):
-        chunk = text[i:i+chunk_size]
-        chunks.append(chunk)
+def text_size_limiter(text, text_width=80):
 
-    return chunks
+    text_chunks = []
+    for i in range(0, len(text), text_width):
+        text_chunk = text[i:i+text_width]
+        text_chunks.append(text_chunk)
 
-# Main function
+    return text_chunks
+
+
 if __name__ == "__main__":
     if len(sys.argv) != 3:
         print("Please input in this format => python3 pa02.py <input_file> <checksum_bits(8/16/32)>")
@@ -100,12 +100,12 @@ if __name__ == "__main__":
 
                 checksum, text_size, padding_count = calculate_checksum(input_text, checksum_bits)
 
-                echo_text = input_text
+                original_text = input_text
                 if padding_count > 0:
-                    echo_text += 'X' * padding_count
+                    original_text += 'X' * padding_count
 
-                for chunk in split_into_chunks(echo_text):
-                    print(chunk)
+                for text_chunk in text_size_limiter(original_text):
+                    print(text_chunk)
 
                 print(f"{checksum_bits:2d} bit checksum is {checksum:8x} for all {text_size + padding_count:4d} chars")
 

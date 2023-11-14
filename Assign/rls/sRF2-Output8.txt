@@ -1,3 +1,4 @@
-The highest forms of understanding we can achieve are laughter and human compassion. Richard Feynman
+The highest forms of understanding we can achieve are laughter and human compass
+ion. Richard Feynman
 
-8 bit checksum is 01 for all 101 chars
+ 8 bit checksum is        1 for all  101 chars
