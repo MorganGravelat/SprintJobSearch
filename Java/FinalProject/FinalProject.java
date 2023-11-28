@@ -134,3 +134,29 @@ class Faculty extends Employee {
 
 
 }
+
+class Staff extends Employee {
+	private String status;
+
+	public Staff(String fullName, String id, String department, String status) {
+		super(fullName, id, department);
+		this.status = status;
+	}
+	public Staff(String id, String department, String status) {
+		super(id, department);
+		this.status = status;
+	}
+
+	public void print() {
+		System.out.println("Faculty Info:");
+		System.out.println("ID: " + this.getId() + ", Name: " + this.getFullName() + ", Department: " + this.getDepartment() + ", Status: " + status);
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+}
