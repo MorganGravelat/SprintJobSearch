@@ -3,9 +3,71 @@ import java.util.*;
 public class FinalProject {
 
 	public static void main(String[] args) {
+		final int MAX_PEOPLE = 100;
+        Scanner scanner = new Scanner(System.in);
+        Person[] people = new Person[MAX_PEOPLE];
+        boolean exit = false;
 
+        while (!exit) {
+            System.out.println("Welcome to my Personal Management Program");
+            System.out.println("Choose one of the options:");
+            System.out.println("1- Enter the information of a faculty");
+            System.out.println("2- Enter the information of a student");
+            System.out.println("3- Print tuition invoice for a student");
+            System.out.println("4- Print faculty information");
+            System.out.println("5- Enter the information of a staff member");
+            System.out.println("6- Print the information of a staff member");
+            System.out.println("7- Delete a person");
+            System.out.println("8- Exit Program");
+            System.out.print("Enter your selection: ");
 
-	}
+            int choice = scanner.nextInt();
+            scanner.nextLine(); // consume the remaining newline
+
+            switch (choice) {
+            case 1:
+                if (peopleCount < MAX_PEOPLE) {
+                    addFaculty(scanner, people);
+                } else {
+                    System.out.println("Maximum capacity reached, cannot add more persons.");
+                }
+                break;
+            case 2:
+                if (peopleCount < MAX_PEOPLE) {
+                    addStudent(scanner, people);
+                } else {
+                    System.out.println("Maximum capacity reached, cannot add more persons.");
+                }
+                break;
+            case 3:
+                printStudentInvoice(scanner, people);
+                break;
+            case 4:
+                printFacultyInformation(scanner, people);
+                break;
+            case 5:
+                if (peopleCount < MAX_PEOPLE) {
+                    addStaff(scanner, people);
+                } else {
+                    System.out.println("Maximum capacity reached, cannot add more persons.");
+                }
+                break;
+            case 6:
+                printStaffInformation(scanner, people);
+                break;
+            case 7:
+                deletePerson(scanner, people);
+                break;
+            case 8:
+                exitProgram(scanner, people);
+                exit = true;
+                break;
+            default:
+                System.out.println("Invalid entry- please try again");
+            }
+        }
+        scanner.close();
+    }
 
     private static void addStudent(Scanner scanner, Person[] people) {
 	    System.out.println("Enter the student info:");
