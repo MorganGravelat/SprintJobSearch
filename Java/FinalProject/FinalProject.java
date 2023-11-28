@@ -10,7 +10,7 @@ public class FinalProject {
 }
 
 
-abstract class Person {
+abstract class Person { //Person
 	private String fullName;
 	private String id;
 
@@ -59,10 +59,19 @@ class Student extends Person {
 		this.creditHours = creditHours;
 	}
 
+    @Override
 	public void print() {
-		System.out.println("Student Invoice:");
-		System.out.println("ID: " this.getId() + ", Name: " + this.getFullName() + ", GPA: " + gpa);
-		System.out.println("Tuition: " + calculateTuition());
+	    double tuitionPerCreditHour = 236.45;
+	    double fees = 52;
+	    double totalTuition = calculateTuition();
+	    double discount = (creditHours > 0 ? 236.45 * creditHours + 52 : 0) - totalTuition;
+
+	    System.out.println("---------------------------------------------------------------------------");
+	    System.out.println(this.getFullName() + " " + this.getId());
+	    System.out.println("Credit Hours: " + creditHours + " ($" + tuitionPerCreditHour + "/credit hour)");
+	    System.out.println("Fees: $" + fees);
+	    System.out.println("Total payment (after discount): $" + String.format("%.2f", totalTuition) + " ($" + String.format("%.2f", discount) + " discount applied)");
+	    System.out.println("---------------------------------------------------------------------------");
 	}
 
 	private double calculateTuition() {
@@ -119,10 +128,13 @@ class Faculty extends Employee {
 		this.rank = rank;
 	}
 
-	public void print() {
-		System.out.println("Faculty Info:");
-		System.out.println("ID: " + this.getId() + ", Name: " + this.getFullName() + ", Department: " + this.getDepartment() + ", Rank: " + rank);
-	}
+    @Override
+    public void print() {
+        System.out.println("---------------------------------------------------------------------------");
+        System.out.println(this.getFullName() + " " + this.getId());
+        System.out.println(this.getDepartment() + " Department, " + rank);
+        System.out.println("---------------------------------------------------------------------------");
+    }
 
 	public String getRank() {
 		return rank;
@@ -147,10 +159,13 @@ class Staff extends Employee {
 		this.status = status;
 	}
 
-	public void print() {
-		System.out.println("Faculty Info:");
-		System.out.println("ID: " + this.getId() + ", Name: " + this.getFullName() + ", Department: " + this.getDepartment() + ", Status: " + status);
-	}
+	 @Override
+	 public void print() {
+	     System.out.println("---------------------------------------------------------------------------");
+	     System.out.println(this.getFullName() + " " + this.getId());
+	     System.out.println(this.getDepartment() + " Department, " + (status.equals("F") ? "Full Time" : "Part Time"));
+	     System.out.println("---------------------------------------------------------------------------");
+	 }
 
 	public String getStatus() {
 		return status;
