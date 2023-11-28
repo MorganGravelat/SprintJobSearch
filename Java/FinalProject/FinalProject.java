@@ -2,8 +2,11 @@ import java.util.*;
 
 public class FinalProject {
 
+	private static int peopleCount = 0;
+	private static int MAX_PEOPLE = 100;
+
 	public static void main(String[] args) {
-		final int MAX_PEOPLE = 100;
+
         Scanner scanner = new Scanner(System.in);
         Person[] people = new Person[MAX_PEOPLE];
         boolean exit = false;
