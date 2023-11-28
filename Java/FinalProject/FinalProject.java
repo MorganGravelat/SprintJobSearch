@@ -7,6 +7,30 @@ public class FinalProject {
 
 	}
 
+    private static void deletePerson(Scanner scanner, Person[] people) {
+	    System.out.print("Enter the id of the person to delete: ");
+	    String id = scanner.nextLine();
+
+	    boolean found = false;
+	    for (int i = 0; i < peopleCount; i++) {
+	        if (people[i].getId().equalsIgnoreCase(id)) {
+	            found = true;
+	            // Shift all subsequent elements to the left
+	            for (int j = i; j < peopleCount - 1; j++) {
+	                people[j] = people[j + 1];
+	            }
+	            peopleCount--; // Decrease the count of people
+	            people[peopleCount] = null; // Nullify the last element
+	            System.out.println("Person with ID " + id + " has been deleted.");
+	            break;
+	        }
+	    }
+
+	    if (!found) {
+	        System.out.println("Sorry, no such person exists.");
+	    }
+	}
+
     private static void printStudentInvoice(Scanner scanner, Person[] people) {
 	    System.out.print("Enter the student's ID: ");
 	    String id = scanner.nextLine();
