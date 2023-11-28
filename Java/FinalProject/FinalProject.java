@@ -83,3 +83,54 @@ class Student extends Person {
 	}
 
 }
+
+abstract class Employee extends Person {
+	private String department;
+
+	public Employee(String fullName, String id, String department) {
+		super(fullName, id);
+		this.department = department;
+	}
+
+	public Employee(String id, String department) {
+		super(id);
+		this.department = department;
+	}
+
+	public String getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(String department) {
+		this.department = department;
+	}
+}
+
+class Faculty extends Employee {
+	private String rank;
+
+	public Faculty(String fullName, String id, String department, String rank) {
+		super(fullName, id , department);
+		this.rank = rank;
+	}
+
+	public Faculty(String id, String department, String rank) {
+		super(id , department);
+		this.rank = rank;
+	}
+
+	public void print() {
+		System.out.println("Faculty Info:");
+		System.out.println("ID: " + this.getId() + ", Name: " + this.getFullName() + ", Department: " + this.getDepartment() + ", Rank: " + rank);
+	}
+
+	public String getRank() {
+		return rank;
+	}
+
+	public void setRank(String rank) {
+		this.rank = rank;
+	}
+
+
+}
