@@ -7,6 +7,29 @@ public class FinalProject {
 
 	}
 
+    private static boolean isValidId(String id) {
+	    return id.matches("[a-zA-Z]{2}\\d{4}");
+	}
+
+	private static boolean isDuplicateId(String id, Person[] people) {
+	    for (int i = 0; i < peopleCount; i++) {
+	        if (people[i].getId().equalsIgnoreCase(id)) {
+	            return true;
+	        }
+	    }
+	    return false;
+	}
+
+	private static boolean isValidDepartment(String department) {
+	    String[] validDepartments = {"Mathematics", "Engineering", "English"};
+	    for (String validDept : validDepartments) {
+	        if (validDept.equalsIgnoreCase(department)) {
+	            return true;
+	        }
+	    }
+	    return false;
+	}
+
 }
 
 
