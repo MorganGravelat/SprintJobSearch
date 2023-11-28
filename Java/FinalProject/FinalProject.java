@@ -7,6 +7,102 @@ public class FinalProject {
 
 	}
 
+    private static void addStudent(Scanner scanner, Person[] people) {
+	    System.out.println("Enter the student info:");
+
+	    System.out.print("Name of Student: ");
+	    String name = scanner.nextLine();
+
+	    String id;
+	    do {
+	        System.out.print("ID: ");
+	        id = scanner.nextLine();
+	    } while (!isValidId(id) || isDuplicateId(id, people));
+
+	    double gpa;
+	    do {
+	        System.out.print("Gpa: ");
+	        while (!scanner.hasNextDouble()) {
+	            System.out.println("Invalid input. Please enter a number for GPA.");
+	            scanner.next(); // consume the invalid input
+	        }
+	        gpa = scanner.nextDouble();
+	    } while (gpa < 0.0 || gpa > 4.0); // assuming GPA is between 0.0 and 4.0
+
+	    int creditHours;
+	    do {
+	        System.out.print("Credit hours: ");
+	        while (!scanner.hasNextInt()) {
+	            System.out.println("Invalid input. Please enter an integer for credit hours.");
+	            scanner.next(); // consume the invalid input
+	        }
+	        creditHours = scanner.nextInt();
+	    } while (creditHours < 0);
+
+	    scanner.nextLine(); // consume the remaining newline
+
+	    people[peopleCount++] = new Student(name, id, gpa, creditHours);
+	    System.out.println("Student added!");
+	}
+
+	private static void addFaculty(Scanner scanner, Person[] people) {
+        System.out.println("Enter the faculty info:");
+
+        System.out.print("Name of the faculty: ");
+        String name = scanner.nextLine();
+
+        String id;
+        do {
+            System.out.print("ID: ");
+            id = scanner.nextLine();
+        } while (!isValidId(id) || isDuplicateId(id, people));
+
+        String rank;
+        do {
+            System.out.print("Rank (Professor/Adjunct): ");
+            rank = scanner.nextLine();
+        } while (!rank.equals("Professor") && !rank.equals("Adjunct"));
+
+        String department;
+        do {
+            System.out.print("Department (Mathematics/Engineering/English): ");
+            department = scanner.nextLine();
+        } while (!isValidDepartment(department));
+
+        people[peopleCount++] = new Faculty(name, id, department, rank);
+        System.out.println("Faculty added!");
+    }
+
+	private static void addStaff(Scanner scanner, Person[] people) {
+	    System.out.println("Enter the staff info:");
+
+	    System.out.print("Name of the staff member: ");
+	    String name = scanner.nextLine();
+
+	    String id;
+	    do {
+	        System.out.print("ID: ");
+	        id = scanner.nextLine();
+	    } while (!isValidId(id) || isDuplicateId(id, people));
+
+	    String department;
+	    do {
+	        System.out.print("Department (Mathematics/Engineering/English): ");
+	        department = scanner.nextLine();
+	    } while (!isValidDepartment(department));
+
+	    String status;
+	    do {
+	        System.out.print("Status, Enter P for Part Time, or Enter F for Full Time: ");
+	        status = scanner.nextLine().toUpperCase();
+	    } while (!status.equals("P") && !status.equals("F"));
+
+	    String fullStatus = status.equals("P") ? "Part Time" : "Full Time";
+
+	    people[peopleCount++] = new Staff(name, id, department, fullStatus);
+	    System.out.println("Staff member added!");
+	}
+
     private static void deletePerson(Scanner scanner, Person[] people) {
 	    System.out.print("Enter the id of the person to delete: ");
 	    String id = scanner.nextLine();
