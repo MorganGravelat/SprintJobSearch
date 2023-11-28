@@ -7,6 +7,60 @@ public class FinalProject {
 
 	}
 
+    private static void printStudentInvoice(Scanner scanner, Person[] people) {
+	    System.out.print("Enter the student's ID: ");
+	    String id = scanner.nextLine();
+
+	    boolean found = false;
+	    for (int i = 0; i < peopleCount; i++) {
+	        if (people[i] instanceof Student && people[i].getId().equalsIgnoreCase(id)) {
+	            ((Student) people[i]).print(); // Print the student's invoice
+	            found = true;
+	            break;
+	        }
+	    }
+
+	    if (!found) {
+	        System.out.println("No student matched!");
+	    }
+	}
+
+	private static void printFacultyInformation(Scanner scanner, Person[] people) {
+	    System.out.print("Enter the Faculty's ID: ");
+	    String id = scanner.nextLine();
+
+	    boolean found = false;
+	    for (int i = 0; i < peopleCount; i++) {
+	        if (people[i] instanceof Faculty && people[i].getId().equalsIgnoreCase(id)) {
+	            people[i].print(); // Call the print method of the Faculty class
+	            found = true;
+	            break;
+	        }
+	    }
+
+	    if (!found) {
+	        System.out.println("No faculty member matched!");
+	    }
+	}
+
+	private static void printStaffInformation(Scanner scanner, Person[] people) {
+	    System.out.print("Enter the Staff's ID: ");
+	    String id = scanner.nextLine();
+
+	    boolean found = false;
+	    for (int i = 0; i < peopleCount; i++) {
+	        if (people[i] instanceof Staff && people[i].getId().equalsIgnoreCase(id)) {
+	            people[i].print(); // Call the print method of the Staff class
+	            found = true;
+	            break;
+	        }
+	    }
+
+	    if (!found) {
+	        System.out.println("No staff member matched!");
+	    }
+	}a
+
     private static boolean isValidId(String id) {
 	    return id.matches("[a-zA-Z]{2}\\d{4}");
 	}
