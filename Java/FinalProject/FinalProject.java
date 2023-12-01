@@ -1,4 +1,6 @@
 import java.util.*;
+import java.io.*;
+import java.time.LocalDate;
 
 public class FinalProject {
 
@@ -10,9 +12,9 @@ public class FinalProject {
         Scanner scanner = new Scanner(System.in);
         Person[] people = new Person[MAX_PEOPLE];
         boolean exit = false;
-
+        System.out.println("Welcome to my Personal Management Program");
         while (!exit) {
-            System.out.println("Welcome to my Personal Management Program");
+        	int choice = 0;
             System.out.println("Choose one of the options:");
             System.out.println("1- Enter the information of a faculty");
             System.out.println("2- Enter the information of a student");
@@ -22,10 +24,15 @@ public class FinalProject {
             System.out.println("6- Print the information of a staff member");
             System.out.println("7- Delete a person");
             System.out.println("8- Exit Program");
-            System.out.print("Enter your selection: ");
+            System.out.print("\n\tEnter your selection: ");
 
-            int choice = scanner.nextInt();
-            scanner.nextLine(); // consume the remaining newline
+            try {
+                choice = Integer.parseInt(scanner.nextLine());
+            } catch (NumberFormatException e) {
+                System.out.println("\nInvalid entry- please enter a number.\n");
+                continue;
+            }
+            //scanner.nextLine(); // consume the remaining newline
 
             switch (choice) {
             case 1:
