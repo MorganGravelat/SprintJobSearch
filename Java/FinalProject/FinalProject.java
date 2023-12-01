@@ -166,7 +166,37 @@ public class FinalProject {
 	    System.out.println("Staff member added!");
 	}
 
-    private static void deletePerson(Scanner scanner, Person[] people) {
+	private static String getValidId(Scanner scanner, Person[] people) {
+		String id;
+		do {
+	        System.out.print("\tID: ");
+	        id = scanner.nextLine();
+	        if (!isValidId(id)) {
+	            System.out.println("\tInvalid ID format. Must be LetterLetterDigitDigitDigitDigit.");
+	        } else if (isDuplicateId(id, people)) {
+	            System.out.println("\tID already exists. Please enter a different ID.");
+	        }
+	    } while (!isValidId(id) || isDuplicateId(id, people));
+
+		return id;
+	}
+
+	private static String getValidDepartment(Scanner scanner, Person[] people) {
+
+		String department;
+	    do {
+	        System.out.print("Department (Mathematics/Engineering/English): ");
+	        department = scanner.nextLine();
+	        department = department.toLowerCase();
+	        if (!isValidDepartment(department)) {
+	            System.out.println("Invalid department. Please enter a valid department.");
+	        }
+	    } while (!isValidDepartment(department));
+
+		return department;
+	}
+
+	private static void deletePerson(Scanner scanner, Person[] people) {
 	    System.out.print("Enter the id of the person to delete: ");
 	    String id = scanner.nextLine();
 
@@ -189,6 +219,8 @@ public class FinalProject {
 	        System.out.println("Sorry, no such person exists.");
 	    }
 	}
+
+
 
     private static void printStudentInvoice(Scanner scanner, Person[] people) {
 	    System.out.print("Enter the student's ID: ");
