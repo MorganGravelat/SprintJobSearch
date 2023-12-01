@@ -79,33 +79,33 @@ public class FinalProject {
         scanner.close();
     }
 
-    private static void addStudent(Scanner scanner, Person[] people) {
+	private static void addStudent(Scanner scanner, Person[] people) {
 	    System.out.println("Enter the student info:");
 
-	    System.out.print("Name of Student: ");
+	    System.out.print("\tName of Student: ");
 	    String name = scanner.nextLine();
 
-	    String id;
-	    do {
-	        System.out.print("ID: ");
-	        id = scanner.nextLine();
-	    } while (!isValidId(id) || isDuplicateId(id, people));
+	    String id = getValidId(scanner, people);
 
-	    double gpa;
+	    double gpa = 0;
 	    do {
-	        System.out.print("Gpa: ");
-	        while (!scanner.hasNextDouble()) {
+	        System.out.print("\tGpa: ");
+	        try {
+	            gpa = Double.parseDouble(scanner.nextLine());
+	        } catch (NumberFormatException e) {
 	            System.out.println("Invalid input. Please enter a number for GPA.");
-	            scanner.next(); // consume the invalid input
+	            continue; // continue the loop for another attempt
 	        }
-	        gpa = scanner.nextDouble();
+	        //scanner.nextLine(); // consume the newline character
 	    } while (gpa < 0.0 || gpa > 4.0); // assuming GPA is between 0.0 and 4.0
+	    //System.out.println(gpa);
 
 	    int creditHours;
 	    do {
-	        System.out.print("Credit hours: ");
+	        System.out.print("\tCredit hours: ");
 	        while (!scanner.hasNextInt()) {
 	            System.out.println("Invalid input. Please enter an integer for credit hours.");
+	            System.out.print("Credit hours: ");
 	            scanner.next(); // consume the invalid input
 	        }
 	        creditHours = scanner.nextInt();
@@ -114,36 +114,35 @@ public class FinalProject {
 	    scanner.nextLine(); // consume the remaining newline
 
 	    people[peopleCount++] = new Student(name, id, gpa, creditHours);
-	    System.out.println("Student added!");
+	    System.out.println("Student added!\n\n");
 	}
 
 	private static void addFaculty(Scanner scanner, Person[] people) {
-        System.out.println("Enter the faculty info:");
+	    System.out.println("Enter the faculty info:");
 
-        System.out.print("Name of the faculty: ");
-        String name = scanner.nextLine();
+	    System.out.print("Name of the faculty: ");
+	    String name = scanner.nextLine();
 
-        String id;
-        do {
-            System.out.print("ID: ");
-            id = scanner.nextLine();
-        } while (!isValidId(id) || isDuplicateId(id, people));
+	    String id = getValidId(scanner, people);
 
-        String rank;
-        do {
-            System.out.print("Rank (Professor/Adjunct): ");
-            rank = scanner.nextLine();
-        } while (!rank.equals("Professor") && !rank.equals("Adjunct"));
+	    String department = getValidDepartment(scanner, people);
 
-        String department;
-        do {
-            System.out.print("Department (Mathematics/Engineering/English): ");
-            department = scanner.nextLine();
-        } while (!isValidDepartment(department));
+	    String rank;
+	    do {
+	        System.out.print("Rank (Professor/Adjunct): ");
+	        rank = scanner.nextLine();
+	        rank = rank.toLowerCase();
+	        System.out.println(rank);
+	        if (!isValidRank(rank)) {
+	            System.out.println("Invalid rank. Please enter 'Professor' or 'Adjunct'.");
+	        }
+	    } while (!isValidRank(rank));
 
-        people[peopleCount++] = new Faculty(name, id, department, rank);
-        System.out.println("Faculty added!");
-    }
+
+
+	    people[peopleCount++] = new Faculty(name, id, department, rank);
+	    System.out.println("Faculty added!");
+	}
 
 	private static void addStaff(Scanner scanner, Person[] people) {
 	    System.out.println("Enter the staff info:");
@@ -151,17 +150,9 @@ public class FinalProject {
 	    System.out.print("Name of the staff member: ");
 	    String name = scanner.nextLine();
 
-	    String id;
-	    do {
-	        System.out.print("ID: ");
-	        id = scanner.nextLine();
-	    } while (!isValidId(id) || isDuplicateId(id, people));
+	    String id = getValidId(scanner, people);
 
-	    String department;
-	    do {
-	        System.out.print("Department (Mathematics/Engineering/English): ");
-	        department = scanner.nextLine();
-	    } while (!isValidDepartment(department));
+	    String department = getValidDepartment(scanner, people);
 
 	    String status;
 	    do {
