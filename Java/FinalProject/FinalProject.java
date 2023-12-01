@@ -222,7 +222,7 @@ public class FinalProject {
 
 
 
-    private static void printStudentInvoice(Scanner scanner, Person[] people) {
+	private static void printStudentInvoice(Scanner scanner, Person[] people) {
 	    System.out.print("Enter the student's ID: ");
 	    String id = scanner.nextLine();
 
@@ -274,9 +274,9 @@ public class FinalProject {
 	    if (!found) {
 	        System.out.println("No staff member matched!");
 	    }
-	}a
+	}
 
-    private static boolean isValidId(String id) {
+	private static boolean isValidId(String id) {
 	    return id.matches("[a-zA-Z]{2}\\d{4}");
 	}
 
@@ -290,7 +290,7 @@ public class FinalProject {
 	}
 
 	private static boolean isValidDepartment(String department) {
-	    String[] validDepartments = {"Mathematics", "Engineering", "English"};
+	    String[] validDepartments = {"mathematics", "engineering", "english"};
 	    for (String validDept : validDepartments) {
 	        if (validDept.equalsIgnoreCase(department)) {
 	            return true;
@@ -298,6 +298,107 @@ public class FinalProject {
 	    }
 	    return false;
 	}
+
+	private static boolean isValidRank(String rank) {
+	    String[] validRanks = {"professor", "adjunct"};
+	    return Arrays.asList(validRanks).contains(rank);
+	}
+
+	private static void exitProgram(Scanner scanner, Person[] people) {
+	    System.out.print("Would you like to create the report? (Y/N): ");
+	    String choice = scanner.nextLine();
+
+	    if (choice.equalsIgnoreCase("Y")) {
+	        int sortChoice = 0;
+	        boolean validInput = false;
+	        while (!validInput) {
+	            System.out.print("Would you like to sort your students by descending gpa or name (1 for gpa, 2 for name): ");
+	            try {
+	                sortChoice = scanner.nextInt();
+	                scanner.nextLine(); // consume the newline character
+	                if (sortChoice == 1 || sortChoice == 2) {
+	                    validInput = true; // valid input, break out of the loop
+	                } else {
+	                    System.out.println("Please enter 1 for GPA or 2 for name.");
+	                }
+	            } catch (InputMismatchException e) {
+	                System.out.println("Invalid entry. Please enter 1 for GPA or 2 for name.");
+	                scanner.nextLine(); // consume the invalid input
+	                // the loop will continue for another attempt
+	            }
+	        }
+
+	        sortStudents(people, sortChoice);
+	        generateReport(people, sortChoice);
+	    }
+	    System.out.println("Goodbye!");
+	}
+
+    private static void sortStudents(Person[] people, int sortChoice) {
+        Arrays.sort(people, 0, peopleCount, new Comparator<Person>() {
+            @Override
+            public int compare(Person p1, Person p2) {
+                if (p1 instanceof Student && p2 instanceof Student) {
+                    Student s1 = (Student) p1;
+                    Student s2 = (Student) p2;
+                    if (sortChoice == 1) { // Sort by GPA
+                        return Double.compare(s2.getGpa(), s1.getGpa());
+                    } else { // Sort by name
+                        return s1.getFullName().compareToIgnoreCase(s2.getFullName());
+                    }
+                }
+                return 0;
+            }
+        });
+    }
+
+    private static void generateReport(Person[] people, int sortChoice) {
+        try (PrintWriter writer = new PrintWriter(new File("report.txt"))) {
+            writer.println("Report created on " + LocalDate.now());
+            writer.println("***********************");
+
+            // Writing faculty members
+            writer.println("Faculty Members");
+            writer.println("-------------------------");
+            int count = 1;
+            for (Person p : people) {
+                if (p instanceof Faculty) {
+                    writer.println(count++ + ". " + p.getFullName());
+                    writer.println("ID: " + p.getId());
+                    writer.println(((Faculty) p).getRank() + "," + ((Faculty) p).getDepartment());
+                }
+            }
+
+            // Writing staff members
+            writer.println("Staff Members");
+            writer.println("-------------------");
+            count = 1;
+            for (Person p : people) {
+                if (p instanceof Staff) {
+                    writer.println(count++ + ". " + p.getFullName());
+                    writer.println("ID: " + p.getId());
+                    writer.println(((Staff) p).getDepartment() + ", " + (((Staff) p).getStatus().equals("F") ? "Full Time" : "Part Time"));
+                }
+            }
+
+            // Writing students
+            writer.println("Students (Sorted by " + (sortChoice == 1 ? "gpa" : "name") + " in descending order)");
+            writer.println("-----------");
+            count = 1;
+            for (Person p : people) {
+                if (p instanceof Student) {
+                    writer.println(count++ + ". " + p.getFullName());
+                    writer.println("ID: " + p.getId());
+                    writer.println("Gpa: " + ((Student) p).getGpa());
+                    writer.println("Credit hours: " + ((Student) p).getCreditHours());
+                }
+            }
+            System.out.println("Report created and saved on your hard drive!");
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred while creating the report.");
+        }
+    }
+
 
 }
 
