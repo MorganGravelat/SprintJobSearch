@@ -12,10 +12,10 @@ public class FinalProject {
         Scanner scanner = new Scanner(System.in);
         Person[] people = new Person[MAX_PEOPLE];
         boolean exit = false;
-        System.out.println("Welcome to my Personal Management Program");
+        System.out.println("\t\t\tWelcome to my Personal Management Program\n\n");
+        System.out.println("Choose one of the options:\n");
         while (!exit) {
         	int choice = 0;
-            System.out.println("Choose one of the options:");
             System.out.println("1- Enter the information of a faculty");
             System.out.println("2- Enter the information of a student");
             System.out.println("3- Print tuition invoice for a student");
@@ -29,7 +29,7 @@ public class FinalProject {
             try {
                 choice = Integer.parseInt(scanner.nextLine());
             } catch (NumberFormatException e) {
-                System.out.println("\nInvalid entry- please enter a number.\n");
+                System.out.println("\nInvalid entry- please try again.\n\n");
                 continue;
             }
             //scanner.nextLine(); // consume the remaining newline
@@ -80,16 +80,20 @@ public class FinalProject {
     }
 
 	private static void addStudent(Scanner scanner, Person[] people) {
-	    System.out.println("Enter the student info:");
+	    System.out.println("\n\nEnter the student info:");
 
-	    System.out.print("\tName of Student: ");
+	    System.out.print("\t\tName of Student (or NA to leave it blank): ");
 	    String name = scanner.nextLine();
+
+	    if ("NA".equalsIgnoreCase(name)) {
+	    	name = null;
+	    }
 
 	    String id = getValidId(scanner, people);
 
 	    double gpa = 0;
 	    do {
-	        System.out.print("\tGpa: ");
+	        System.out.print("\n\t\tGpa: ");
 	        try {
 	            gpa = Double.parseDouble(scanner.nextLine());
 	        } catch (NumberFormatException e) {
@@ -102,7 +106,7 @@ public class FinalProject {
 
 	    int creditHours;
 	    do {
-	        System.out.print("\tCredit hours: ");
+	        System.out.print("\t\tCredit hours: ");
 	        while (!scanner.hasNextInt()) {
 	            System.out.println("Invalid input. Please enter an integer for credit hours.");
 	            System.out.print("Credit hours: ");
@@ -113,42 +117,59 @@ public class FinalProject {
 
 	    scanner.nextLine(); // consume the remaining newline
 
-	    people[peopleCount++] = new Student(name, id, gpa, creditHours);
+	    if (name == null) {
+	    	people[peopleCount++] = new Student(id, gpa, creditHours);
+	    } else {
+	    	people[peopleCount++] = new Student(name, id, gpa, creditHours);
+	    }
 	    System.out.println("Student added!\n\n");
 	}
 
 	private static void addFaculty(Scanner scanner, Person[] people) {
-	    System.out.println("Enter the faculty info:");
+	    System.out.println("\n\nEnter the faculty info:");
 
-	    System.out.print("Name of the faculty: ");
+	    System.out.print("\t\tName of the faculty (or NA to leave it blank): ");
 	    String name = scanner.nextLine();
+
+	    if ("NA".equalsIgnoreCase(name)) {
+	    	name = null;
+	    }
 
 	    String id = getValidId(scanner, people);
 
-	    String department = getValidDepartment(scanner, people);
+
 
 	    String rank;
 	    do {
-	        System.out.print("Rank (Professor/Adjunct): ");
+	        System.out.print("\n\t\tRank (Professor/Adjunct): ");
 	        rank = scanner.nextLine();
 	        rank = rank.toLowerCase();
-	        System.out.println(rank);
+	        //System.out.println(rank);
 	        if (!isValidRank(rank)) {
-	            System.out.println("Invalid rank. Please enter 'Professor' or 'Adjunct'.");
+	            System.out.println("\t\t\t\"" + capitalizeFirstLetter(rank) + "\"" + " is invalid");
 	        }
 	    } while (!isValidRank(rank));
 
+	    String department = getValidDepartment(scanner, people);
 
+	    if (name == null) {
+	    	people[peopleCount++] = new Faculty(id, capitalizeFirstLetter(department), capitalizeFirstLetter(rank));
+	    } else {
+	    	people[peopleCount++] = new Faculty(name, id, capitalizeFirstLetter(department), capitalizeFirstLetter(rank));
+	    }
 
-	    people[peopleCount++] = new Faculty(name, id, department, rank);
-	    System.out.println("Faculty added!");
+	    System.out.println("\nFaculty added!");
 	}
 
 	private static void addStaff(Scanner scanner, Person[] people) {
 	    System.out.println("Enter the staff info:");
 
-	    System.out.print("Name of the staff member: ");
+	    System.out.print("Name of the staff member (or NA to leave it blank): ");
 	    String name = scanner.nextLine();
+
+	    if ("NA".equalsIgnoreCase(name)) {
+	    	name = null;
+	    }
 
 	    String id = getValidId(scanner, people);
 
@@ -162,30 +183,40 @@ public class FinalProject {
 
 	    String fullStatus = status.equals("P") ? "Part Time" : "Full Time";
 
-	    people[peopleCount++] = new Staff(name, id, department, fullStatus);
+	    if (name == null) {
+	    	people[peopleCount++] = new Staff(id, capitalizeFirstLetter(department), fullStatus);
+	    } else {
+	    	people[peopleCount++] = new Staff(name, id, capitalizeFirstLetter(department), fullStatus);
+	    }
+
 	    System.out.println("Staff member added!");
 	}
+
 
 	private static String getValidId(Scanner scanner, Person[] people) {
 		String id;
 		do {
-	        System.out.print("\tID: ");
+	        System.out.print("\t\tID: ");
 	        id = scanner.nextLine();
 	        if (!isValidId(id)) {
-	            System.out.println("\tInvalid ID format. Must be LetterLetterDigitDigitDigitDigit.");
+	            System.out.println("\t\tInvalid ID format. Must be LetterLetterDigitDigitDigitDigit.\n");
 	        } else if (isDuplicateId(id, people)) {
-	            System.out.println("\tID already exists. Please enter a different ID.");
+	            System.out.println("\t\tID already exists. Please enter a different ID.");
 	        }
 	    } while (!isValidId(id) || isDuplicateId(id, people));
 
 		return id;
 	}
 
+	private static boolean isValidId(String id) {
+	    return id.matches("[a-zA-Z]{2}\\d{4}");
+	}
+
 	private static String getValidDepartment(Scanner scanner, Person[] people) {
 
 		String department;
 	    do {
-	        System.out.print("Department (Mathematics/Engineering/English): ");
+	        System.out.print("\t\tDepartment (Mathematics/Engineering/English): ");
 	        department = scanner.nextLine();
 	        department = department.toLowerCase();
 	        if (!isValidDepartment(department)) {
@@ -220,10 +251,8 @@ public class FinalProject {
 	    }
 	}
 
-
-
 	private static void printStudentInvoice(Scanner scanner, Person[] people) {
-	    System.out.print("Enter the student's ID: ");
+	    System.out.print("\tEnter the student's ID: ");
 	    String id = scanner.nextLine();
 
 	    boolean found = false;
@@ -236,12 +265,12 @@ public class FinalProject {
 	    }
 
 	    if (!found) {
-	        System.out.println("No student matched!");
+	        System.out.println("\tNo student matched!");
 	    }
 	}
 
 	private static void printFacultyInformation(Scanner scanner, Person[] people) {
-	    System.out.print("Enter the Faculty's ID: ");
+	    System.out.print("\tEnter the Faculty's ID: ");
 	    String id = scanner.nextLine();
 
 	    boolean found = false;
@@ -276,10 +305,6 @@ public class FinalProject {
 	    }
 	}
 
-	private static boolean isValidId(String id) {
-	    return id.matches("[a-zA-Z]{2}\\d{4}");
-	}
-
 	private static boolean isDuplicateId(String id, Person[] people) {
 	    for (int i = 0; i < peopleCount; i++) {
 	        if (people[i].getId().equalsIgnoreCase(id)) {
@@ -302,6 +327,22 @@ public class FinalProject {
 	private static boolean isValidRank(String rank) {
 	    String[] validRanks = {"professor", "adjunct"};
 	    return Arrays.asList(validRanks).contains(rank);
+	}
+
+	public static String capitalizeFirstLetter(String str) {
+	    if (str == null || str.isEmpty()) {
+	        return str;
+	    }
+
+	    String[] words = str.split(" ");
+	    StringBuilder capitalizedString = new StringBuilder();
+
+	    for (String word : words) {
+	        String capitalizedWord = word.substring(0, 1).toUpperCase() + word.substring(1);
+	        capitalizedString.append(capitalizedWord).append(" ");
+	    }
+
+	    return capitalizedString.toString().trim(); // Trim to remove the last extra space
 	}
 
 	private static void exitProgram(Scanner scanner, Person[] people) {
@@ -460,10 +501,10 @@ class Student extends Person {
 	    double discount = (creditHours > 0 ? 236.45 * creditHours + 52 : 0) - totalTuition;
 
 	    System.out.println("---------------------------------------------------------------------------");
-	    System.out.println(this.getFullName() + " " + this.getId());
+	    System.out.println(this.getFullName() + " \t" + this.getId());
 	    System.out.println("Credit Hours: " + creditHours + " ($" + tuitionPerCreditHour + "/credit hour)");
 	    System.out.println("Fees: $" + fees);
-	    System.out.println("Total payment (after discount): $" + String.format("%.2f", totalTuition) + " ($" + String.format("%.2f", discount) + " discount applied)");
+	    System.out.println("Total payment (after discount): $" + String.format("%.2f", totalTuition) + " ($" + String.format("%.2f", discount) + "\t discount applied)");
 	    System.out.println("---------------------------------------------------------------------------");
 	}
 
