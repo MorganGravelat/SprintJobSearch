@@ -1,0 +1,100 @@
+//Question 1
+class DivisionByZero extends Exception {
+	public String toString() {
+		return "9";
+	}
+}
+
+public class Main {
+	public static void main(String args[]) {
+		try {
+			int x = 1, y = 3;
+			System.out.print(y / x - x);
+			throw new DivisionByZero();
+		} catch (DivisionByZero dbz) {
+			System.out.print(dbz);
+		} catch (Exception e) {
+			System.out.print("1");
+		} finally {
+			System.out.print("1");
+		}
+
+	}
+}
+//Question 2
+public class Main {
+	public static void main(String args[]) {
+		System.out.println(3/2 + 3.0/2 + 3%2);
+
+	}
+}
+
+//Question 3
+class SomeClass{
+	private int data;
+	public SomeClass (int data) {
+		this.data = data;
+	}
+	public void print (int data) {
+		System.out.print(data);
+	}
+}
+public class Main {
+	public static void main(String args[]) {
+		int data = 1;
+		SomeClass someObject = new SomeClass();
+		someObject.print(2);
+		System.out.print(data);
+	}
+}
+
+//Question 4
+public class Main {
+	public static void main(String args[]) {
+		String myString = null;
+
+		try {
+			System.out.print(myString.length() + 5);
+			System.out.print("1");
+		} catch (NullPointerException npe) {
+			System.out.print("1");
+		} catch (Exception e) {
+			System.out.print("1");
+		} finally {
+			System.out.print("1");
+		}
+	}
+}
+//Question 5
+public class Main {
+	public static void main(String args[]) {
+
+		boolean goAgain = true;
+
+		while (goAgain == true) {
+			int x = 5 / 0;
+			try {
+				if (goAgain == false)
+					System.out.print(x);
+				goAgain = false;
+				System.out.print("1");
+			} catch (Exception e) {
+				goAgain = true;
+				System.out.print("2");
+			} finally {
+				System.out.print("3");
+				goAgain = false;
+			}
+		} // end of while
+	}
+}
+//Question 6
+public class Main {
+	public static void main(String args[]) {
+		Test test = new Test();
+		Test.data = 2;
+		test.data = 1;
+		System.out.print(test.data + Test.data);
+	}
+}
+class Test {    public static int data;   public Test() { data = 0; }          }
