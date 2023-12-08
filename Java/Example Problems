@@ -98,3 +98,102 @@ public class Main {
 	}
 }
 class Test {    public static int data;   public Test() { data = 0; }          }
+
+//Question 7
+public class Main {
+	public static void main(String args[]) {
+		A a = new A();
+		B b = new B();
+		C c = new C();
+		c = a;
+		b = a;
+		System.out.println(b);
+	}
+}
+
+class A extends B {
+	public String toString() {
+		return "1";
+	}
+}
+
+class B extends C {
+	public String toString() {
+		return "2";
+	}
+}
+
+class C {
+	public String toString() {
+		return "3";
+	}
+}
+//Question 8
+public class Main {
+	public static void main(String args[]) {
+		A ref = new B();
+		ref.data = 3;
+		int data = 4;
+		ref.show();
+	}
+}
+class A {
+	public int data;
+	public A() { data = 7; }
+	public void show() {
+		System.out.println(data);
+	}
+}
+class B extends A {
+	public void show() {
+		System.out.println(data);
+	}
+}
+
+//Question 9
+public class Main {
+	public static void main(String args[]) {
+		A ref = new B();
+		ref.data = 3;
+		int data = 4;
+		ref.show(7);
+	}
+}
+
+class A {
+	public int data;
+
+	public void show() {
+		System.out.println(data);
+	}
+}
+
+class B extends A {
+	public void show(int data) {
+		System.out.println(data);
+	}
+}
+
+//Question 10
+public class Main {
+	public static void main(String args[]) {
+		A ref = new B();
+		ref.data = 3;
+		int data = 4;
+		((B) ref).show(7);
+	}
+}
+
+abstract class A {
+	public int data;
+
+	public void show() {
+		System.out.println(data);
+	}
+}
+
+class B extends A {
+	public void show(int data) {
+		System.out.println(data);
+	}
+}
