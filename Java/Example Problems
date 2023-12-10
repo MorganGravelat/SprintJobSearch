@@ -421,3 +421,203 @@ class Test implements Comparable <Test>{
     	return 0;
     }
 }
+//Question 22
+public class Main {
+	public static void main(String[] args) {
+		Item.count = 0;
+		Item jar = new Item();
+		Item ball = new Item();
+		System.out.println(jar.count + ball.count + Item.count);
+	}
+}
+
+class Item {
+	public static int count;
+
+	public Item() {
+		count = 1;
+		count++;
+	}
+}
+//Question 23
+public class Main {
+	public static void main(String[] args) {
+		Manager manager = new Manager();
+		manager.salary = 33;
+		System.out.println(manager);
+	}
+}
+
+abstract class Person {
+	abstract public int returnCode();
+}
+
+interface Printable {
+	public void print();
+}
+
+abstract class Employee extends Person implements Printable {
+	public int salary;
+	public int returnCode() {  return 30;  }
+}
+
+class Manager extends Employee {
+	public void print(double salary) {
+		System.out.println(salary);
+	}
+
+	public String toString() {
+		return "COP" + salary + returnCode();
+	}
+}
+
+//Question 24
+abstract class Vehicle {
+	public abstract void move(int miles);
+
+	public void printInfo() {
+		System.out.print("Vehicle ");
+	}
+}
+
+public class Car extends Vehicle {
+	private int distance;
+
+	public void move(int miles) {
+		distance = distance + miles;
+	}
+
+	public void printInfo() {
+		System.out.print("Car ");
+	}
+
+	public static void main(String args[]) {
+		Vehicle myVehicle = new Vehicle();
+		Car myCar = new Car();
+		myVehicle.printInfo();
+		myCar.printInfo();
+	}
+}
+//Question 25
+class Car {
+	public static int maxSpeed;
+	public void speed() {
+		System.out.print(maxSpeed + "MPH");
+	}
+	public static void start() {
+		System.out.print("start");
+	}
+}
+
+public class Main {
+	public static void main(String args[]) {
+		Car car1 = new Car(), car2 = null;
+		car1.maxSpeed = 90;
+		car1 = car2;
+		(new Car()).maxSpeed = 120;
+		Car.start();
+		car1.speed();
+
+	}
+}
+
+//Question 26
+class Car {
+	public static int maxSpeed;
+	public void speed() {
+		System.out.print(maxSpeed + "MPH");
+	}
+	public static void start() {
+		System.out.print("start");
+	}
+}
+
+public class Main {
+	public static void main(String args[]) {
+		Car car1 = new Car(), car2 = new Car();
+		car1.maxSpeed = 90;
+		car1 = car2;
+		(new Car()).maxSpeed = 120;
+		Car.start();
+		car1.speed();
+
+	}
+}
+//Question 27
+public class Main {
+	public static void main(String args[]) {
+		String[] array = new String[3];
+		int i = 2;
+
+		for (i = 2; i >= 0; i--) {
+			array[i] = "1";
+		}
+		array[1 + i] = "a";
+
+		for (String str : array) {
+			System.out.print(str);
+		}
+	}
+}
+//Question 28
+public class Main {
+	public static void main(String args[]) {
+		int one = 1;
+		String oneString = "1";
+		System.out.println(one+one+oneString);
+
+	}
+}
+
+
+
+//Question 29
+class Parent {
+	public int x;
+	public Parent() {
+		x = 1;
+	}
+}
+class Child extends Parent {
+	private int x;
+
+	public Child(int x) {
+		this.x = x;
+		x = super.x;
+	}
+
+	public void print(int x) {
+		System.out.print(super.x + " " + x + " " + this.x);
+	}
+}
+
+public class Main {
+	public static void main(String args[]) {
+		Parent pc = new Child(2);
+		((Child) pc).print(3);
+
+	}
+}
+//Question 30
+public class Main {
+	public static void main(String args[]) {
+		int[] array = { 1, 2 };
+		int elem;
+		try {
+			elem = array[2];
+			throw new MyException();
+
+		} catch (MyException me) {
+			System.out.print(me);
+		} finally {
+			System.out.print("!!!");
+		}
+	}
+}
+
+class MyException {
+
+	public String toString() {
+		return "My Exception";
+	}
+}
