@@ -197,3 +197,60 @@ class B extends A {
 		System.out.println(data);
 	}
 }
+//Question 10
+public class Main {
+	public static void main(String args[]) {
+		A ref = new B();
+		ref.data = 3;
+		int data = 4;
+		((B) ref).show(7);
+	}
+}
+
+abstract class A {
+	public int data;
+
+	public void show() {
+		System.out.println(data);
+	}
+}
+
+class B extends A {
+	public void show(int data) {
+		System.out.println(data);
+	}
+}
+
+
+//Question 11
+public class Main {
+
+  public static void main(String args[]) {
+     int score = 65;
+     switch (  ( score / 10 ) % 6 ){
+       case 0 : System.out.print("0");
+       case 1 :
+       case 6 : System.out.print("1");
+       default: System.out.print("2");
+     }
+
+    if ( score/10 == 6) System.out.print("3");
+  }
+}
+//Question 12
+public class Main {
+
+  public static void main(String args[]) {
+	  int x = 1 , y = 2 , z = 3;
+     if ( x != 1 )
+    	 System.out.print("A");
+    	 if ( y == 2)
+    		 System.out.print("B");
+     else
+    		 if (z == 3)
+    			 System.out.print("C");
+    		 else
+    			 System.out.print("D");
+
+  }
+}
