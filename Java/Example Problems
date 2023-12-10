@@ -254,3 +254,170 @@ public class Main {
 
   }
 }
+//Question 13
+public class Main {
+	public static void main(String args[]) {
+		int x = 1, y = 2, z = 3;
+		while (x == 1) {
+			System.out.print("A");
+			if (y == 2)
+				System.out.print("B");
+			else if (z == 3) {
+				System.out.print("C");
+				x = 1;
+			} else
+				System.out.print("D");
+			x = 3;
+		}
+	}
+}
+
+
+//Question 14
+class MyAbstract {
+	public int doNothing() {
+		System.out.print("abc");
+		return 1;
+	}
+}
+
+public class Main extends MyAbstract {
+
+	public static void main(String args[]) {
+		MyAbstract a = new MyAbstract();
+		doNothing(a.doNothing());
+	}
+
+	public static void doNothing(int dummy) {
+		System.out.print("xyz");
+	}
+}
+//Question 15
+class Person extends Creature {
+	public void print() {
+		System.out.print("person");
+	}
+}
+
+class Creature {
+	public void print() {
+		System.out.print("creature");
+	}
+}
+
+public class Main {
+	private static void print(Person p) {
+		System.out.print("1");
+		p.print();
+	}
+
+	public static void print(Creature c) {
+		System.out.print("2");
+		c.print();
+	}
+
+	public static void main(String args[]) {
+		Creature pCreature = new Person();
+		print(pCreature);
+	}
+
+}
+
+//Question 16
+public class Main {
+	public static void main(String args[]) {
+		String[] array = new String[2];
+		int i = 1;
+		try {
+			for (i = 0; i < 2; i++) {
+				array[i] = new String("9");
+				System.out.print(array[i-1]);
+			}
+
+		} catch (Exception e) {
+			System.out.print("!");
+		}
+
+	}
+}
+//Question 17
+public class Main {
+	public static void main(String args[]) {
+		String[] array = new String[2];
+		int i = 1;
+		try {
+			for (i = 0; i < 2; i++)
+				array[i] = new String("9");
+			System.out.print(array[i-1]);
+		} catch (Exception e) {
+			System.out.print("!");
+		}
+
+	}
+}
+//Question 18
+public class Main {
+	public static void main(String args[]) {
+		String[] array = new String[2];
+		String str;
+		int i = 1;
+		try {
+			for (i = 0; i < 2; i++)
+				str = new String("9");
+			System.out.print(array[i-1]);
+		} catch (NullPointerException e) {
+			System.out.print("!");
+		}
+
+	}
+}
+
+//Question 19
+public class Main {
+	public static void renameString (String str) {
+		str = "new";
+	}
+	public static void main(String args[]) {
+		String str1 = "old";
+		String str2 = new String("old");
+		renameString (str1);
+		renameString (str1);
+		System.out.println(str1+str2);
+
+	}
+}
+//Question 20
+class MyString{
+	public String str;
+}
+
+public class Main {
+	public static void renameString (MyString myStringObject) {
+		myStringObject.str = "new";
+	}
+	public static void main(String args[]) {
+		MyString myStringObject = new MyString();
+		myStringObject.str = new String("old");
+		renameString (myStringObject);
+
+		System.out.println(myStringObject.str);
+
+	}
+}
+//Question 21
+public class Main {
+    public static void main(String args[]) {
+    	Test test1 = new Test()  , test2 = new Test();
+    	test1.data = 2;
+    	test2.data = 1;
+    	System.out.print( test1.compareTo(test2) + " " + test2.compareTo(test1));
+    }
+}
+
+class Test implements Comparable <Test>{
+     public int data;
+     public int compareTo( Test obj) {
+    	if ( this.data < 2 + obj.data )  return 1;
+    	return 0;
+    }
+}
