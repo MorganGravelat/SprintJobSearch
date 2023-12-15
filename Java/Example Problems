@@ -688,3 +688,104 @@ public class Main {
         System.out.println("Word count: " + wordCount);
     }
 }
+//Q36
+public class Main {
+    public static void main(String[] args) {
+        int[] numbers = {3, 7, 1, 9, 4, 2, 6, 8, 5};
+        // Implement the quicksort algorithm to sort the 'numbers' array in ascending order
+        quicksort(numbers, 0, numbers.length - 1);
+        System.out.print("Sorted Array: ");
+        for (int num : numbers) {
+            System.out.print(num + " ");
+        }
+    }
+
+    public static void quicksort(int[] arr, int low, int high) {
+        if (low < high) {
+            int pivotIndex = partition(arr, low, high);
+            quicksort(arr, low, pivotIndex - 1);
+            quicksort(arr, pivotIndex + 1, high);
+        }
+    }
+
+    public static int partition(int[] arr, int low, int high) {
+        int pivot = arr[high];
+        int i = low - 1;
+        for (int j = low; j < high; j++) {
+            if (arr[j] < pivot) {
+                i++;
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+        int temp = arr[i + 1];
+        arr[i + 1] = arr[high];
+        arr[high] = temp;
+        return i + 1;
+    }
+}
+//Q37
+import java.util.ArrayList;
+import java.util.List;
+
+class Student {
+    private String name;
+    private int age;
+
+    public Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        List<Student> studentList = new ArrayList<>();
+        studentList.add(new Student("Alice", 20));
+        studentList.add(new Student("Bob", 22));
+        studentList.add(new Student("Charlie", 19));
+
+        // Find and print the oldest student's name from the list
+        int maxAge = Integer.MIN_VALUE;
+        String oldestStudentName = "";
+
+        for (Student student : studentList) {
+            if (student.getAge() > maxAge) {
+                maxAge = student.getAge();
+                oldestStudentName = student.getName();
+            }
+        }
+
+        System.out.println("Oldest student: " + oldestStudentName);
+    }
+}
+//Q38
+import java.util.Arrays;
+
+public class Main {
+    public static void main(String[] args) {
+        int[][] matrix = {
+            {1, 2, 3},
+            {4, 5, 6},
+            {7, 8, 9}
+        };
+
+        // Calculate and print the sum of all elements in the matrix
+        int sum = 0;
+        for (int[] row : matrix) {
+            for (int num : row) {
+                sum += num;
+            }
+        }
+        System.out.println("Sum of matrix elements: " + sum);
+    }
+}
