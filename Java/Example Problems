@@ -1312,3 +1312,54 @@ public class Main {
         return isPrime(num) && (isPrime(num - 2) || isPrime(num + 2));
     }
 }
+//Q51
+import java.util.concurrent.*;
+
+public class Main {
+    public static void main(String[] args) {
+        int n = 100;
+        ExecutorService executor = Executors.newFixedThreadPool(4);
+
+        // Create a list of tasks to calculate the sum of all perfect numbers up to n
+        CompletionService<Integer> completionService = new ExecutorCompletionService<>(executor);
+
+        for (int i = 2; i <= n; i++) {
+            final int num = i;
+            completionService.submit(() -> {
+                if (isPerfectNumber(num)) {
+                    return num;
+                }
+                return 0;
+            });
+        }
+
+        int totalSum = 0;
+
+        // Retrieve and sum the perfect numbers from completed tasks
+        for (int i = 2; i <= n; i++) {
+            try {
+                Future<Integer> result = completionService.take();
+                int perfectNumber = result.get();
+                totalSum += perfectNumber;
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
+
+        System.out.println("Sum of perfect numbers up to " + n + ": " + totalSum);
+        executor.shutdown();
+    }
+
+    public static boolean isPerfectNumber(int num) {
+        int sum = 1;
+        for (int i = 2; i * i <= num; i++) {
+            if (num % i == 0) {
+                sum += i;
+                if (i * i != num) {
+                    sum += num / i;
+                }
+            }
+        }
+        return sum == num;
+    }
+}
