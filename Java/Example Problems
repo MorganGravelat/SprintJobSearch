@@ -1155,3 +1155,160 @@ public class Main {
         return true;
     }
 }
+
+//Q48
+import java.util.concurrent.*;
+
+public class Main {
+    public static void main(String[] args) {
+        int n = 100;
+        ExecutorService executor = Executors.newFixedThreadPool(4);
+
+        // Create a list of tasks to calculate the sum of squares of prime numbers up to n
+        CompletionService<Long> completionService = new ExecutorCompletionService<>(executor);
+
+        for (int i = 2; i <= n; i++) {
+            final int num = i;
+            completionService.submit(() -> {
+                if (isPrime(num)) {
+                    long square = (long) num * num;
+                    return square;
+                }
+                return 0L;
+            });
+        }
+
+        long totalSum = 0;
+
+        // Retrieve and sum the squares of prime numbers from completed tasks
+        for (int i = 2; i <= n; i++) {
+            try {
+                Future<Long> result = completionService.take();
+                long square = result.get();
+                totalSum += square;
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
+
+        System.out.println("Sum of squares of prime numbers up to " + n + ": " + totalSum);
+        executor.shutdown();
+    }
+
+    public static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        for (int i = 2; i * i <= num; i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+//Q49
+import java.util.concurrent.*;
+
+public class Main {
+    public static void main(String[] args) {
+        int n = 100;
+        ExecutorService executor = Executors.newFixedThreadPool(4);
+
+        // Create a list of tasks to calculate the product of all Fibonacci numbers up to n
+        CompletionService<Long> completionService = new ExecutorCompletionService<>(executor);
+
+        for (int i = 1; i <= n; i++) {
+            final int num = i;
+            completionService.submit(() -> {
+                long fibonacci = calculateFibonacci(num);
+                return fibonacci;
+            });
+        }
+
+        long totalProduct = 1;
+
+        // Retrieve and multiply the Fibonacci numbers from completed tasks
+        for (int i = 1; i <= n; i++) {
+            try {
+                Future<Long> result = completionService.take();
+                long fibonacciTerm = result.get();
+                totalProduct *= fibonacciTerm;
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
+
+        System.out.println("Product of Fibonacci numbers up to " + n + ": " + totalProduct);
+        executor.shutdown();
+    }
+
+    public static long calculateFibonacci(int n) {
+        if (n <= 1) {
+            return n;
+        }
+        long[] fib = new long[n + 1];
+        fib[0] = 0;
+        fib[1] = 1;
+        for (int i = 2; i <= n; i++) {
+            fib[i] = fib[i - 1] + fib[i - 2];
+        }
+        return fib[n];
+    }
+}
+
+//Q50
+import java.util.concurrent.*;
+
+public class Main {
+    public static void main(String[] args) {
+        int n = 1000;
+        ExecutorService executor = Executors.newFixedThreadPool(4);
+
+        // Create a list of tasks to check for twin prime numbers within a range
+        CompletionService<String> completionService = new ExecutorCompletionService<>(executor);
+
+        for (int i = 2; i <= n; i++) {
+            final int num = i;
+            completionService.submit(() -> {
+                if (isTwinPrime(num)) {
+                    return num + ", " + (num + 2);
+                }
+                return null;
+            });
+        }
+
+        // Retrieve and print the twin prime numbers from completed tasks
+        System.out.print("Twin prime numbers: ");
+        for (int i = 2; i <= n; i++) {
+            try {
+                Future<String> result = completionService.take();
+                String twinPrimes = result.get();
+                if (twinPrimes != null) {
+                    System.out.print("(" + twinPrimes + ") ");
+                }
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+            }
+        }
+
+        executor.shutdown();
+    }
+
+    public static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        for (int i = 2; i * i <= num; i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean isTwinPrime(int num) {
+        return isPrime(num) && (isPrime(num - 2) || isPrime(num + 2));
+    }
+}
