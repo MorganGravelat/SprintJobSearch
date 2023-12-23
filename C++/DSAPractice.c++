@@ -191,3 +191,72 @@ int main() {
 
     return 0;
 }
+
+//Q6
+#include <iostream>
+#include <vector>
+
+int longestIncreasingSubsequence(const std::vector<int>& nums) {
+    int n = nums.size();
+    if (n == 0) return 0;
+
+    std::vector<int> dp(n, 1);
+
+    for (int i = 1; i < n; ++i) {
+        for (int j = 0; j < i; ++j) {
+            if (nums[i] > nums[j] && dp[i] < dp[j] + 1) {
+                dp[i] = dp[j] + 1;
+            }
+        }
+    }
+
+    int max_len = 0;
+    for (int i = 0; i < n; ++i) {
+        if (dp[i] > max_len) {
+            max_len = dp[i];
+        }
+    }
+
+    return max_len;
+}
+
+int main() {
+    std::vector<int> nums = {10, 22, 9, 33, 21, 50, 41, 60, 80};
+    int result = longestIncreasingSubsequence(nums);
+    std::cout << "Length of Longest Increasing Subsequence: " << result << std::endl;
+    return 0;
+}
+
+
+//Q7
+#include <iostream>
+#include <unordered_map>
+
+class TrieNode {
+public:
+    std::unordered_map<char, TrieNode*> children;
+    bool isEndOfWord;
+
+    TrieNode() {
+        isEndOfWord = false;
+    }
+};
+
+class Trie {
+public:
+    Trie();
+    void insert(const std::string& word);
+    bool search(const std::string& word);
+    bool startsWith(const std::string& prefix);
+    // Implement deletion and other methods as needed.
+private:
+    TrieNode* root;
+};
+
+int main() {
+    Trie trie;
+    trie.insert("apple");
+    bool searchResult = trie.search("apple"); // Should return true
+    bool startsWithResult = trie.startsWith("app"); // Should return true
+    return 0;
+}
