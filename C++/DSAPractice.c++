@@ -316,3 +316,36 @@ public:
         return climbStairs(n, memo);
     }
 };
+
+//Remove Duplicates from Sorted List
+
+class Solution {
+public:
+    ListNode* deleteDuplicates(ListNode* head) {
+
+        if(head==NULL)return head;
+
+
+        ListNode* node=head;
+        while(node and node->next){
+
+            if(node->next->val==node->val){
+                node->next = node->next->next;
+            }
+
+            else{
+                node=node->next;
+            }
+        }
+
+        return head;
+    }
+};
+
+//Maximum Depth of Binary Tree
+int maxDepth(TreeNode* root) {
+        if(!root) return 0;
+        int maxLeft = maxDepth(root->left);
+        int maxRight = maxDepth(root->right);
+        return max(maxLeft, maxRight)+1;
+    }
