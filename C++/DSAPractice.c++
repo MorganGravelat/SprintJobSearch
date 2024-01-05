@@ -349,3 +349,37 @@ int maxDepth(TreeNode* root) {
         int maxRight = maxDepth(root->right);
         return max(maxLeft, maxRight)+1;
     }
+
+//Isomorphic Strings
+class Solution {
+public:
+    bool isIsomorphic(string s, string t) {
+         unordered_map<char, char> mp, mp2;
+        for (int i=0; i<s.length(); ++i) {
+            if (mp[s[i]] && mp[s[i]]!=t[i]) return false;
+            if (mp2[t[i]] && mp2[t[i]]!=s[i]) return false;
+            mp[s[i]]=t[i];
+            mp2[t[i]]=s[i];
+        }
+        return true;
+    }
+};
+
+// Reverse Linked List
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+
+        ListNode* prev = NULL;
+        ListNode* curr = head;
+
+        while(curr != NULL){
+            ListNode* forward = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = forward;
+
+        }
+        return prev;
+    }
+};
