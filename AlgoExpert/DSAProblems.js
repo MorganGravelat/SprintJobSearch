@@ -157,3 +157,55 @@ var numTriplets = function(nums1, nums2) {
       return ans;
     }
   };
+
+  int removeElement(vector<int>& nums, int val) {
+    while(true)
+    {
+        auto it = find(nums.begin(),nums.end(),val);
+
+        if(it != nums.end())
+            nums.erase(it);
+        else break;
+    }
+    return nums.size();
+}
+
+var removeDuplicates = function(nums) {
+    let count = 1; // Initialize the count of unique elements to 1
+  for (let i = 1; i < nums.length; i++) {
+    if (nums[i] !== nums[count - 1]) {
+      nums[count] = nums[i];
+      count++;
+    }
+  }
+  return count;
+};
+
+var strStr = function (haystack, needle) {
+    function findFrom(i) {
+      if (haystack[i] === undefined) return -1;
+      if (haystack[i] === needle[0]) {
+        const initial = i;
+        i++;
+        let next = -1; // In case the first letter appears again
+        let j = 1;
+        let matches = true;
+        while (needle[j]) {
+          if (haystack[i] === needle[0] && next === -1) next = i;
+          if (needle[j] !== haystack[i]) {
+            if (next !== -1) return findFrom(next);
+            matches = false;
+            break;
+          }
+          i++;
+          j++;
+        }
+
+        if (matches) return initial;
+        return findFrom(i);
+      }
+      return findFrom(++i);
+    }
+
+    return findFrom(0);
+  };
