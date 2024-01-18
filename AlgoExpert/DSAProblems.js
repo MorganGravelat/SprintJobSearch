@@ -209,3 +209,79 @@ var strStr = function (haystack, needle) {
 
     return findFrom(0);
   };
+//4sum
+  /**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[][]}
+ */
+var fourSum = function(nums, target) {
+    let res=[]
+    nums.sort((a,b)=>a-b)
+    for(let i=0;i<nums.length;i++){
+        if(i>0 && nums[i] == nums[i-1]){
+            continue;
+        }
+        let left1 = i+1;
+
+        // while(left1<nums.length-1){
+        for(var j=left1;j<nums.length;j++){
+            if(j>left1 && nums[j] == nums[j-1]){
+              continue;
+            }
+            let left = j+1;
+            let right = nums.length-1;
+          while(left<right){
+            let sum = nums[i]+nums[j]+nums[left]+nums[right]
+            if(sum>target){
+                right--;
+
+            }else if(sum<target){
+                left++
+            }else{
+                res.push([nums[i],nums[j],nums[left],nums[right]])
+                left++;
+                while(nums[left] == nums[left-1]){
+                    left++
+                }
+            }
+          }
+
+        }
+
+    }
+    return res
+};
+
+//Next permutation
+/**
+ * @param {number[]} nums
+ * @return {void} Do not return anything, modify nums in-place instead.
+ */
+var nextPermutation = function(nums) {
+    const n = nums.length;
+    // Step 1. scan from right and find the first digit that is less than its right
+    for (let i = n - 2; i >= 0; i--) {
+        if (nums[i] < nums[i + 1]) {
+        // Step 2. scan from right and find the digit that is larger than nums[i]
+        for (let j = n - 1; j > i; j--) {
+            if (nums[j] > nums[i]) {
+            // Step 3. swap nums[i] and nums[j], reverse from i+1
+            swap(nums, i, j);
+            reverse(nums, i + 1, n - 1);
+            return;
+            }
+        }
+        }
+    }
+    nums.reverse();
+};
+
+
+const swap = (nums, i, j) => ([nums[i], nums[j]] = [nums[j], nums[i]]);
+
+const reverse = (nums, start, end) => {
+  while (start < end) {
+    swap(nums, start++, end--);
+  }
+};
