@@ -285,3 +285,80 @@ const reverse = (nums, start, end) => {
     swap(nums, start++, end--);
   }
 };
+
+
+/**
+ * @param {number[]} candyType
+ * @return {number}
+ */
+var distributeCandies = function(candyType) {
+    let set = new Set(candyType);
+    let n = candyType.length/2;
+    let ret = 0;
+    if (set.size>=n) {
+        ret = n;
+    } else {
+        ret = set.size;
+    }
+    return ret;
+
+};
+
+/**
+ * @param {number[]} nums
+ * @param {number} target
+ * @return {number[]}
+ */
+/*
+Objective:
+-Given an array of integers nums sorted in non-descreasing order and a target value
+-Find the starting and ending positions of the target value in the array
+-Return [-1,-1] if the target is not found
+-Implement the algorithm with O(log n) runtime complexity
+
+Edge Cases:
+-If the input array is emptyj(nums.length is 0) Return [-1,-1]
+
+-Initialize array 'arr' with [-1,-1] to store the starting and ending  positions of the target.
+-Initialize variables 'l' and 'r' representing the left and right
+-If 'nums[mid]' is equal to the target I am looking for
+-Update 'arr[0]' with middle staarting position
+-Update 'r' to middle-1 to search in the left half
+-If nums at middle is less than the target, update 'l' to middle positon + 1
+-If nums at middle is greater than the target, update 'r' to middle position - 1
+
+*/
+var searchRange = function(nums, target) {
+    let arr = [-1, -1]; // [3,4]
+
+    let l = 0; // 3
+    let r = nums.length - 1; //2
+
+    while (l<=r) {
+        let mid = Math.floor((l+r)/2); //2/4/3
+        if (nums[mid] === target) { //nums //7 === 8/8/8
+            arr[0] = mid; //4
+            r = mid-1;
+        } else if (nums[mid] < target) { //
+            l = mid + 1 //l3
+        } else {
+            r = mid - 1;
+        }
+    }
+
+    l = 0; //5
+    r = nums.length - 1; //4
+
+    while (l<=r) { //
+        let mid = Math.floor((l+r)/2); //5
+        if (nums[mid] === target) {
+            arr[1] = mid;
+            l = mid + 1;
+        } else if (nums[mid] < target) {
+            l = mid+1;
+        } else {
+            r = mid - 1;
+        }
+    }
+    return arr;
+};
