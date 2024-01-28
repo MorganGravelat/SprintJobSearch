@@ -542,3 +542,19 @@ var isMatch = function(s, p) {
     }
     return recur(s, p);
 };
+
+var firstMissingPositive = function(nums) {
+    nums.sort((a,b) => a-b)
+    let index = nums.indexOf(1);
+
+    if(index === -1)return 1
+    // console.log(index)
+
+    for(index+1; index < nums.length; index++) {
+      if(nums[index+1] !== nums[index] +1 && nums[index+1] !== nums[index]){
+            return nums[index]+1
+        }
+    }
+
+    return nums[index]+1
+};
